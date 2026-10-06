@@ -13,7 +13,7 @@ function preparar(){
    // Mantém os filtros de status no mesmo padrão visual da página Provas.
    filtros.innerHTML='<button type="button" class="filtro-trabalho ativo" data-filtro="proximas">Próximas</button><button type="button" class="filtro-trabalho" data-filtro="hoje">Hoje</button><button type="button" class="filtro-trabalho" data-filtro="realizadas">Realizadas</button>';
    filtros.querySelectorAll('[data-filtro]').forEach(b=>b.addEventListener('click',()=>{filtroStatus=b.dataset.filtro;visao='lista';filtros.querySelectorAll('[data-filtro]').forEach(x=>x.classList.toggle('ativo',x===b));document.querySelectorAll('.trabalho-view-btn').forEach(x=>x.classList.remove('ativo'));render();}));
-   const views=document.createElement('div'); views.className='trabalho-view-switch';
+   const views=document.createElement('div'); views.className='trabalhos-filtros trabalho-view-switch';
    views.innerHTML='<button type="button" class="filtro-trabalho trabalho-view-btn" data-view="semana">Semana</button><button type="button" class="filtro-trabalho trabalho-view-btn" data-view="mes">Mês</button>';
    filtros.parentElement.appendChild(views);
    views.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>{visao=b.dataset.view;views.querySelectorAll('[data-view]').forEach(x=>x.classList.toggle('ativo',x===b));render();}));

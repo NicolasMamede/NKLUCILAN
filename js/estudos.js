@@ -35,7 +35,7 @@ function prepararInterface(){
     const filtros=painel.querySelector('.estudos-filtros');
     if(filtros){
       filtros.innerHTML=`<button type="button" class="filtro-estudo ativo" data-filtro="proximas">Próximos</button><button type="button" class="filtro-estudo" data-filtro="hoje">Hoje</button><button type="button" class="filtro-estudo" data-filtro="realizadas">Realizados</button>`;
-      const views=document.createElement('div'); views.className='estudo-view-switch';
+      const views=document.createElement('div'); views.className='estudos-filtros estudo-view-switch';
       views.innerHTML=`<button type="button" class="filtro-estudo estudo-view-btn" data-view="semana">Semana</button><button type="button" class="filtro-estudo estudo-view-btn" data-view="mes">Mês</button>`;
       filtros.parentElement.appendChild(views);
     }
