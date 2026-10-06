@@ -948,6 +948,7 @@ function criarCardPublico(item) {
             ${ehAutor ? `
                 <button
                     type="button"
+                    class="agenda-publica-editar"
                     data-acao="editar"
                     data-tipo="${item.tipo}"
                     data-id="${item.id}"
@@ -957,7 +958,7 @@ function criarCardPublico(item) {
 
                 <button
                     type="button"
-                    class="excluir"
+                    class="agenda-publica-excluir excluir"
                     data-acao="excluir"
                     data-tipo="${item.tipo}"
                     data-id="${item.id}"
