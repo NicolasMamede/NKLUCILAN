@@ -425,11 +425,15 @@ async function carregarAtividadesSupabase() {
             await nexoSupabase
                 .from("atividades")
                 .select(
-                    "id, titulo, descricao, data, horario, materia_id, concluida, criado_em"
+                    "id, titulo, descricao, data, horario, materia_id, concluida, no_calendario, criado_em"
                 )
                 .eq(
                     "usuario_id",
                     usuarioLogado.id
+                )
+                .eq(
+                    "no_calendario",
+                    true
                 )
                 .order(
                     "data",
@@ -521,11 +525,15 @@ async function carregarProvasSupabase() {
             await nexoSupabase
                 .from("provas")
                 .select(
-                    "id, nome, conteudo, data, horario, materia_id, criado_em"
+                    "id, nome, conteudo, data, horario, materia_id, no_calendario, criado_em"
                 )
                 .eq(
                     "usuario_id",
                     usuarioLogado.id
+                )
+                .eq(
+                    "no_calendario",
+                    true
                 )
                 .order(
                     "data",
@@ -2321,6 +2329,37 @@ function criarFormularioModal(config) {
     );
 
 
+    /* CALENDÁRIO */
+
+    const opcaoCalendario =
+        document.createElement("label");
+
+    opcaoCalendario.classList.add(
+        "calendario-opcao"
+    );
+
+    const checkboxCalendario =
+        document.createElement("input");
+
+    checkboxCalendario.type = "checkbox";
+    checkboxCalendario.name = "noCalendario";
+    checkboxCalendario.checked = false;
+
+    const textoCalendario =
+        document.createElement("span");
+
+    textoCalendario.innerHTML =
+        "<strong>Adicionar ao meu calendário</strong><small>Mostra este item no Dashboard, Semana e Mês.</small>";
+
+    opcaoCalendario.appendChild(
+        checkboxCalendario
+    );
+
+    opcaoCalendario.appendChild(
+        textoCalendario
+    );
+
+
     /* BOTÕES */
 
     const botoes =
@@ -2400,6 +2439,10 @@ function criarFormularioModal(config) {
 
     formulario.appendChild(
         grupoDescricao
+    );
+
+    formulario.appendChild(
+        opcaoCalendario
     );
 
     formulario.appendChild(
@@ -2524,6 +2567,10 @@ function criarFormularioModal(config) {
                 ).trim();
 
 
+            const noCalendario =
+                dados.get("noCalendario") === "on";
+
+
             if (
                 !titulo ||
                 !data
@@ -2580,8 +2627,14 @@ function criarFormularioModal(config) {
                                 visibilidade:
                                     "privada",
 
+                                no_calendario:
+                                    noCalendario,
+
                                 concluida:
-                                    false
+                                    false,
+
+                                no_calendario:
+                                    noCalendario
 
                             });
 

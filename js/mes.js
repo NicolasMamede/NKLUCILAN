@@ -76,6 +76,9 @@ const horarioAtividadeMes =
 const descricaoAtividadeMes =
     document.getElementById("descricaoAtividadeMes");
 
+const atividadeMesNoCalendario =
+    document.getElementById("atividadeMesNoCalendario");
+
 
 /* PROVA */
 
@@ -105,6 +108,9 @@ const horarioProvaMes =
 
 const conteudoProvaMes =
     document.getElementById("conteudoProvaMes");
+
+const provaMesNoCalendario =
+    document.getElementById("provaMesNoCalendario");
 
 
 /* =====================================================
@@ -213,11 +219,15 @@ async function carregarDadosSupabase() {
                 nexoSupabase
                     .from("atividades")
                     .select(
-                        "id, titulo, descricao, data, horario, materia_id, concluida, criado_em"
+                        "id, titulo, descricao, data, horario, materia_id, concluida, no_calendario, criado_em"
                     )
                     .eq(
                         "usuario_id",
                         usuarioLogado.id
+                    )
+                    .eq(
+                        "no_calendario",
+                        true
                     )
                     .order(
                         "data",
@@ -229,11 +239,15 @@ async function carregarDadosSupabase() {
                 nexoSupabase
                     .from("provas")
                     .select(
-                        "id, nome, conteudo, data, horario, materia_id, criado_em"
+                        "id, nome, conteudo, data, horario, materia_id, no_calendario, criado_em"
                     )
                     .eq(
                         "usuario_id",
                         usuarioLogado.id
+                    )
+                    .eq(
+                        "no_calendario",
+                        true
                     )
                     .order(
                         "data",
@@ -1311,7 +1325,13 @@ if (formAtividadeMes) {
                                 usuarioLogado.id,
 
                             visibilidade:
-                                "privada"
+                                "privada",
+
+                            no_calendario:
+                                Boolean(provaMesNoCalendario && provaMesNoCalendario.checked),
+
+                            no_calendario:
+                                Boolean(atividadeMesNoCalendario && atividadeMesNoCalendario.checked)
 
                         });
 

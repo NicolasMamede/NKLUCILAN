@@ -4167,3 +4167,50 @@ a {
 .aviso-publico-conteudo > p { white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-word; }
 .aviso-publico-topo { min-width: 0; max-width: 100%; }
 .aviso-publico-acoes { flex-shrink: 0; }
+
+
+/* =====================================================
+   NEXO - OPÇÃO DE CALENDÁRIO
+===================================================== */
+.calendario-opcao {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background: #f8fafc;
+    cursor: pointer;
+    user-select: none;
+}
+
+.calendario-opcao:hover {
+    border-color: #bfdbfe;
+    background: #eff6ff;
+}
+
+.calendario-opcao input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 1px;
+    flex: 0 0 auto;
+    accent-color: #2563eb;
+}
+
+.calendario-opcao span {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.calendario-opcao strong {
+    color: #0f172a;
+    font-size: 13px;
+}
+
+.calendario-opcao small {
+    color: #64748b;
+    font-size: 11px;
+    line-height: 1.45;
+}

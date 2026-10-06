@@ -44,6 +44,9 @@ const horarioAtividade =
 const descricaoAtividade =
     document.getElementById("descricaoAtividade");
 
+const atividadeNoCalendario =
+    document.getElementById("atividadeNoCalendario");
+
 const listaAtividades =
     document.getElementById("listaAtividades");
 
@@ -166,6 +169,9 @@ function normalizarAtividade(item) {
         concluida:
             Boolean(item.concluida),
 
+        noCalendario:
+            Boolean(item.no_calendario),
+
         criadoEm:
             item.criado_em || ""
 
@@ -260,7 +266,7 @@ async function carregarAtividades() {
         } = await nexoSupabase
             .from("atividades")
             .select(
-                "id, titulo, descricao, data, horario, materia_id, concluida, criado_em"
+                "id, titulo, descricao, data, horario, materia_id, concluida, no_calendario, criado_em"
             )
             .eq(
                 "usuario_id",
@@ -552,6 +558,9 @@ formAtividade.addEventListener(
         const descricao =
             descricaoAtividade.value.trim();
 
+        const noCalendario =
+            Boolean(atividadeNoCalendario && atividadeNoCalendario.checked);
+
 
         if (
             !titulo ||
@@ -604,7 +613,10 @@ formAtividade.addEventListener(
                             horario || null,
 
                         materia_id:
-                            materiaId || null
+                            materiaId || null,
+
+                        no_calendario:
+                            noCalendario
 
                     })
                     .eq(
@@ -669,7 +681,10 @@ formAtividade.addEventListener(
                             "privada",
 
                         concluida:
-                            false
+                            false,
+
+                        no_calendario:
+                            noCalendario
 
                     });
 
@@ -769,6 +784,11 @@ function editarAtividade(id) {
 
     descricaoAtividade.value =
         atividade.descricao || "";
+
+    if (atividadeNoCalendario) {
+        atividadeNoCalendario.checked =
+            Boolean(atividade.noCalendario);
+    }
 
 
     preencherMaterias(

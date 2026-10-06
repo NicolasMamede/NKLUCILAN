@@ -76,6 +76,9 @@ const horarioAtividadeSemana =
 const descricaoAtividadeSemana =
     document.getElementById("descricaoAtividadeSemana");
 
+const atividadeSemanaNoCalendario =
+    document.getElementById("atividadeSemanaNoCalendario");
+
 
 /* PROVA */
 
@@ -105,6 +108,9 @@ const horarioProvaSemana =
 
 const conteudoProvaSemana =
     document.getElementById("conteudoProvaSemana");
+
+const provaSemanaNoCalendario =
+    document.getElementById("provaSemanaNoCalendario");
 
 
 /* =====================================================
@@ -256,11 +262,15 @@ async function carregarDadosSupabase() {
             nexoSupabase
                 .from("atividades")
                 .select(
-                    "id, titulo, descricao, data, horario, materia_id, concluida, criado_em"
+                    "id, titulo, descricao, data, horario, materia_id, concluida, no_calendario, criado_em"
                 )
                 .eq(
                     "usuario_id",
                     usuarioLogado.id
+                )
+                .eq(
+                    "no_calendario",
+                    true
                 )
                 .order(
                     "data",
@@ -272,11 +282,15 @@ async function carregarDadosSupabase() {
             nexoSupabase
                 .from("provas")
                 .select(
-                    "id, nome, conteudo, data, horario, materia_id, criado_em"
+                    "id, nome, conteudo, data, horario, materia_id, no_calendario, criado_em"
                 )
                 .eq(
                     "usuario_id",
                     usuarioLogado.id
+                )
+                .eq(
+                    "no_calendario",
+                    true
                 )
                 .order(
                     "data",
@@ -1351,7 +1365,13 @@ if (formAtividadeSemana) {
                                 usuarioLogado.id,
 
                             visibilidade:
-                                "privada"
+                                "privada",
+
+                            no_calendario:
+                                Boolean(provaSemanaNoCalendario && provaSemanaNoCalendario.checked),
+
+                            no_calendario:
+                                Boolean(atividadeSemanaNoCalendario && atividadeSemanaNoCalendario.checked)
 
                         });
 

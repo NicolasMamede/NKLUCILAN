@@ -43,6 +43,9 @@ const horarioProva =
 const conteudoProva =
     document.getElementById("conteudoProva");
 
+const provaNoCalendario =
+    document.getElementById("provaNoCalendario");
+
 const listaProvasPagina =
     document.getElementById("listaProvasPagina");
 
@@ -167,6 +170,9 @@ function normalizarProva(item) {
         conteudo:
             item.conteudo || "",
 
+        noCalendario:
+            Boolean(item.no_calendario),
+
         criadoEm:
             item.criado_em || ""
 
@@ -259,7 +265,7 @@ async function carregarProvas() {
             await nexoSupabase
                 .from("provas")
                 .select(
-                    "id, nome, conteudo, data, horario, materia_id, criado_em"
+                    "id, nome, conteudo, data, horario, materia_id, no_calendario, criado_em"
                 )
                 .eq(
                     "usuario_id",
@@ -585,6 +591,9 @@ formProva.addEventListener(
         const conteudo =
             conteudoProva.value.trim();
 
+        const noCalendario =
+            Boolean(provaNoCalendario && provaNoCalendario.checked);
+
 
         if (
             !nome ||
@@ -627,7 +636,10 @@ formProva.addEventListener(
 
                             conteudo:
                                 conteudo ||
-                                null
+                                null,
+
+                            no_calendario:
+                                noCalendario
 
                         })
                         .eq(
@@ -693,7 +705,10 @@ formProva.addEventListener(
                                 usuarioLogado.id,
 
                             visibilidade:
-                                "privada"
+                                "privada",
+
+                            no_calendario:
+                                noCalendario
 
                         });
 
@@ -785,6 +800,11 @@ function editarProva(id) {
 
     conteudoProva.value =
         prova.conteudo || "";
+
+    if (provaNoCalendario) {
+        provaNoCalendario.checked =
+            Boolean(prova.noCalendario);
+    }
 
 
     preencherMaterias(
