@@ -945,6 +945,27 @@ function criarCardPublico(item) {
                 + Minha agenda
             </button>
 
+            ${ehAutor ? `
+                <button
+                    type="button"
+                    data-acao="editar"
+                    data-tipo="${item.tipo}"
+                    data-id="${item.id}"
+                >
+                    Editar
+                </button>
+
+                <button
+                    type="button"
+                    class="excluir"
+                    data-acao="excluir"
+                    data-tipo="${item.tipo}"
+                    data-id="${item.id}"
+                >
+                    Excluir
+                </button>
+            ` : ""}
+
         </div>
     `;
 
