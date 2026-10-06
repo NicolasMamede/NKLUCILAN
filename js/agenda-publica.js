@@ -2280,18 +2280,6 @@ async function adicionarMinhaAgenda(
     }
 
 
-    if (
-        item.usuarioId === usuarioLogado.id
-    ) {
-
-        alert(
-            "Esta publicação já pertence a você."
-        );
-
-        return;
-    }
-
-
     const duplicado =
         await verificarDuplicado(
             item
