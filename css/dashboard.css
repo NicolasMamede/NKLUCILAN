@@ -4123,3 +4123,4 @@ a {
     .aviso-publico-acoes { width: 100%; }
     .aviso-publico-acoes button { flex: 1; }
 }
+\n\n/* =====================================================\n   NEXO - CORREÇÃO DE AVISOS LONGOS\n===================================================== */\n.aviso-publico-card,\n.aviso-publico-conteudo,\n.aviso-publico-topo,\n.aviso-publico-titulo-linha {\n    min-width: 0;\n}\n\n.aviso-publico-titulo-linha {\n    flex: 1 1 auto;\n}\n\n.aviso-publico-titulo-linha h3,\n.aviso-publico-conteudo > p {\n    max-width: 100%;\n    overflow-wrap: anywhere;\n    word-break: break-word;\n}\n\n.aviso-publico-acoes {\n    flex: 0 0 auto;\n    position: relative;\n    z-index: 1;\n}\n\n@media (max-width: 650px) {\n    .aviso-publico-card {\n        align-items: flex-start;\n    }\n\n    .aviso-publico-topo {\n        width: 100%;\n    }\n}\n
