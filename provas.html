@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nexo | Provas</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- ========================================
+             MENU LATERAL
+        ========================================= -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-logo">
+
+                <div class="logo-simbolo">
+                    N
+                </div>
+
+                <span>
+                    NEXO
+                </span>
+
+            </div>
+
+
+            <nav class="sidebar-menu">
+
+                <a href="dashboard.html" class="menu-item">
+                    <span class="menu-icone">⌂</span>
+                    <span>Início</span>
+                </a>
+
+                <a href="semana.html" class="menu-item">
+                    <span class="menu-icone">▣</span>
+                    <span>Semana</span>
+                </a>
+
+                <a href="mes.html" class="menu-item">
+                    <span class="menu-icone">□</span>
+                    <span>Mês</span>
+                </a>
+
+                <a href="atividades.html" class="menu-item">
+                    <span class="menu-icone">✓</span>
+                    <span>Atividades</span>
+                </a>
+
+                <a href="provas.html" class="menu-item ativo">
+                    <span class="menu-icone">✎</span>
+                    <span>Provas</span>
+                </a>
+
+                <a href="materias.html" class="menu-item">
+                    <span class="menu-icone">◫</span>
+                    <span>Matérias</span>
+                </a>
+
+            
+                <div class="menu-secao">
+                    COMPARTILHADO
+                </div>
+
+                <a href="agenda-publica.html" class="menu-item">
+                    <span class="menu-icone">◇</span>
+                    <span>Agenda Pública</span>
+                </a>
+
+            </nav>
+
+
+            <!-- USUÁRIO -->
+
+            <div class="sidebar-usuario">
+
+                <button
+                    class="usuario-botao"
+                    id="usuarioBotao"
+                    type="button"
+                >
+
+                    <div
+                        class="usuario-avatar"
+                        id="usuarioAvatar"
+                    >
+                        U
+                    </div>
+
+                    <div class="usuario-info">
+
+                        <strong id="usuarioNome">
+                            Usuário
+                        </strong>
+
+                        <span>
+                            Minha conta
+                        </span>
+
+                    </div>
+
+                    <span class="usuario-seta">
+                        ›
+                    </span>
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ========================================
+             CONTEÚDO
+        ========================================= -->
+
+        <main class="conteudo">
+
+            <!-- TOPO -->
+
+            <header class="topo">
+
+                <button
+                    type="button"
+                    class="menu-mobile"
+                    id="menuMobile"
+                    aria-label="Abrir menu"
+                >
+                    ☰
+                </button>
+
+                <div class="topo-data">
+
+                    <span>
+                        Provas
+                    </span>
+
+                </div>
+
+            </header>
+
+
+            <!-- ========================================
+                 PÁGINA
+            ========================================= -->
+
+            <div class="dashboard">
+
+                <!-- CABEÇALHO -->
+
+                <section class="boas-vindas">
+
+                    <div>
+
+                        <span class="pagina-etiqueta">
+                            AVALIAÇÕES
+                        </span>
+
+                        <h1>
+                            Provas
+                        </h1>
+
+                        <p>
+                            Organize suas avaliações e acompanhe as próximas provas.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="botao-criar"
+                        id="novaProva"
+                    >
+
+                        <span>+</span>
+
+                        Nova prova
+
+                    </button>
+
+                </section>
+
+
+                <!-- ========================================
+                     RESUMO
+                ========================================= -->
+
+                <section class="resumo">
+
+                    <div class="resumo-card">
+
+                        <div class="resumo-topo">
+
+                            <span>
+                                Próximas
+                            </span>
+
+                            <div class="resumo-icone">
+                                ✎
+                            </div>
+
+                        </div>
+
+                        <strong id="totalProximas">
+                            0
+                        </strong>
+
+                        <p>
+                            provas
+                        </p>
+
+                    </div>
+
+
+                    <div class="resumo-card">
+
+                        <div class="resumo-topo">
+
+                            <span>
+                                Hoje
+                            </span>
+
+                            <div class="resumo-icone">
+                                ◉
+                            </div>
+
+                        </div>
+
+                        <strong id="totalHoje">
+                            0
+                        </strong>
+
+                        <p>
+                            provas
+                        </p>
+
+                    </div>
+
+
+                    <div class="resumo-card">
+
+                        <div class="resumo-topo">
+
+                            <span>
+                                Realizadas
+                            </span>
+
+                            <div class="resumo-icone">
+                                ✓
+                            </div>
+
+                        </div>
+
+                        <strong id="totalRealizadas">
+                            0
+                        </strong>
+
+                        <p>
+                            provas
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ========================================
+                     PAINEL
+                ========================================= -->
+
+                <section class="painel">
+
+                    <div class="painel-cabecalho provas-cabecalho">
+
+                        <div>
+
+                            <span class="painel-etiqueta">
+                                PROVAS
+                            </span>
+
+                            <h2>
+                                Minhas provas
+                            </h2>
+
+                        </div>
+
+
+                        <!-- FILTROS -->
+
+                        <div class="provas-filtros">
+
+                            <button
+                                type="button"
+                                class="filtro-prova ativo"
+                                data-filtro="proximas"
+                            >
+                                Próximas
+                            </button>
+
+                            <button
+                                type="button"
+                                class="filtro-prova"
+                                data-filtro="hoje"
+                            >
+                                Hoje
+                            </button>
+
+                            <button
+                                type="button"
+                                class="filtro-prova"
+                                data-filtro="realizadas"
+                            >
+                                Realizadas
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ========================================
+                         LISTA
+                    ========================================= -->
+
+                    <div
+                        class="provas-lista"
+                        id="listaProvasPagina"
+                    >
+
+                        <div
+                            class="estado-vazio"
+                            id="provasPaginaVazio"
+                        >
+
+                            <div class="vazio-icone">
+                                ✎
+                            </div>
+
+                            <h3>
+                                Nenhuma prova
+                            </h3>
+
+                            <p id="textoProvasVazio">
+                                Você ainda não cadastrou nenhuma prova.
+                            </p>
+
+                            <button
+                                type="button"
+                                class="botao-vazio"
+                                id="criarPrimeiraProva"
+                            >
+                                + Adicionar prova
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- ========================================
+         MODAL
+    ========================================= -->
+
+    <div
+        class="modal-fundo"
+        id="modalProva"
+    >
+
+        <div class="modal">
+
+            <div class="modal-cabecalho">
+
+                <div>
+
+                    <span>
+                        PROVA
+                    </span>
+
+                    <h2 id="tituloModalProva">
+                        Nova prova
+                    </h2>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="modal-fechar"
+                    id="fecharModalProva"
+                    aria-label="Fechar"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- ========================================
+                 FORMULÁRIO
+            ========================================= -->
+
+            <form
+                class="formulario-nexo"
+                id="formProva"
+            >
+
+                <!-- NOME -->
+
+                <div class="formulario-campo">
+
+                    <label for="nomeProva">
+                        Nome da prova
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nomeProva"
+                        placeholder="Ex.: Avaliação bimestral"
+                        maxlength="100"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- MATÉRIA -->
+
+                <div class="formulario-campo">
+
+                    <label for="materiaProva">
+                        Matéria
+                    </label>
+
+                    <select id="materiaProva">
+                    </select>
+
+                </div>
+
+
+                <!-- DATA -->
+
+                <div class="formulario-campo">
+
+                    <label for="dataProva">
+                        Data
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataProva"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- HORÁRIO -->
+
+                <div class="formulario-campo">
+
+                    <label for="horarioProva">
+                        Horário (opcional)
+                    </label>
+
+                    <input
+                        type="time"
+                        id="horarioProva"
+                    >
+
+                </div>
+
+
+                <!-- CONTEÚDO -->
+
+                <div class="formulario-campo">
+
+                    <label for="conteudoProva">
+                        Conteúdo / observações (opcional)
+                    </label>
+
+                    <textarea
+                        id="conteudoProva"
+                        rows="4"
+                        maxlength="700"
+                        placeholder="Conteúdo da prova, capítulos, observações..."
+                    ></textarea>
+
+                </div>
+
+
+                <!-- BOTÕES -->
+
+                <div class="formulario-botoes">
+
+                    <button
+                        type="button"
+                        class="botao-cancelar"
+                        id="cancelarProva"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="botao-salvar"
+                    >
+                        Salvar prova
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/usuario.js"></script>
+    <script src="js/provas.js"></script>
+
+</body>
+
+</html>

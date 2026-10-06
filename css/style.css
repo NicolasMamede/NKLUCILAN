@@ -1,0 +1,736 @@
+/* =====================================================
+   NEXO
+   Tela de Login
+===================================================== */
+
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #0f172a;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =========================
+   PÁGINA
+========================= */
+
+.pagina-login {
+    min-height: 100vh;
+    background-color: #f8fafc;
+}
+
+.login-container {
+    width: 100%;
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-columns: 45% 55%;
+}
+
+
+/* =========================
+   LADO ESQUERDO
+========================= */
+
+.login-apresentacao {
+    position: relative;
+    overflow: hidden;
+
+    min-height: 100vh;
+
+    padding: 55px 65px;
+
+    display: flex;
+    flex-direction: column;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(59, 130, 246, 0.28),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(14, 165, 233, 0.16),
+            transparent 35%
+        ),
+        #0f172a;
+
+    color: white;
+}
+
+
+/* Elementos decorativos */
+
+.login-apresentacao::before {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    right: -250px;
+    top: -170px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 50%;
+}
+
+.login-apresentacao::after {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    left: -160px;
+    bottom: 80px;
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+
+    border-radius: 50%;
+}
+
+
+/* =========================
+   MARCA
+========================= */
+
+.login-marca {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.logo-simbolo {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background-color: #2563eb;
+
+    color: white;
+
+    font-size: 21px;
+    font-weight: 800;
+
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
+}
+
+.logo-nome {
+    font-size: 24px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================
+   TEXTO DE APRESENTAÇÃO
+========================= */
+
+.login-apresentacao-conteudo {
+    position: relative;
+    z-index: 2;
+
+    max-width: 530px;
+
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.login-etiqueta {
+    display: inline-block;
+
+    margin-bottom: 22px;
+
+    color: #60a5fa;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.login-apresentacao-conteudo h1 {
+    font-size: clamp(45px, 5vw, 68px);
+
+    line-height: 1.05;
+
+    letter-spacing: -2px;
+}
+
+.login-apresentacao-conteudo h1 span {
+    display: block;
+
+    color: #60a5fa;
+}
+
+.login-apresentacao-conteudo p {
+    max-width: 470px;
+
+    margin-top: 25px;
+
+    color: #cbd5e1;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   RODAPÉ ESQUERDO
+========================= */
+
+.login-rodape {
+    position: relative;
+    z-index: 2;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   ÁREA DO LOGIN
+========================= */
+
+.login-area {
+    min-height: 100vh;
+
+    padding: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #ffffff;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 440px;
+}
+
+
+/* =========================
+   CABEÇALHO DO LOGIN
+========================= */
+
+.login-cabecalho {
+    margin-bottom: 38px;
+}
+
+.login-mobile-logo {
+    display: none;
+
+    margin-bottom: 35px;
+
+    color: #2563eb;
+
+    font-size: 23px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+.login-cabecalho h2 {
+    margin-bottom: 8px;
+
+    color: #0f172a;
+
+    font-size: 34px;
+
+    letter-spacing: -1px;
+}
+
+.login-cabecalho p {
+    color: #64748b;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   FORMULÁRIO
+========================= */
+
+.login-form {
+    width: 100%;
+}
+
+.campo {
+    margin-bottom: 23px;
+}
+
+.campo > label,
+.senha-label label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #334155;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+.campo input {
+    width: 100%;
+    height: 52px;
+
+    padding: 0 15px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    background-color: white;
+
+    color: #0f172a;
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s,
+        background-color 0.2s;
+}
+
+.campo input::placeholder {
+    color: #94a3b8;
+}
+
+.campo input:hover {
+    border-color: #94a3b8;
+}
+
+.campo input:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+
+/* Evita fundo estranho do autofill */
+
+.campo input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+    -webkit-text-fill-color: #0f172a;
+}
+
+
+/* =========================
+   SENHA
+========================= */
+
+.senha-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.senha-label a {
+    margin-bottom: 8px;
+
+    color: #2563eb;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.senha-label a:hover {
+    color: #1d4ed8;
+
+    text-decoration: underline;
+}
+
+.senha-container {
+    position: relative;
+}
+
+.senha-container input {
+    padding-right: 85px;
+}
+
+.mostrar-senha {
+    position: absolute;
+
+    top: 50%;
+    right: 13px;
+
+    transform: translateY(-50%);
+
+    border: none;
+
+    outline: none;
+
+    background: none;
+
+    color: #2563eb;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.mostrar-senha:hover {
+    color: #1d4ed8;
+}
+
+
+/* =========================
+   MENSAGENS
+========================= */
+
+.login-mensagem {
+    display: none;
+
+    margin-top: -5px;
+    margin-bottom: 18px;
+
+    padding: 11px 13px;
+
+    border: 1px solid #fecaca;
+
+    border-radius: 8px;
+
+    background-color: #fef2f2;
+
+    color: #b91c1c;
+
+    font-size: 13px;
+}
+
+.login-mensagem.ativo {
+    display: block;
+}
+
+
+/* =========================
+   BOTÃO ENTRAR
+========================= */
+
+.botao-login {
+    width: 100%;
+    height: 52px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background-color: #2563eb;
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(37, 99, 235, 0.18);
+
+    transition:
+        background-color 0.2s,
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+.botao-login:hover {
+    background-color: #1d4ed8;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(37, 99, 235, 0.25);
+}
+
+.botao-login:active {
+    transform: translateY(0);
+}
+
+
+/* Estado que usaremos no JavaScript */
+
+.botao-login:disabled {
+    background-color: #93c5fd;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================
+   SEPARADOR
+========================= */
+
+.login-ajuda {
+    margin: 30px 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+}
+
+.login-ajuda span {
+    height: 1px;
+
+    flex: 1;
+
+    background-color: #e2e8f0;
+}
+
+.login-ajuda p {
+    flex-shrink: 0;
+
+    color: #94a3b8;
+
+    font-size: 11px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   INFORMAÇÃO DA CONTA
+========================= */
+
+.login-conta {
+    color: #64748b;
+
+    font-size: 13px;
+
+    text-align: center;
+}
+
+.login-conta strong {
+    color: #334155;
+}
+
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+
+.login-apresentacao-conteudo {
+    animation: aparecerEsquerda 0.7s ease;
+}
+
+.login-box {
+    animation: aparecerLogin 0.6s ease;
+}
+
+@keyframes aparecerEsquerda {
+
+    from {
+        opacity: 0;
+        transform: translateX(-25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+@keyframes aparecerLogin {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 1000px) {
+
+    .login-container {
+        grid-template-columns: 40% 60%;
+    }
+
+    .login-apresentacao {
+        padding: 45px 40px;
+    }
+
+    .login-apresentacao-conteudo h1 {
+        font-size: 48px;
+    }
+
+}
+
+
+/* =========================
+   TABLET / CELULAR
+========================= */
+
+@media (max-width: 760px) {
+
+    .pagina-login {
+        background-color: white;
+    }
+
+    .login-container {
+        display: block;
+
+        min-height: 100vh;
+    }
+
+    .login-apresentacao {
+        display: none;
+    }
+
+    .login-area {
+        width: 100%;
+        min-height: 100vh;
+
+        padding: 40px 25px;
+    }
+
+    .login-box {
+        max-width: 450px;
+    }
+
+    .login-mobile-logo {
+        display: block;
+    }
+
+    .login-cabecalho {
+        margin-bottom: 35px;
+    }
+
+    .login-cabecalho h2 {
+        font-size: 31px;
+    }
+
+}
+
+
+/* =========================
+   CELULARES PEQUENOS
+========================= */
+
+@media (max-width: 430px) {
+
+    .login-area {
+        align-items: flex-start;
+
+        padding: 35px 20px;
+    }
+
+    .login-mobile-logo {
+        margin-bottom: 60px;
+    }
+
+    .login-cabecalho h2 {
+        font-size: 29px;
+    }
+
+    .senha-label {
+        gap: 10px;
+    }
+
+    .login-ajuda p {
+        max-width: 190px;
+    }
+
+}
+
+
+/* =========================
+   TELAS MUITO BAIXAS
+========================= */
+
+@media (max-height: 650px) and (min-width: 761px) {
+
+    .login-apresentacao {
+        padding-top: 35px;
+        padding-bottom: 35px;
+    }
+
+    .login-area {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .login-cabecalho {
+        margin-bottom: 25px;
+    }
+
+    .campo {
+        margin-bottom: 17px;
+    }
+
+}

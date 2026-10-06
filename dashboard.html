@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nexo | Início</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- ========================================
+             MENU LATERAL
+        ========================================= -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <!-- LOGO -->
+            <div class="sidebar-logo">
+
+                <div class="logo-simbolo">
+                    NLA
+                </div>
+
+                <span>
+                    NKLUCILAN
+                </span>
+
+            </div>
+
+
+            <!-- NAVEGAÇÃO -->
+            <nav class="sidebar-menu">
+
+                <a href="dashboard.html" class="menu-item ativo">
+
+                    <span class="menu-icone">
+                        ⌂
+                    </span>
+
+                    <span>
+                        Início
+                    </span>
+
+                </a>
+
+
+                <a href="semana.html" class="menu-item">
+
+                    <span class="menu-icone">
+                        ▣
+                    </span>
+
+                    <span>
+                        Semana
+                    </span>
+
+                </a>
+
+
+                <a href="mes.html" class="menu-item">
+
+                    <span class="menu-icone">
+                        □
+                    </span>
+
+                    <span>
+                        Mês
+                    </span>
+
+                </a>
+
+
+                <a href="atividades.html" class="menu-item">
+
+                    <span class="menu-icone">
+                        ✓
+                    </span>
+
+                    <span>
+                        Atividades
+                    </span>
+
+                </a>
+
+
+                <a href="provas.html" class="menu-item">
+
+                    <span class="menu-icone">
+                        ✎
+                    </span>
+
+                    <span>
+                        Provas
+                    </span>
+
+                </a>
+
+
+                <a href="materias.html" class="menu-item">
+
+                    <span class="menu-icone">
+                        ◫
+                    </span>
+
+                    <span>
+                        Matérias
+                    </span>
+
+                </a>
+
+            
+                <div class="menu-secao">
+                    COMPARTILHADO
+                </div>
+
+                <a href="agenda-publica.html" class="menu-item">
+                    <span class="menu-icone">◇</span>
+                    <span>Agenda Pública</span>
+                </a>
+
+            </nav>
+
+
+            <!-- USUÁRIO -->
+            <div class="sidebar-usuario">
+
+                <button
+                    class="usuario-botao"
+                    id="usuarioBotao"
+                    type="button"
+                >
+
+                    <div class="usuario-avatar" id="usuarioAvatar">
+                        N
+                    </div>
+
+                    <div class="usuario-info">
+
+                        <strong id="usuarioNome">
+                            Usuário
+                        </strong>
+
+                        <span>
+                            Minha conta
+                        </span>
+
+                    </div>
+
+                    <span class="usuario-seta">
+                        ›
+                    </span>
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- ========================================
+             CONTEÚDO PRINCIPAL
+        ========================================= -->
+
+        <main class="conteudo">
+
+
+            <!-- ========================================
+                 TOPO
+            ========================================= -->
+
+            <header class="topo">
+
+                <button
+                    type="button"
+                    class="menu-mobile"
+                    id="menuMobile"
+                    aria-label="Abrir menu"
+                >
+                    ☰
+                </button>
+
+
+                <div class="topo-data">
+
+                    <span id="dataAtual">
+                        Carregando...
+                    </span>
+
+                </div>
+
+
+                <div class="topo-acoes">
+
+                    <button
+                        type="button"
+                        class="botao-icone"
+                        id="notificacoes"
+                        aria-label="Notificações"
+                    >
+                        ♢
+                    </button>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- ========================================
+                 DASHBOARD
+            ========================================= -->
+
+            <div class="dashboard">
+
+
+                <!-- BOAS-VINDAS -->
+
+                <section class="boas-vindas">
+
+                    <div>
+
+                        <span class="pagina-etiqueta">
+                            INÍCIO
+                        </span>
+
+                        <h1>
+                            Olá,
+                            <span id="nomeBoasVindas">
+                                usuário
+                            </span>!
+                        </h1>
+
+                        <p>
+                            Veja o que você tem planejado.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="botao-criar"
+                        id="botaoCriar"
+                    >
+                        <span>+</span>
+                        Criar
+                    </button>
+
+                </section>
+
+
+
+                <!-- ========================================
+                     RESUMO
+                ========================================= -->
+
+                <section class="resumo">
+
+                    <div class="resumo-card">
+
+                        <div class="resumo-topo">
+
+                            <span>
+                                Hoje
+                            </span>
+
+                            <div class="resumo-icone">
+                                ✓
+                            </div>
+
+                        </div>
+
+                        <strong id="quantidadeHoje">
+                            0
+                        </strong>
+
+                        <p>
+                            atividades
+                        </p>
+
+                    </div>
+
+
+                    <div class="resumo-card">
+
+                        <div class="resumo-topo">
+
+                            <span>
+                                Esta semana
+                            </span>
+
+                            <div class="resumo-icone">
+                                ▣
+                            </div>
+
+                        </div>
+
+                        <strong id="quantidadeSemana">
+                            0
+                        </strong>
+
+                        <p>
+                            atividades
+                        </p>
+
+                    </div>
+
+
+                    <div class="resumo-card">
+
+                        <div class="resumo-topo">
+
+                            <span>
+                                Próximas provas
+                            </span>
+
+                            <div class="resumo-icone">
+                                ✎
+                            </div>
+
+                        </div>
+
+                        <strong id="quantidadeProvas">
+                            0
+                        </strong>
+
+                        <p>
+                            provas
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- ========================================
+                     CONTEÚDO DO DIA
+                ========================================= -->
+
+                <div class="dashboard-grid">
+
+
+                    <!-- HOJE -->
+
+                    <section class="painel painel-hoje">
+
+                        <div class="painel-cabecalho">
+
+                            <div>
+
+                                <span class="painel-etiqueta">
+                                    AGENDA
+                                </span>
+
+                                <h2>
+                                    Hoje
+                                </h2>
+
+                            </div>
+
+
+                            <a href="semana.html">
+                                Ver semana
+                            </a>
+
+                        </div>
+
+
+                        <!--
+                            Quando houver atividades,
+                            o JavaScript irá adicioná-las
+                            dentro deste elemento.
+                        -->
+
+                        <div
+                            class="lista-atividades"
+                            id="listaAtividadesHoje"
+                        >
+
+
+                            <!-- ESTADO VAZIO -->
+
+                            <div
+                                class="estado-vazio"
+                                id="atividadesVazio"
+                            >
+
+                                <div class="vazio-icone">
+                                    ✓
+                                </div>
+
+                                <h3>
+                                    Nada por aqui
+                                </h3>
+
+                                <p>
+                                    Você ainda não adicionou
+                                    nenhuma atividade para hoje.
+                                </p>
+
+                                <button
+                                    type="button"
+                                    class="botao-vazio"
+                                    id="criarAtividade"
+                                >
+                                    + Criar atividade
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- ========================================
+                         PROVAS
+                    ========================================= -->
+
+                    <section class="painel painel-provas">
+
+                        <div class="painel-cabecalho">
+
+                            <div>
+
+                                <span class="painel-etiqueta">
+                                    PROVAS
+                                </span>
+
+                                <h2>
+                                    Próximas
+                                </h2>
+
+                            </div>
+
+
+                            <a href="provas.html">
+                                Ver todas
+                            </a>
+
+                        </div>
+
+
+                        <div
+                            class="lista-provas"
+                            id="listaProvas"
+                        >
+
+
+                            <!-- ESTADO VAZIO -->
+
+                            <div
+                                class="estado-vazio estado-vazio-menor"
+                                id="provasVazio"
+                            >
+
+                                <div class="vazio-icone">
+                                    ✎
+                                </div>
+
+                                <h3>
+                                    Nenhuma prova
+                                </h3>
+
+                                <p>
+                                    Nenhuma prova foi cadastrada.
+                                </p>
+
+                                <button
+                                    type="button"
+                                    class="botao-vazio"
+                                    id="criarProva"
+                                >
+                                    + Adicionar prova
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+
+
+                <!-- ========================================
+                     SEMANA
+                ========================================= -->
+
+                <section class="painel semana-resumo">
+
+                    <div class="painel-cabecalho">
+
+                        <div>
+
+                            <span class="painel-etiqueta">
+                                PLANEJAMENTO
+                            </span>
+
+                            <h2>
+                                Esta semana
+                            </h2>
+
+                        </div>
+
+
+                        <a href="semana.html">
+                            Abrir semana
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        class="dias-semana"
+                        id="diasSemana"
+                    >
+
+                        <!--
+                            Os dias serão criados
+                            automaticamente pelo JavaScript.
+                        -->
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- ========================================
+         MENU DE CRIAÇÃO
+    ========================================= -->
+
+    <div
+        class="modal-fundo"
+        id="modalCriar"
+    >
+
+        <div class="modal">
+
+            <div class="modal-cabecalho">
+
+                <div>
+
+                    <span>
+                        NOVO
+                    </span>
+
+                    <h2>
+                        O que você deseja criar?
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="modal-fechar"
+                    id="fecharModal"
+                    aria-label="Fechar"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="modal-opcoes">
+
+
+                <button
+                    type="button"
+                    class="modal-opcao"
+                    id="opcaoAtividade"
+                >
+
+                    <div class="modal-opcao-icone">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Atividade
+                        </strong>
+
+                        <span>
+                            Adicione uma tarefa ou compromisso.
+                        </span>
+
+                    </div>
+
+                </button>
+
+
+
+                <button
+                    type="button"
+                    class="modal-opcao"
+                    id="opcaoProva"
+                >
+
+                    <div class="modal-opcao-icone">
+                        ✎
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Prova
+                        </strong>
+
+                        <span>
+                            Cadastre uma nova prova.
+                        </span>
+
+                    </div>
+
+                </button>
+
+
+
+                <button
+                    type="button"
+                    class="modal-opcao"
+                    id="opcaoMateria"
+                >
+
+                    <div class="modal-opcao-icone">
+                        ◫
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Matéria
+                        </strong>
+
+                        <span>
+                            Crie uma nova matéria.
+                        </span>
+
+                    </div>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ========================================
+         JAVASCRIPT
+    ========================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/usuario.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+
+</html>

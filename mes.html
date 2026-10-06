@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nexo | Mês</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-logo">
+                <div class="logo-simbolo">N</div>
+                <span>NEXO</span>
+            </div>
+
+            <nav class="sidebar-menu">
+
+                <a href="dashboard.html" class="menu-item">
+                    <span class="menu-icone">⌂</span>
+                    <span>Início</span>
+                </a>
+
+                <a href="semana.html" class="menu-item">
+                    <span class="menu-icone">▣</span>
+                    <span>Semana</span>
+                </a>
+
+                <a href="mes.html" class="menu-item ativo">
+                    <span class="menu-icone">□</span>
+                    <span>Mês</span>
+                </a>
+
+                <a href="atividades.html" class="menu-item">
+                    <span class="menu-icone">✓</span>
+                    <span>Atividades</span>
+                </a>
+
+                <a href="provas.html" class="menu-item">
+                    <span class="menu-icone">✎</span>
+                    <span>Provas</span>
+                </a>
+
+                <a href="materias.html" class="menu-item">
+                    <span class="menu-icone">◫</span>
+                    <span>Matérias</span>
+                </a>
+
+            
+                <div class="menu-secao">
+                    COMPARTILHADO
+                </div>
+
+                <a href="agenda-publica.html" class="menu-item">
+                    <span class="menu-icone">◇</span>
+                    <span>Agenda Pública</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-usuario">
+
+                <button
+                    class="usuario-botao"
+                    id="usuarioBotao"
+                    type="button"
+                >
+
+                    <div
+                        class="usuario-avatar"
+                        id="usuarioAvatar"
+                    >
+                        U
+                    </div>
+
+                    <div class="usuario-info">
+
+                        <strong id="usuarioNome">
+                            Usuário
+                        </strong>
+
+                        <span>Minha conta</span>
+
+                    </div>
+
+                    <span class="usuario-seta">›</span>
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- CONTEÚDO -->
+
+        <main class="conteudo">
+
+            <header class="topo">
+
+                <button
+                    type="button"
+                    class="menu-mobile"
+                    id="menuMobile"
+                    aria-label="Abrir menu"
+                >
+                    ☰
+                </button>
+
+                <div class="topo-data">
+                    <span>Calendário mensal</span>
+                </div>
+
+            </header>
+
+
+            <div class="dashboard">
+
+                <!-- CABEÇALHO -->
+
+                <section class="mes-cabecalho">
+
+                    <div>
+
+                        <span class="pagina-etiqueta">
+                            CALENDÁRIO
+                        </span>
+
+                        <h1 id="tituloMes">
+                            Mês
+                        </h1>
+
+                        <p>
+                            Visualize suas atividades e provas ao longo do mês.
+                        </p>
+
+                    </div>
+
+
+                    <div class="mes-navegacao">
+
+                        <button
+                            type="button"
+                            class="mes-hoje"
+                            id="mesHoje"
+                        >
+                            Hoje
+                        </button>
+
+                        <button
+                            type="button"
+                            class="mes-seta"
+                            id="mesAnterior"
+                            aria-label="Mês anterior"
+                        >
+                            ‹
+                        </button>
+
+                        <button
+                            type="button"
+                            class="mes-seta"
+                            id="mesProximo"
+                            aria-label="Próximo mês"
+                        >
+                            ›
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- LEGENDA -->
+
+                <div class="mes-legenda">
+
+                    <span>
+                        <i class="legenda-atividade"></i>
+                        Atividade
+                    </span>
+
+                    <span>
+                        <i class="legenda-prova"></i>
+                        Prova
+                    </span>
+
+                </div>
+
+
+                <!-- CALENDÁRIO -->
+
+                <section class="calendario-mes">
+
+                    <div class="calendario-semana-nomes">
+
+                        <span>SEG</span>
+                        <span>TER</span>
+                        <span>QUA</span>
+                        <span>QUI</span>
+                        <span>SEX</span>
+                        <span>SÁB</span>
+                        <span>DOM</span>
+
+                    </div>
+
+                    <div
+                        class="calendario-grade"
+                        id="calendarioGrade"
+                    >
+                    </div>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- MODAL DO DIA -->
+
+    <div
+        class="modal-fundo"
+        id="modalDiaMes"
+    >
+
+        <div class="modal">
+
+            <div class="modal-cabecalho">
+
+                <div>
+                    <span id="modalMesData">DATA</span>
+                    <h2>Adicionar neste dia</h2>
+                </div>
+
+                <button
+                    type="button"
+                    class="modal-fechar"
+                    id="fecharModalDiaMes"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="modal-opcoes">
+
+                <button
+                    type="button"
+                    class="modal-opcao"
+                    id="criarAtividadeMes"
+                >
+
+                    <div class="modal-opcao-icone">
+                        ✓
+                    </div>
+
+                    <div>
+                        <strong>Atividade</strong>
+
+                        <span>
+                            Criar uma atividade nesta data.
+                        </span>
+                    </div>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="modal-opcao"
+                    id="criarProvaMes"
+                >
+
+                    <div class="modal-opcao-icone">
+                        ✎
+                    </div>
+
+                    <div>
+                        <strong>Prova</strong>
+
+                        <span>
+                            Adicionar uma prova nesta data.
+                        </span>
+                    </div>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- NOVA ATIVIDADE -->
+
+    <div
+        class="modal-fundo"
+        id="modalAtividadeMes"
+    >
+
+        <div class="modal">
+
+            <div class="modal-cabecalho">
+
+                <div>
+                    <span>ATIVIDADE</span>
+                    <h2>Nova atividade</h2>
+                </div>
+
+                <button
+                    type="button"
+                    class="modal-fechar"
+                    id="fecharAtividadeMes"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form
+                class="formulario-nexo"
+                id="formAtividadeMes"
+            >
+
+                <div class="formulario-campo">
+
+                    <label for="tituloAtividadeMes">
+                        Título
+                    </label>
+
+                    <input
+                        type="text"
+                        id="tituloAtividadeMes"
+                        maxlength="100"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="formulario-campo">
+
+                    <label for="dataAtividadeMes">
+                        Data
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataAtividadeMes"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="formulario-campo">
+
+                    <label for="materiaAtividadeMes">
+                        Matéria
+                    </label>
+
+                    <select id="materiaAtividadeMes"></select>
+
+                </div>
+
+
+                <div class="formulario-campo">
+
+                    <label for="horarioAtividadeMes">
+                        Horário (opcional)
+                    </label>
+
+                    <input
+                        type="time"
+                        id="horarioAtividadeMes"
+                    >
+
+                </div>
+
+
+                <div class="formulario-campo">
+
+                    <label for="descricaoAtividadeMes">
+                        Descrição (opcional)
+                    </label>
+
+                    <textarea
+                        id="descricaoAtividadeMes"
+                        rows="4"
+                        maxlength="500"
+                    ></textarea>
+
+                </div>
+
+
+                <div class="formulario-botoes">
+
+                    <button
+                        type="button"
+                        class="botao-cancelar"
+                        id="cancelarAtividadeMes"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="botao-salvar"
+                    >
+                        Criar atividade
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- NOVA PROVA -->
+
+    <div
+        class="modal-fundo"
+        id="modalProvaMes"
+    >
+
+        <div class="modal">
+
+            <div class="modal-cabecalho">
+
+                <div>
+                    <span>PROVA</span>
+                    <h2>Nova prova</h2>
+                </div>
+
+                <button
+                    type="button"
+                    class="modal-fechar"
+                    id="fecharProvaMes"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form
+                class="formulario-nexo"
+                id="formProvaMes"
+            >
+
+                <div class="formulario-campo">
+
+                    <label for="nomeProvaMes">
+                        Nome da prova
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nomeProvaMes"
+                        maxlength="100"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="formulario-campo">
+
+                    <label for="dataProvaMes">
+                        Data
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataProvaMes"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="formulario-campo">
+
+                    <label for="materiaProvaMes">
+                        Matéria
+                    </label>
+
+                    <select id="materiaProvaMes"></select>
+
+                </div>
+
+
+                <div class="formulario-campo">
+
+                    <label for="horarioProvaMes">
+                        Horário (opcional)
+                    </label>
+
+                    <input
+                        type="time"
+                        id="horarioProvaMes"
+                    >
+
+                </div>
+
+
+                <div class="formulario-campo">
+
+                    <label for="conteudoProvaMes">
+                        Conteúdo / observações (opcional)
+                    </label>
+
+                    <textarea
+                        id="conteudoProvaMes"
+                        rows="4"
+                        maxlength="700"
+                    ></textarea>
+
+                </div>
+
+
+                <div class="formulario-botoes">
+
+                    <button
+                        type="button"
+                        class="botao-cancelar"
+                        id="cancelarProvaMes"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="botao-salvar"
+                    >
+                        Criar prova
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/usuario.js"></script>
+    <script src="js/mes.js"></script>
+
+</body>
+
+</html>

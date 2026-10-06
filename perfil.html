@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nexo | Perfil</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- ========================================
+             SIDEBAR
+        ========================================= -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-logo">
+
+                <div class="logo-simbolo">
+                    N
+                </div>
+
+                <span>
+                    NEXO
+                </span>
+
+            </div>
+
+
+            <nav class="sidebar-menu">
+
+                <a href="dashboard.html" class="menu-item">
+                    <span class="menu-icone">⌂</span>
+                    <span>Início</span>
+                </a>
+
+                <a href="semana.html" class="menu-item">
+                    <span class="menu-icone">▣</span>
+                    <span>Semana</span>
+                </a>
+
+                <a href="mes.html" class="menu-item">
+                    <span class="menu-icone">□</span>
+                    <span>Mês</span>
+                </a>
+
+                <a href="atividades.html" class="menu-item">
+                    <span class="menu-icone">✓</span>
+                    <span>Atividades</span>
+                </a>
+
+                <a href="provas.html" class="menu-item">
+                    <span class="menu-icone">✎</span>
+                    <span>Provas</span>
+                </a>
+
+                <a href="materias.html" class="menu-item">
+                    <span class="menu-icone">◫</span>
+                    <span>Matérias</span>
+                </a>
+
+            
+                <div class="menu-secao">
+                    COMPARTILHADO
+                </div>
+
+                <a href="agenda-publica.html" class="menu-item">
+                    <span class="menu-icone">◇</span>
+                    <span>Agenda Pública</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-usuario">
+
+                <button
+                    class="usuario-botao"
+                    id="usuarioBotao"
+                    type="button"
+                >
+
+                    <div
+                        class="usuario-avatar"
+                        id="usuarioAvatar"
+                    >
+                        N
+                    </div>
+
+                    <div class="usuario-info">
+
+                        <strong id="usuarioNome">
+                            Carregando...
+                        </strong>
+
+                        <span>
+                            Minha conta
+                        </span>
+
+                    </div>
+
+                    <span class="usuario-seta">
+                        ›
+                    </span>
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ========================================
+             CONTEÚDO
+        ========================================= -->
+
+        <main class="conteudo">
+
+            <header class="topo">
+
+                <button
+                    type="button"
+                    class="menu-mobile"
+                    id="menuMobile"
+                    aria-label="Abrir menu"
+                >
+                    ☰
+                </button>
+
+                <div class="topo-data">
+                    <span>Minha conta</span>
+                </div>
+
+            </header>
+
+
+            <div class="dashboard">
+
+                <!-- TÍTULO -->
+
+                <section class="boas-vindas">
+
+                    <div>
+
+                        <span class="pagina-etiqueta">
+                            PERFIL
+                        </span>
+
+                        <h1>
+                            Minha conta
+                        </h1>
+
+                        <p>
+                            Gerencie suas informações no Nexo.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ========================================
+                     PERFIL
+                ========================================= -->
+
+                <section class="painel perfil-painel">
+
+                    <div class="perfil-cabecalho">
+
+                        <div
+                            class="perfil-avatar-grande"
+                            id="perfilAvatar"
+                        >
+                            N
+                        </div>
+
+
+                        <div class="perfil-identidade">
+
+                            <h2 id="perfilNomeTitulo">
+                                Carregando...
+                            </h2>
+
+                            <p id="perfilEmailTitulo">
+                                Carregando...
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="perfil-divisor"></div>
+
+
+                    <!-- FORMULÁRIO -->
+
+                    <form
+                        id="perfilForm"
+                        class="formulario-nexo perfil-formulario"
+                    >
+
+                        <div class="formulario-campo">
+
+                            <label for="perfilNome">
+                                Nome
+                            </label>
+
+                            <input
+                                type="text"
+                                id="perfilNome"
+                                maxlength="80"
+                                autocomplete="name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="formulario-campo">
+
+                            <label for="perfilEmail">
+                                E-mail
+                            </label>
+
+                            <input
+                                type="email"
+                                id="perfilEmail"
+                                disabled
+                            >
+
+                            <small class="perfil-ajuda">
+                                O e-mail está vinculado à sua conta.
+                            </small>
+
+                        </div>
+
+
+                        <div class="formulario-campo">
+
+                            <label for="perfilId">
+                                ID da conta
+                            </label>
+
+                            <input
+                                type="text"
+                                id="perfilId"
+                                disabled
+                            >
+
+                            <small class="perfil-ajuda">
+                                Identificador interno da sua conta no Nexo.
+                            </small>
+
+                        </div>
+
+
+                        <div
+                            class="perfil-mensagem"
+                            id="perfilMensagem"
+                            aria-live="polite"
+                        ></div>
+
+
+                        <div class="formulario-botoes">
+
+                            <button
+                                type="submit"
+                                class="botao-salvar"
+                                id="salvarPerfil"
+                            >
+                                Salvar alterações
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </section>
+
+
+                <!-- ========================================
+                     SESSÃO
+                ========================================= -->
+
+                <section class="painel perfil-sessao">
+
+                    <div class="painel-cabecalho">
+
+                        <div>
+
+                            <span class="painel-etiqueta">
+                                SESSÃO
+                            </span>
+
+                            <h2>
+                                Acesso ao Nexo
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="perfil-sessao-conteudo">
+
+                        <div>
+
+                            <strong>
+                                Sair desta conta
+                            </strong>
+
+                            <p>
+                                Você precisará entrar novamente
+                                para acessar o Nexo.
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="botao-sair"
+                            id="botaoSair"
+                        >
+                            Sair
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- ========================================
+         JAVASCRIPT
+    ========================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/usuario.js"></script>
+<script src="js/perfil.js"></script>
+
+</body>
+
+</html>

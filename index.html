@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Nexo | Login</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+
+<body class="pagina-login">
+
+    <main class="login-container">
+
+
+        <!-- =========================
+             LADO ESQUERDO
+        ========================== -->
+
+        <section class="login-apresentacao">
+
+            <div class="login-marca">
+
+                <span class="logo-simbolo">
+                    N
+                </span>
+
+                <span class="logo-nome">
+                    NEXO
+                </span>
+
+            </div>
+
+
+            <div class="login-apresentacao-conteudo">
+
+                <span class="login-etiqueta">
+                    ORGANIZAÇÃO ACADÊMICA
+                </span>
+
+                <h1>
+                    Organize sua rotina.
+                    <span>Do seu jeito.</span>
+                </h1>
+
+                <p>
+                    Atividades, provas, compromissos e estudos
+                    organizados em um único lugar.
+                </p>
+
+            </div>
+
+
+            <div class="login-rodape">
+
+                <p>
+                    Nexo © 2026
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             LADO DIREITO
+        ========================== -->
+
+        <section class="login-area">
+
+            <div class="login-box">
+
+
+                <!-- CABEÇALHO -->
+
+                <div class="login-cabecalho">
+
+                    <span class="login-mobile-logo">
+                        NEXO
+                    </span>
+
+                    <h2>
+                        Bem-vindo!
+                    </h2>
+
+                    <p>
+                        Entre com sua conta para continuar.
+                    </p>
+
+                </div>
+
+
+
+                <!-- =========================
+                     FORMULÁRIO
+                ========================== -->
+
+                <form
+                    class="login-form"
+                    id="loginForm"
+                >
+
+
+                    <!-- E-MAIL -->
+
+                    <div class="campo">
+
+                        <label for="email">
+                            E-mail
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="seuemail@exemplo.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- SENHA -->
+
+                    <div class="campo">
+
+                        <div class="senha-label">
+
+                            <label for="senha">
+                                Senha
+                            </label>
+
+                            <a
+                                href="#"
+                                id="esqueciSenha"
+                            >
+                                Esqueci minha senha
+                            </a>
+
+                        </div>
+
+
+                        <div class="senha-container">
+
+                            <input
+                                type="password"
+                                id="senha"
+                                name="senha"
+                                placeholder="Digite sua senha"
+                                autocomplete="current-password"
+                                required
+                            >
+
+
+                            <button
+                                type="button"
+                                class="mostrar-senha"
+                                id="mostrarSenha"
+                            >
+                                Mostrar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- MENSAGEM -->
+
+                    <div
+                        class="login-mensagem"
+                        id="loginMensagem"
+                        aria-live="polite"
+                    >
+                    </div>
+
+
+
+                    <!-- BOTÃO ENTRAR -->
+
+                    <button
+                        type="submit"
+                        class="botao-login"
+                        id="botaoEntrar"
+                    >
+                        Entrar
+                    </button>
+
+                </form>
+
+
+
+                <!-- =========================
+                     RODAPÉ DO LOGIN
+                ========================== -->
+
+                <div class="login-ajuda">
+
+                    <span></span>
+
+                    <p>
+                        Acesso exclusivo para usuários cadastrados
+                    </p>
+
+                    <span></span>
+
+                </div>
+
+
+                <p class="login-conta">
+
+                    Ainda não possui acesso?
+
+                    <strong>
+                        Solicite seu cadastro.
+                    </strong>
+
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/usuario.js"></script>
+<script src="js/login.js"></script>>
+</body>
+
+</html>

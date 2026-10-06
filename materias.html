@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nexo | Matérias</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- =========================
+             MENU LATERAL
+        ========================== -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-logo">
+
+                <div class="logo-simbolo">
+                    N
+                </div>
+
+                <span>
+                    NEXO
+                </span>
+
+            </div>
+
+
+            <nav class="sidebar-menu">
+
+                <a href="dashboard.html" class="menu-item">
+
+                    <span class="menu-icone">⌂</span>
+
+                    <span>Início</span>
+
+                </a>
+
+
+                <a href="semana.html" class="menu-item">
+
+                    <span class="menu-icone">▣</span>
+
+                    <span>Semana</span>
+
+                </a>
+
+
+                <a href="mes.html" class="menu-item">
+
+                    <span class="menu-icone">□</span>
+
+                    <span>Mês</span>
+
+                </a>
+
+
+                <a href="atividades.html" class="menu-item">
+
+                    <span class="menu-icone">✓</span>
+
+                    <span>Atividades</span>
+
+                </a>
+
+
+                <a href="provas.html" class="menu-item">
+
+                    <span class="menu-icone">✎</span>
+
+                    <span>Provas</span>
+
+                </a>
+
+
+                <a href="materias.html" class="menu-item ativo">
+
+                    <span class="menu-icone">◫</span>
+
+                    <span>Matérias</span>
+
+                </a>
+
+            
+                <div class="menu-secao">
+                    COMPARTILHADO
+                </div>
+
+                <a href="agenda-publica.html" class="menu-item">
+                    <span class="menu-icone">◇</span>
+                    <span>Agenda Pública</span>
+                </a>
+
+            </nav>
+
+
+            <!-- USUÁRIO -->
+
+            <div class="sidebar-usuario">
+
+                <button
+                    class="usuario-botao"
+                    id="usuarioBotao"
+                    type="button"
+                >
+
+                    <div
+                        class="usuario-avatar"
+                        id="usuarioAvatar"
+                    >
+                        U
+                    </div>
+
+                    <div class="usuario-info">
+
+                        <strong id="usuarioNome">
+                            Usuário
+                        </strong>
+
+                        <span>
+                            Minha conta
+                        </span>
+
+                    </div>
+
+                    <span class="usuario-seta">
+                        ›
+                    </span>
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =========================
+             CONTEÚDO
+        ========================== -->
+
+        <main class="conteudo">
+
+
+            <!-- TOPO -->
+
+            <header class="topo">
+
+                <button
+                    type="button"
+                    class="menu-mobile"
+                    id="menuMobile"
+                >
+                    ☰
+                </button>
+
+
+                <div class="topo-data">
+
+                    <span id="dataAtual">
+                        Matérias
+                    </span>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- =========================
+                 PÁGINA
+            ========================== -->
+
+            <div class="dashboard">
+
+
+                <!-- CABEÇALHO -->
+
+                <section class="boas-vindas">
+
+                    <div>
+
+                        <span class="pagina-etiqueta">
+                            ORGANIZAÇÃO
+                        </span>
+
+                        <h1>
+                            Minhas matérias
+                        </h1>
+
+                        <p>
+                            Crie e organize as matérias que você utiliza.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="botao-criar"
+                        id="novaMateria"
+                    >
+
+                        <span>+</span>
+
+                        Nova matéria
+
+                    </button>
+
+                </section>
+
+
+
+                <!-- =========================
+                     LISTA DE MATÉRIAS
+                ========================== -->
+
+                <section class="painel">
+
+                    <div class="painel-cabecalho">
+
+                        <div>
+
+                            <span class="painel-etiqueta">
+                                MATÉRIAS
+                            </span>
+
+                            <h2>
+                                Cadastradas
+                            </h2>
+
+                        </div>
+
+
+                        <span
+                            class="contador-materias"
+                            id="contadorMaterias"
+                        >
+                            0 matérias
+                        </span>
+
+                    </div>
+
+
+
+                    <div
+                        class="materias-lista"
+                        id="listaMaterias"
+                    >
+
+
+                        <!-- =========================
+                             ESTADO VAZIO
+                        ========================== -->
+
+                        <div
+                            class="estado-vazio"
+                            id="materiasVazio"
+                        >
+
+                            <div class="vazio-icone">
+                                ◫
+                            </div>
+
+                            <h3>
+                                Nenhuma matéria cadastrada
+                            </h3>
+
+                            <p>
+                                Crie sua primeira matéria para
+                                começar a organizar suas atividades
+                                e provas.
+                            </p>
+
+
+                            <button
+                                type="button"
+                                class="botao-vazio"
+                                id="criarPrimeiraMateria"
+                            >
+
+                                + Criar matéria
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =========================
+         MODAL NOVA MATÉRIA
+    ========================== -->
+
+    <div
+        class="modal-fundo"
+        id="modalMateria"
+    >
+
+        <div class="modal">
+
+            <div class="modal-cabecalho">
+
+                <div>
+
+                    <span>
+                        MATÉRIA
+                    </span>
+
+                    <h2 id="tituloModalMateria">
+                        Nova matéria
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="modal-fechar"
+                    id="fecharModalMateria"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+
+            <!-- FORMULÁRIO -->
+
+            <form
+                class="formulario-nexo"
+                id="formMateria"
+            >
+
+
+                <!-- NOME -->
+
+                <div class="formulario-campo">
+
+                    <label for="nomeMateria">
+                        Nome da matéria
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nomeMateria"
+                        name="nomeMateria"
+                        placeholder="Ex.: Matemática"
+                        maxlength="50"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- PROFESSOR -->
+
+                <div class="formulario-campo">
+
+                    <label for="professorMateria">
+                        Professor (opcional)
+                    </label>
+
+                    <input
+                        type="text"
+                        id="professorMateria"
+                        name="professorMateria"
+                        placeholder="Nome do professor"
+                        maxlength="70"
+                    >
+
+                </div>
+
+
+
+                <!-- BOTÕES -->
+
+                <div class="formulario-botoes">
+
+                    <button
+                        type="button"
+                        class="botao-cancelar"
+                        id="cancelarMateria"
+                    >
+                        Cancelar
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="botao-salvar"
+                    >
+                        Salvar matéria
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/usuario.js"></script>
+    <script src="js/materias.js"></script>
+
+</body>
+
+</html>

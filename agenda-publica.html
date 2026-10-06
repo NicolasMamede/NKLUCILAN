@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nexo | Agenda Pública</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- ========================================
+             MENU LATERAL
+        ========================================= -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-logo">
+
+                <div class="logo-simbolo">
+                    N
+                </div>
+
+                <span>
+                    NEXO
+                </span>
+
+            </div>
+
+
+            <nav class="sidebar-menu">
+
+                <a href="dashboard.html" class="menu-item">
+
+                    <span class="menu-icone">
+                        ⌂
+                    </span>
+
+                    <span>
+                        Início
+                    </span>
+
+                </a>
+
+
+                <a href="semana.html" class="menu-item">
+
+                    <span class="menu-icone">
+                        ▣
+                    </span>
+
+                    <span>
+                        Semana
+                    </span>
+
+                </a>
+
+
+                <a href="mes.html" class="menu-item">
+
+                    <span class="menu-icone">
+                        □
+                    </span>
+
+                    <span>
+                        Mês
+                    </span>
+
+                </a>
+
+
+                <a href="atividades.html" class="menu-item">
+
+                    <span class="menu-icone">
+                        ✓
+                    </span>
+
+                    <span>
+                        Atividades
+                    </span>
+
+                </a>
+
+
+                <a href="provas.html" class="menu-item">
+
+                    <span class="menu-icone">
+                        ✎
+                    </span>
+
+                    <span>
+                        Provas
+                    </span>
+
+                </a>
+
+
+                <a href="materias.html" class="menu-item">
+
+                    <span class="menu-icone">
+                        ◫
+                    </span>
+
+                    <span>
+                        Matérias
+                    </span>
+
+                </a>
+
+
+                <!-- ========================================
+                     ÁREA COMPARTILHADA
+                ========================================= -->
+
+                <div class="menu-secao">
+                    COMPARTILHADO
+                </div>
+
+
+                <a href="agenda-publica.html" class="menu-item ativo">
+
+                    <span class="menu-icone">
+                        ◉
+                    </span>
+
+                    <span>
+                        Agenda Pública
+                    </span>
+
+                </a>
+
+            </nav>
+
+
+            <!-- USUÁRIO -->
+
+            <div class="sidebar-usuario">
+
+                <button
+                    class="usuario-botao"
+                    id="usuarioBotao"
+                    type="button"
+                >
+
+                    <div class="usuario-avatar" id="usuarioAvatar">
+                        N
+                    </div>
+
+                    <div class="usuario-info">
+
+                        <strong id="usuarioNome">
+                            Usuário
+                        </strong>
+
+                        <span>
+                            Minha conta
+                        </span>
+
+                    </div>
+
+                    <span class="usuario-seta">
+                        ›
+                    </span>
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- ========================================
+             CONTEÚDO
+        ========================================= -->
+
+        <main class="conteudo">
+
+
+            <!-- TOPO -->
+
+            <header class="topo">
+
+                <button
+                    type="button"
+                    class="menu-mobile"
+                    id="menuMobile"
+                    aria-label="Abrir menu"
+                >
+                    ☰
+                </button>
+
+
+                <div class="topo-data">
+
+                    <span id="dataAtual">
+                        Carregando...
+                    </span>
+
+                </div>
+
+
+                <div class="topo-acoes">
+
+                    <button
+                        type="button"
+                        class="botao-icone"
+                        id="notificacoes"
+                        aria-label="Notificações"
+                    >
+                        ♢
+                    </button>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- ========================================
+                 AGENDA PÚBLICA
+            ========================================= -->
+
+            <div class="dashboard agenda-publica">
+
+
+                <!-- CABEÇALHO -->
+
+                <section class="agenda-publica-cabecalho">
+
+                    <div>
+
+                        <span class="pagina-etiqueta">
+                            COMPARTILHADO
+                        </span>
+
+                        <h1>
+                            Agenda Pública
+                        </h1>
+
+                        <p>
+                            Acompanhe atividades e provas compartilhadas
+                            com os usuários do Nexo.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="botao-criar"
+                        id="botaoPublicar"
+                    >
+
+                        <span>+</span>
+
+                        Publicar
+
+                    </button>
+
+                </section>
+
+
+
+                <!-- ========================================
+                     AVISOS IMPORTANTES
+                ========================================= -->
+
+                <section class="avisos-destaque" id="avisosDestaque" hidden>
+                    <div class="avisos-destaque-cabecalho">
+                        <div class="avisos-destaque-titulo">
+                            <div class="avisos-destaque-icone">!</div>
+                            <div>
+                                <span>COMUNICADOS</span>
+                                <h2>Avisos importantes</h2>
+                            </div>
+                        </div>
+                        <span class="avisos-destaque-contador" id="avisosContador">0 avisos</span>
+                    </div>
+                    <div class="avisos-destaque-lista" id="listaAvisosPublicos"></div>
+                </section>
+
+
+                <!-- ========================================
+                     NAVEGAÇÃO DA AGENDA
+                ========================================= -->
+
+                <section class="agenda-publica-navegacao">
+
+                    <button
+                        type="button"
+                        class="agenda-publica-aba ativo"
+                        data-visao="geral"
+                    >
+                        Visão geral
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="agenda-publica-aba"
+                        data-visao="semana"
+                    >
+                        Semana
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="agenda-publica-aba"
+                        data-visao="mes"
+                    >
+                        Mês
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="agenda-publica-aba"
+                        data-visao="atividades"
+                    >
+                        Atividades
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="agenda-publica-aba"
+                        data-visao="provas"
+                    >
+                        Provas
+                    </button>
+
+                </section>
+
+
+
+                <!-- ========================================
+                     RESUMO
+                ========================================= -->
+
+                <section
+                    class="resumo agenda-publica-resumo"
+                    id="agendaPublicaResumo"
+                >
+
+                    <div class="resumo-card">
+
+                        <div class="resumo-topo">
+
+                            <span>
+                                Próximos itens
+                            </span>
+
+                            <div class="resumo-icone">
+                                ◉
+                            </div>
+
+                        </div>
+
+                        <strong id="publicaQuantidadeTotal">
+                            0
+                        </strong>
+
+                        <p>
+                            compartilhados
+                        </p>
+
+                    </div>
+
+
+                    <div class="resumo-card">
+
+                        <div class="resumo-topo">
+
+                            <span>
+                                Atividades
+                            </span>
+
+                            <div class="resumo-icone">
+                                ✓
+                            </div>
+
+                        </div>
+
+                        <strong id="publicaQuantidadeAtividades">
+                            0
+                        </strong>
+
+                        <p>
+                            atividades
+                        </p>
+
+                    </div>
+
+
+                    <div class="resumo-card">
+
+                        <div class="resumo-topo">
+
+                            <span>
+                                Provas
+                            </span>
+
+                            <div class="resumo-icone">
+                                ✎
+                            </div>
+
+                        </div>
+
+                        <strong id="publicaQuantidadeProvas">
+                            0
+                        </strong>
+
+                        <p>
+                            provas
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- ========================================
+                     VISÃO GERAL
+                ========================================= -->
+
+                <section
+                    class="agenda-publica-visao ativo"
+                    id="visaoGeral"
+                    data-visao-conteudo="geral"
+                >
+
+                    <div class="painel">
+
+                        <div class="painel-cabecalho">
+
+                            <div>
+
+                                <span class="painel-etiqueta">
+                                    AGENDA COMPARTILHADA
+                                </span>
+
+                                <h2>
+                                    Próximos compromissos
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="agenda-publica-lista"
+                            id="listaPublicaGeral"
+                        >
+
+                            <div class="estado-vazio">
+
+                                <div class="vazio-icone">
+                                    ◉
+                                </div>
+
+                                <h3>
+                                    Carregando agenda
+                                </h3>
+
+                                <p>
+                                    Buscando atividades e provas compartilhadas.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- ========================================
+                     SEMANA
+                ========================================= -->
+
+                <section
+                    class="agenda-publica-visao"
+                    id="visaoSemana"
+                    data-visao-conteudo="semana"
+                >
+
+                    <div class="agenda-publica-controle">
+
+                        <div>
+
+                            <span class="painel-etiqueta">
+                                SEMANA
+                            </span>
+
+                            <h2 id="publicaPeriodoSemana">
+                                Carregando semana...
+                            </h2>
+
+                        </div>
+
+
+                        <div class="semana-navegacao">
+
+                            <button
+                                type="button"
+                                class="semana-hoje"
+                                id="publicaSemanaHoje"
+                            >
+                                Hoje
+                            </button>
+
+                            <button
+                                type="button"
+                                class="semana-seta"
+                                id="publicaSemanaAnterior"
+                                aria-label="Semana anterior"
+                            >
+                                ‹
+                            </button>
+
+                            <button
+                                type="button"
+                                class="semana-seta"
+                                id="publicaSemanaProxima"
+                                aria-label="Próxima semana"
+                            >
+                                ›
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="semana-legenda">
+
+                        <span>
+                            <i class="legenda-atividade"></i>
+                            Atividade
+                        </span>
+
+                        <span>
+                            <i class="legenda-prova"></i>
+                            Prova
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="semana-grade"
+                        id="publicaSemanaGrade"
+                    >
+                    </div>
+
+                </section>
+
+
+
+                <!-- ========================================
+                     MÊS
+                ========================================= -->
+
+                <section
+                    class="agenda-publica-visao"
+                    id="visaoMes"
+                    data-visao-conteudo="mes"
+                >
+
+                    <div class="agenda-publica-controle">
+
+                        <div>
+
+                            <span class="painel-etiqueta">
+                                CALENDÁRIO
+                            </span>
+
+                            <h2 id="publicaTituloMes">
+                                Carregando...
+                            </h2>
+
+                        </div>
+
+
+                        <div class="mes-navegacao">
+
+                            <button
+                                type="button"
+                                class="mes-hoje"
+                                id="publicaMesHoje"
+                            >
+                                Hoje
+                            </button>
+
+                            <button
+                                type="button"
+                                class="mes-seta"
+                                id="publicaMesAnterior"
+                                aria-label="Mês anterior"
+                            >
+                                ‹
+                            </button>
+
+                            <button
+                                type="button"
+                                class="mes-seta"
+                                id="publicaMesProximo"
+                                aria-label="Próximo mês"
+                            >
+                                ›
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mes-legenda">
+
+                        <span>
+                            <i class="legenda-atividade"></i>
+                            Atividade
+                        </span>
+
+                        <span>
+                            <i class="legenda-prova"></i>
+                            Prova
+                        </span>
+
+                    </div>
+
+
+                    <div class="calendario-mes">
+
+                        <div class="calendario-semana-nomes">
+
+                            <span>SEG</span>
+                            <span>TER</span>
+                            <span>QUA</span>
+                            <span>QUI</span>
+                            <span>SEX</span>
+                            <span>SÁB</span>
+                            <span>DOM</span>
+
+                        </div>
+
+
+                        <div
+                            class="calendario-grade"
+                            id="publicaCalendarioGrade"
+                        >
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- ========================================
+                     ATIVIDADES
+                ========================================= -->
+
+                <section
+                    class="agenda-publica-visao"
+                    id="visaoAtividades"
+                    data-visao-conteudo="atividades"
+                >
+
+                    <div class="painel">
+
+                        <div class="painel-cabecalho">
+
+                            <div>
+
+                                <span class="painel-etiqueta">
+                                    COMPARTILHADO
+                                </span>
+
+                                <h2>
+                                    Atividades
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="agenda-publica-lista"
+                            id="listaPublicaAtividades"
+                        >
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- ========================================
+                     PROVAS
+                ========================================= -->
+
+                <section
+                    class="agenda-publica-visao"
+                    id="visaoProvas"
+                    data-visao-conteudo="provas"
+                >
+
+                    <div class="painel">
+
+                        <div class="painel-cabecalho">
+
+                            <div>
+
+                                <span class="painel-etiqueta">
+                                    COMPARTILHADO
+                                </span>
+
+                                <h2>
+                                    Provas
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="agenda-publica-lista"
+                            id="listaPublicaProvas"
+                        >
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- ========================================
+         MODAL - ESCOLHER PUBLICAÇÃO
+    ========================================= -->
+
+    <div
+        class="modal-fundo"
+        id="modalPublicar"
+    >
+
+        <div class="modal">
+
+            <div class="modal-cabecalho">
+
+                <div>
+
+                    <span>
+                        COMPARTILHAR
+                    </span>
+
+                    <h2>
+                        O que você deseja publicar?
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="modal-fechar"
+                    id="fecharModalPublicar"
+                    aria-label="Fechar"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="modal-opcoes">
+
+                <button
+                    type="button"
+                    class="modal-opcao"
+                    id="publicarAtividade"
+                >
+
+                    <div class="modal-opcao-icone">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Atividade
+                        </strong>
+
+                        <span>
+                            Compartilhe uma atividade com os usuários.
+                        </span>
+
+                    </div>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="modal-opcao"
+                    id="publicarProva"
+                >
+
+                    <div class="modal-opcao-icone">
+                        ✎
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Prova
+                        </strong>
+
+                        <span>
+                            Compartilhe uma prova com os usuários.
+                        </span>
+
+                    </div>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="modal-opcao modal-opcao-aviso"
+                    id="publicarAviso"
+                >
+                    <div class="modal-opcao-icone">!</div>
+                    <div>
+                        <strong>Aviso</strong>
+                        <span>Publique um comunicado importante para todos.</span>
+                    </div>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ========================================
+         MODAL - ATIVIDADE PÚBLICA
+    ========================================= -->
+
+    <div
+        class="modal-fundo"
+        id="modalAtividadePublica"
+    >
+
+        <div class="modal">
+
+            <div class="modal-cabecalho">
+
+                <div>
+
+                    <span>
+                        ATIVIDADE
+                    </span>
+
+                    <h2 id="tituloModalAtividadePublica">
+                        Publicar atividade
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="modal-fechar"
+                    id="fecharAtividadePublica"
+                    aria-label="Fechar"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form
+                class="formulario-nexo"
+                id="formAtividadePublica"
+            >
+
+                <input
+                    type="hidden"
+                    id="atividadePublicaId"
+                >
+
+
+                <div class="formulario-campo">
+
+                    <label for="atividadePublicaTitulo">
+                        Título
+                    </label>
+
+                    <input
+                        type="text"
+                        id="atividadePublicaTitulo"
+                        maxlength="120"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="formulario-campo">
+
+                    <label for="atividadePublicaMateria">
+                        Matéria
+                    </label>
+
+                    <select id="atividadePublicaMateria">
+
+                        <option value="">
+                            Sem matéria
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="formulario-campo">
+
+                    <label for="atividadePublicaData">
+                        Data
+                    </label>
+
+                    <input
+                        type="date"
+                        id="atividadePublicaData"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="formulario-campo">
+
+                    <label for="atividadePublicaHorario">
+                        Horário
+                    </label>
+
+                    <input
+                        type="time"
+                        id="atividadePublicaHorario"
+                    >
+
+                </div>
+
+
+                <div class="formulario-campo">
+
+                    <label for="atividadePublicaDescricao">
+                        Descrição
+                    </label>
+
+                    <textarea
+                        id="atividadePublicaDescricao"
+                        maxlength="1000"
+                    ></textarea>
+
+                </div>
+
+
+                <div class="formulario-botoes">
+
+                    <button
+                        type="button"
+                        class="botao-cancelar"
+                        id="cancelarAtividadePublica"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="botao-salvar"
+                    >
+                        Publicar
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ========================================
+         MODAL - PROVA PÚBLICA
+    ========================================= -->
+
+    <div
+        class="modal-fundo"
+        id="modalProvaPublica"
+    >
+
+        <div class="modal">
+
+            <div class="modal-cabecalho">
+
+                <div>
+
+                    <span>
+                        PROVA
+                    </span>
+
+                    <h2 id="tituloModalProvaPublica">
+                        Publicar prova
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="modal-fechar"
+                    id="fecharProvaPublica"
+                    aria-label="Fechar"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form
+                class="formulario-nexo"
+                id="formProvaPublica"
+            >
+
+                <input
+                    type="hidden"
+                    id="provaPublicaId"
+                >
+
+
+                <div class="formulario-campo">
+
+                    <label for="provaPublicaNome">
+                        Nome da prova
+                    </label>
+
+                    <input
+                        type="text"
+                        id="provaPublicaNome"
+                        maxlength="120"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="formulario-campo">
+
+                    <label for="provaPublicaMateria">
+                        Matéria
+                    </label>
+
+                    <select id="provaPublicaMateria">
+
+                        <option value="">
+                            Sem matéria
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="formulario-campo">
+
+                    <label for="provaPublicaData">
+                        Data
+                    </label>
+
+                    <input
+                        type="date"
+                        id="provaPublicaData"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="formulario-campo">
+
+                    <label for="provaPublicaHorario">
+                        Horário
+                    </label>
+
+                    <input
+                        type="time"
+                        id="provaPublicaHorario"
+                    >
+
+                </div>
+
+
+                <div class="formulario-campo">
+
+                    <label for="provaPublicaConteudo">
+                        Conteúdo
+                    </label>
+
+                    <textarea
+                        id="provaPublicaConteudo"
+                        maxlength="1000"
+                    ></textarea>
+
+                </div>
+
+
+                <div class="formulario-botoes">
+
+                    <button
+                        type="button"
+                        class="botao-cancelar"
+                        id="cancelarProvaPublica"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="botao-salvar"
+                    >
+                        Publicar
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ========================================
+         MODAL - AVISO PÚBLICO
+    ========================================= -->
+
+    <div class="modal-fundo" id="modalAvisoPublico">
+        <div class="modal">
+            <div class="modal-cabecalho">
+                <div>
+                    <span>AVISO</span>
+                    <h2 id="tituloModalAvisoPublico">Publicar aviso</h2>
+                </div>
+                <button type="button" class="modal-fechar" id="fecharAvisoPublico" aria-label="Fechar">×</button>
+            </div>
+
+            <form class="formulario-nexo" id="formAvisoPublico">
+                <input type="hidden" id="avisoPublicoId">
+
+                <div class="formulario-campo">
+                    <label for="avisoPublicoTitulo">Título</label>
+                    <input type="text" id="avisoPublicoTitulo" maxlength="120" required placeholder="Ex.: Mudança na aula de Química">
+                </div>
+
+                <div class="formulario-campo">
+                    <label for="avisoPublicoMensagem">Mensagem</label>
+                    <textarea id="avisoPublicoMensagem" maxlength="1500" required placeholder="Escreva o comunicado..."></textarea>
+                </div>
+
+                <div class="formulario-botoes">
+                    <button type="button" class="botao-cancelar" id="cancelarAvisoPublico">Cancelar</button>
+                    <button type="submit" class="botao-salvar">Publicar aviso</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- ========================================
+         JAVASCRIPT
+    ========================================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/usuario.js"></script>
+    <script src="js/agenda-publica.js"></script>
+
+</body>
+
+</html>
