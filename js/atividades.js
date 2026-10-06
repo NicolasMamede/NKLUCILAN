@@ -271,7 +271,11 @@ async function carregarAtividades() {
             .eq(
                 "usuario_id",
                 usuarioLogado.id
-            );
+            )
+                .eq(
+                    "visibilidade",
+                    "privada"
+                );
 
 
         if (error) {
@@ -626,7 +630,11 @@ formAtividade.addEventListener(
                     .eq(
                         "usuario_id",
                         usuarioLogado.id
-                    );
+                    )
+                .eq(
+                    "visibilidade",
+                    "privada"
+                );
 
 
                 if (error) {
@@ -864,7 +872,11 @@ async function alternarConclusao(id) {
             .eq(
                 "usuario_id",
                 usuarioLogado.id
-            );
+            )
+                .eq(
+                    "visibilidade",
+                    "privada"
+                );
 
 
         if (error) {
@@ -955,7 +967,11 @@ async function excluirAtividade(id) {
             .eq(
                 "usuario_id",
                 usuarioLogado.id
-            );
+            )
+                .eq(
+                    "visibilidade",
+                    "privada"
+                );
 
 
         if (error) {

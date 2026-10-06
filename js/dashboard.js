@@ -432,6 +432,10 @@ async function carregarAtividadesSupabase() {
                     usuarioLogado.id
                 )
                 .eq(
+                    "visibilidade",
+                    "privada"
+                )
+                .eq(
                     "no_calendario",
                     true
                 )
@@ -530,6 +534,10 @@ async function carregarProvasSupabase() {
                 .eq(
                     "usuario_id",
                     usuarioLogado.id
+                )
+                .eq(
+                    "visibilidade",
+                    "privada"
                 )
                 .eq(
                     "no_calendario",
@@ -1196,6 +1204,10 @@ async function concluirAtividade(id) {
                 .eq(
                     "usuario_id",
                     usuarioLogado.id
+                )
+                .eq(
+                    "visibilidade",
+                    "privada"
                 );
 
 

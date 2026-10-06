@@ -206,6 +206,10 @@ async function carregarMaterias() {
                     "usuario_id",
                     usuarioLogado.id
                 )
+                .eq(
+                    "visibilidade",
+                    "privada"
+                )
                 .order(
                     "nome",
                     {
@@ -270,6 +274,10 @@ async function carregarProvas() {
                 .eq(
                     "usuario_id",
                     usuarioLogado.id
+                )
+                .eq(
+                    "visibilidade",
+                    "privada"
                 )
                 .order(
                     "data",
@@ -649,7 +657,11 @@ formProva.addEventListener(
                         .eq(
                             "usuario_id",
                             usuarioLogado.id
-                        );
+                        )
+                .eq(
+                    "visibilidade",
+                    "privada"
+                );
 
 
                 if (error) {
@@ -878,6 +890,10 @@ async function excluirProva(id) {
                 .eq(
                     "usuario_id",
                     usuarioLogado.id
+                )
+                .eq(
+                    "visibilidade",
+                    "privada"
                 );
 
 

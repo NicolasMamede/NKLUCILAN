@@ -252,6 +252,10 @@ async function carregarDadosSupabase() {
                     "usuario_id",
                     usuarioLogado.id
                 )
+                .eq(
+                    "visibilidade",
+                    "privada"
+                )
                 .order(
                     "nome",
                     {
@@ -267,6 +271,10 @@ async function carregarDadosSupabase() {
                 .eq(
                     "usuario_id",
                     usuarioLogado.id
+                )
+                .eq(
+                    "visibilidade",
+                    "privada"
                 )
                 .eq(
                     "no_calendario",
@@ -287,6 +295,10 @@ async function carregarDadosSupabase() {
                 .eq(
                     "usuario_id",
                     usuarioLogado.id
+                )
+                .eq(
+                    "visibilidade",
+                    "privada"
                 )
                 .eq(
                     "no_calendario",
