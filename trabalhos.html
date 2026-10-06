@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Nexo | Atividades</title>
+    <title>Nexo | Trabalhos</title>
 
     <link rel="stylesheet" href="css/dashboard.css">
 </head>
@@ -26,7 +26,9 @@
                     N
                 </div>
 
-                <span>NEXO</span>
+                <span>
+                    NEXO
+                </span>
 
             </div>
 
@@ -48,7 +50,7 @@
                     <span>Mês</span>
                 </a>
 
-                <a href="atividades.html" class="menu-item ativo">
+                <a href="atividades.html" class="menu-item">
                     <span class="menu-icone">✓</span>
                     <span>Atividades</span>
                 </a>
@@ -58,7 +60,7 @@
                     <span>Provas</span>
                 </a>
 
-                <a href="trabalhos.html" class="menu-item">
+                <a href="trabalhos.html" class="menu-item ativo">
                     <span class="menu-icone">▤</span>
                     <span>Trabalhos</span>
                 </a>
@@ -145,11 +147,10 @@
                     ☰
                 </button>
 
-
                 <div class="topo-data">
 
-                    <span id="dataAtual">
-                        Atividades
+                    <span>
+                        Trabalhos
                     </span>
 
                 </div>
@@ -170,15 +171,15 @@
                     <div>
 
                         <span class="pagina-etiqueta">
-                            ORGANIZAÇÃO
+                            TRABALHOS
                         </span>
 
                         <h1>
-                            Atividades
+                            Trabalhos
                         </h1>
 
                         <p>
-                            Organize suas tarefas, trabalhos e compromissos acadêmicos.
+                            Organize seus trabalhos e acompanhe os próximos prazos de entrega.
                         </p>
 
                     </div>
@@ -187,10 +188,13 @@
                     <button
                         type="button"
                         class="botao-criar"
-                        id="novaAtividade"
+                        id="novaTrabalho"
                     >
+
                         <span>+</span>
-                        Nova atividade
+
+                        Nova trabalho
+
                     </button>
 
                 </section>
@@ -200,26 +204,28 @@
                      RESUMO
                 ========================================= -->
 
-                <section class="resumo atividades-resumo">
+                <section class="resumo">
 
                     <div class="resumo-card">
 
                         <div class="resumo-topo">
 
-                            <span>Pendentes</span>
+                            <span>
+                                Próximas
+                            </span>
 
                             <div class="resumo-icone">
-                                ○
+                                ✎
                             </div>
 
                         </div>
 
-                        <strong id="totalPendentes">
+                        <strong id="totalProximas">
                             0
                         </strong>
 
                         <p>
-                            atividades
+                            trabalhos
                         </p>
 
                     </div>
@@ -229,7 +235,34 @@
 
                         <div class="resumo-topo">
 
-                            <span>Concluídas</span>
+                            <span>
+                                Hoje
+                            </span>
+
+                            <div class="resumo-icone">
+                                ◉
+                            </div>
+
+                        </div>
+
+                        <strong id="totalHoje">
+                            0
+                        </strong>
+
+                        <p>
+                            trabalhos
+                        </p>
+
+                    </div>
+
+
+                    <div class="resumo-card">
+
+                        <div class="resumo-topo">
+
+                            <span>
+                                Realizadas
+                            </span>
 
                             <div class="resumo-icone">
                                 ✓
@@ -237,35 +270,12 @@
 
                         </div>
 
-                        <strong id="totalConcluidas">
+                        <strong id="totalRealizadas">
                             0
                         </strong>
 
                         <p>
-                            atividades
-                        </p>
-
-                    </div>
-
-
-                    <div class="resumo-card">
-
-                        <div class="resumo-topo">
-
-                            <span>Total</span>
-
-                            <div class="resumo-icone">
-                                ▣
-                            </div>
-
-                        </div>
-
-                        <strong id="totalAtividades">
-                            0
-                        </strong>
-
-                        <p>
-                            cadastradas
+                            trabalhos
                         </p>
 
                     </div>
@@ -279,16 +289,16 @@
 
                 <section class="painel">
 
-                    <div class="painel-cabecalho atividades-cabecalho">
+                    <div class="painel-cabecalho trabalhos-cabecalho">
 
                         <div>
 
                             <span class="painel-etiqueta">
-                                ATIVIDADES
+                                PROVAS
                             </span>
 
                             <h2>
-                                Minhas atividades
+                                Minhas trabalhos
                             </h2>
 
                         </div>
@@ -296,30 +306,30 @@
 
                         <!-- FILTROS -->
 
-                        <div class="atividades-filtros">
+                        <div class="trabalhos-filtros">
 
                             <button
                                 type="button"
-                                class="filtro-atividade ativo"
-                                data-filtro="todas"
+                                class="filtro-trabalho ativo"
+                                data-filtro="proximas"
                             >
-                                Todas
+                                Próximas
                             </button>
 
                             <button
                                 type="button"
-                                class="filtro-atividade"
-                                data-filtro="pendentes"
+                                class="filtro-trabalho"
+                                data-filtro="hoje"
                             >
-                                Pendentes
+                                Hoje
                             </button>
 
                             <button
                                 type="button"
-                                class="filtro-atividade"
-                                data-filtro="concluidas"
+                                class="filtro-trabalho"
+                                data-filtro="realizadas"
                             >
-                                Concluídas
+                                Realizadas
                             </button>
 
                         </div>
@@ -327,38 +337,38 @@
                     </div>
 
 
-                    <!-- LISTA -->
+                    <!-- ========================================
+                         LISTA
+                    ========================================= -->
 
                     <div
-                        class="atividades-lista"
-                        id="listaAtividades"
+                        class="trabalhos-lista"
+                        id="listaTrabalhosPagina"
                     >
-
-                        <!-- ESTADO VAZIO -->
 
                         <div
                             class="estado-vazio"
-                            id="atividadesVazio"
+                            id="trabalhosPaginaVazio"
                         >
 
                             <div class="vazio-icone">
-                                ✓
+                                ✎
                             </div>
 
                             <h3>
-                                Nenhuma atividade
+                                Nenhuma trabalho
                             </h3>
 
-                            <p id="textoAtividadesVazio">
-                                Você ainda não cadastrou nenhuma atividade.
+                            <p id="textoTrabalhosVazio">
+                                Você ainda não cadastrou nenhuma trabalho.
                             </p>
 
                             <button
                                 type="button"
                                 class="botao-vazio"
-                                id="criarPrimeiraAtividade"
+                                id="criarPrimeiraTrabalho"
                             >
-                                + Criar atividade
+                                + Adicionar trabalho
                             </button>
 
                         </div>
@@ -375,12 +385,12 @@
 
 
     <!-- ========================================
-         MODAL ATIVIDADE
+         MODAL
     ========================================= -->
 
     <div
         class="modal-fundo"
-        id="modalAtividade"
+        id="modalTrabalho"
     >
 
         <div class="modal">
@@ -390,20 +400,19 @@
                 <div>
 
                     <span>
-                        ATIVIDADE
+                        PROVA
                     </span>
 
-                    <h2 id="tituloModalAtividade">
-                        Nova atividade
+                    <h2 id="tituloModalTrabalho">
+                        Nova trabalho
                     </h2>
 
                 </div>
 
-
                 <button
                     type="button"
                     class="modal-fechar"
-                    id="fecharModalAtividade"
+                    id="fecharModalTrabalho"
                     aria-label="Fechar"
                 >
                     ×
@@ -412,45 +421,28 @@
             </div>
 
 
-            <!-- FORMULÁRIO -->
+            <!-- ========================================
+                 FORMULÁRIO
+            ========================================= -->
 
             <form
                 class="formulario-nexo"
-                id="formAtividade"
+                id="formTrabalho"
             >
 
-                <!-- TÍTULO -->
+                <!-- NOME -->
 
                 <div class="formulario-campo">
 
-                    <label for="tituloAtividade">
-                        Título
+                    <label for="nomeTrabalho">
+                        Nome da trabalho
                     </label>
 
                     <input
                         type="text"
-                        id="tituloAtividade"
-                        name="tituloAtividade"
-                        placeholder="Ex.: Fazer lista de exercícios"
+                        id="nomeTrabalho"
+                        placeholder="Ex.: Avaliação bimestral"
                         maxlength="100"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- DATA -->
-
-                <div class="formulario-campo">
-
-                    <label for="dataAtividade">
-                        Data
-                    </label>
-
-                    <input
-                        type="date"
-                        id="dataAtividade"
-                        name="dataAtividade"
                         required
                     >
 
@@ -461,15 +453,29 @@
 
                 <div class="formulario-campo">
 
-                    <label for="materiaAtividade">
+                    <label for="materiaTrabalho">
                         Matéria
                     </label>
 
-                    <select
-                        id="materiaAtividade"
-                        name="materiaAtividade"
-                    >
+                    <select id="materiaTrabalho">
                     </select>
+
+                </div>
+
+
+                <!-- DATA -->
+
+                <div class="formulario-campo">
+
+                    <label for="dataTrabalho">
+                        Data
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataTrabalho"
+                        required
+                    >
 
                 </div>
 
@@ -478,45 +484,34 @@
 
                 <div class="formulario-campo">
 
-                    <label for="horarioAtividade">
+                    <label for="horarioTrabalho">
                         Horário (opcional)
                     </label>
 
                     <input
                         type="time"
-                        id="horarioAtividade"
-                        name="horarioAtividade"
+                        id="horarioTrabalho"
                     >
 
                 </div>
 
 
-                <!-- DESCRIÇÃO -->
+                <!-- CONTEÚDO -->
 
                 <div class="formulario-campo">
 
-                    <label for="descricaoAtividade">
-                        Descrição (opcional)
+                    <label for="conteudoTrabalho">
+                        Descrição / orientações (opcional)
                     </label>
 
                     <textarea
-                        id="descricaoAtividade"
-                        name="descricaoAtividade"
+                        id="conteudoTrabalho"
                         rows="4"
-                        maxlength="500"
-                        placeholder="Adicione detalhes sobre a atividade..."
+                        maxlength="700"
+                        placeholder="Descrição, orientações, integrantes, observações..."
                     ></textarea>
 
                 </div>
-                <!-- CALENDÁRIO -->
-
-                <label class="calendario-opcao">
-                    <input type="checkbox" id="atividadeNoCalendario">
-                    <span>
-                        <strong>Adicionar ao meu calendário</strong>
-                        <small>Mostra este item no Dashboard, Semana e Mês.</small>
-                    </span>
-                </label>
 
 
 
@@ -528,7 +523,7 @@
                     <button
                         type="button"
                         class="botao-cancelar"
-                        id="cancelarAtividade"
+                        id="cancelarTrabalho"
                     >
                         Cancelar
                     </button>
@@ -537,7 +532,7 @@
                         type="submit"
                         class="botao-salvar"
                     >
-                        Salvar atividade
+                        Salvar trabalho
                     </button>
 
                 </div>
@@ -549,15 +544,11 @@
     </div>
 
 
-    <!-- ========================================
-         JAVASCRIPT
-    ========================================= -->
-
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/supabase.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/usuario.js"></script>
-    <script src="js/atividades.js"></script>
+    <script src="js/trabalhos.js"></script>
 
 </body>
 

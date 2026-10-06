@@ -123,6 +123,8 @@ let atividadesSupabase = [];
 
 let provasSupabase = [];
 
+let trabalhosSupabase = [];
+
 let materiasSupabase = [];
 
 let inicioSemanaAtual =
@@ -240,7 +242,8 @@ async function carregarDadosSupabase() {
         const [
             respostaMaterias,
             respostaAtividades,
-            respostaProvas
+            respostaProvas,
+            respostaTrabalhos
         ] = await Promise.all([
 
             nexoSupabase
@@ -305,7 +308,13 @@ async function carregarDadosSupabase() {
                     {
                         ascending: true
                     }
-                )
+                ),
+
+            nexoSupabase
+                .from("trabalhos")
+                .select("id, nome, descricao, data, horario, materia_id, criado_em")
+                .eq("usuario_id", usuarioLogado.id)
+                .order("data", { ascending: true })
 
         ]);
 
@@ -441,6 +450,20 @@ async function carregarDadosSupabase() {
                     }
                 );
 
+        }
+
+        /* TRABALHOS */
+        if (respostaTrabalhos.error) {
+            console.error("Erro ao carregar trabalhos:", respostaTrabalhos.error);
+            trabalhosSupabase = [];
+        } else {
+            trabalhosSupabase = (respostaTrabalhos.data || []).map(function (item) {
+                return {
+                    id: item.id, nome: item.nome, descricao: item.descricao || "",
+                    data: item.data, horario: item.horario ? String(item.horario).slice(0, 5) : "",
+                    materiaId: item.materia_id || "", criadoEm: item.criado_em || ""
+                };
+            });
         }
 
     } catch (erro) {
@@ -610,6 +633,8 @@ function renderizarSemana() {
 
     const provas =
         provasSupabase;
+
+    const trabalhos = trabalhosSupabase;
 
 
     for (
@@ -823,6 +848,11 @@ function renderizarSemana() {
                 );
 
 
+        const trabalhosDia = trabalhos
+            .filter(function (trabalho) { return trabalho.data === iso; })
+            .sort(ordenarPorHorario);
+
+
         const todosItens =
             [];
 
@@ -871,6 +901,16 @@ function renderizarSemana() {
 
             }
         );
+
+
+        trabalhosDia.forEach(function (trabalho) {
+            todosItens.push({
+                tipo: "trabalho",
+                titulo: trabalho.nome,
+                materiaId: trabalho.materiaId,
+                horario: trabalho.horario || ""
+            });
+        });
 
 
         todosItens.sort(
@@ -977,7 +1017,9 @@ function criarItemSemana(
     elemento.classList.add(
         item.tipo === "prova"
             ? "semana-item-prova"
-            : "semana-item-atividade"
+            : item.tipo === "trabalho"
+                ? "semana-item-trabalho"
+                : "semana-item-atividade"
     );
 
 
@@ -995,7 +1037,9 @@ function criarItemSemana(
     tipo.textContent =
         item.tipo === "prova"
             ? "PROVA"
-            : "ATIVIDADE";
+            : item.tipo === "trabalho"
+                ? "TRABALHO"
+                : "ATIVIDADE";
 
 
     const titulo =

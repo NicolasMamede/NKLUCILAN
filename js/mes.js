@@ -123,6 +123,8 @@ let atividadesSupabase = [];
 
 let provasSupabase = [];
 
+let trabalhosSupabase = [];
+
 let materiasSupabase = [];
 
 
@@ -196,7 +198,8 @@ async function carregarDadosSupabase() {
         const [
             respostaMaterias,
             respostaAtividades,
-            respostaProvas
+            respostaProvas,
+            respostaTrabalhos
         ] =
             await Promise.all([
 
@@ -262,7 +265,13 @@ async function carregarDadosSupabase() {
                         {
                             ascending: true
                         }
-                    )
+                    ),
+
+                nexoSupabase
+                    .from("trabalhos")
+                    .select("id, nome, descricao, data, horario, materia_id, criado_em")
+                    .eq("usuario_id", usuarioLogado.id)
+                    .order("data", { ascending: true })
 
             ]);
 
@@ -402,6 +411,19 @@ async function carregarDadosSupabase() {
                     }
                 );
 
+        }
+
+
+        /* TRABALHOS */
+        if (respostaTrabalhos.error) {
+            console.error("Erro ao carregar trabalhos:", respostaTrabalhos.error);
+            trabalhosSupabase = [];
+        } else {
+            trabalhosSupabase = (respostaTrabalhos.data || []).map(function (item) {
+                return { id: item.id, nome: item.nome, descricao: item.descricao || "", data: item.data,
+                    horario: item.horario ? String(item.horario).slice(0,5) : "",
+                    materiaId: item.materia_id || "", criadoEm: item.criado_em || "" };
+            });
         }
 
 
@@ -614,6 +636,8 @@ function renderizarMes() {
 
     const provas =
         provasSupabase;
+
+    const trabalhos = trabalhosSupabase;
 
 
     const hojeISO =
@@ -846,6 +870,13 @@ function renderizarMes() {
             );
 
 
+        trabalhos
+            .filter(function (trabalho) { return trabalho.data === iso; })
+            .forEach(function (trabalho) {
+                itens.push({ tipo: "trabalho", titulo: trabalho.nome, materiaId: trabalho.materiaId, horario: trabalho.horario || "" });
+            });
+
+
         itens.sort(
             function (a, b) {
 
@@ -966,7 +997,9 @@ function criarItemCalendario(item) {
     elemento.classList.add(
         item.tipo === "prova"
             ? "calendario-item-prova"
-            : "calendario-item-atividade"
+            : item.tipo === "trabalho"
+                ? "calendario-item-trabalho"
+                : "calendario-item-atividade"
     );
 
 
