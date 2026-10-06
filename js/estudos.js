@@ -2,7 +2,8 @@ let usuarioLogado = null;
 let materias = [];
 let estudos = [];
 let estudoEmEdicao = null;
-let filtroAtual = 'lista';
+let filtroAtual = 'proximas';
+let visaoAtual = 'lista';
 let referencia = new Date();
 
 const $ = (id) => document.getElementById(id);
@@ -32,7 +33,12 @@ function prepararInterface(){
   const painel=document.querySelector('.painel-cabecalho');
   if(painel){
     const filtros=painel.querySelector('.estudos-filtros');
-    if(filtros) filtros.innerHTML=`<button type="button" class="filtro-estudo ativo" data-view="lista">Lista</button><button type="button" class="filtro-estudo" data-view="semana">Semana</button><button type="button" class="filtro-estudo" data-view="mes">Mês</button>`;
+    if(filtros){
+      filtros.innerHTML=`<button type="button" class="filtro-estudo ativo" data-filtro="proximas">Próximos</button><button type="button" class="filtro-estudo" data-filtro="hoje">Hoje</button><button type="button" class="filtro-estudo" data-filtro="realizadas">Realizados</button>`;
+      const views=document.createElement('div'); views.className='estudo-view-switch';
+      views.innerHTML=`<button type="button" class="filtro-estudo estudo-view-btn" data-view="semana">Semana</button><button type="button" class="filtro-estudo estudo-view-btn" data-view="mes">Mês</button>`;
+      filtros.parentElement.appendChild(views);
+    }
   }
   document.querySelector('.painel-etiqueta')?.replaceChildren(document.createTextNode('ESTUDOS'));
   const h2=document.querySelector('.estudos-cabecalho h2'); if(h2) h2.textContent='Planejamento de estudos';
@@ -43,7 +49,8 @@ function prepararInterface(){
   $('cancelarEstudo')?.addEventListener('click', fecharModal);
   $('modalEstudo')?.addEventListener('click',e=>{if(e.target===$('modalEstudo')) fecharModal();});
   form.addEventListener('submit', salvar);
-  document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>{filtroAtual=b.dataset.view; document.querySelectorAll('[data-view]').forEach(x=>x.classList.toggle('ativo',x===b)); render();}));
+  document.querySelectorAll('[data-filtro]').forEach(b=>b.addEventListener('click',()=>{filtroAtual=b.dataset.filtro;visaoAtual='lista';document.querySelectorAll('[data-filtro]').forEach(x=>x.classList.toggle('ativo',x===b));document.querySelectorAll('.estudo-view-btn').forEach(x=>x.classList.remove('ativo'));render();}));
+  document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>{visaoAtual=b.dataset.view;document.querySelectorAll('[data-view]').forEach(x=>x.classList.toggle('ativo',x===b));render();}));
 }
 
 async function carregarMaterias(){
@@ -60,20 +67,23 @@ async function carregarEstudos(){
 function materiaNome(e){return e.materia_nome || materias.find(m=>m.id===e.materia_id)?.nome || 'Sem matéria';}
 function atualizarResumo(){
   const hoje=hojeISO();
-  if($('totalProximas')) $('totalProximas').textContent=estudos.filter(e=>e.data>hoje&&!e.concluido).length;
+  if($('totalProximas')) $('totalProximas').textContent=estudos.filter(e=>e.data>=hoje&&!e.concluido).length;
   if($('totalHoje')) $('totalHoje').textContent=estudos.filter(e=>e.data===hoje&&!e.concluido).length;
-  if($('totalRealizadas')) $('totalRealizadas').textContent=estudos.filter(e=>e.concluido).length;
+  if($('totalRealizadas')) $('totalRealizadas').textContent=estudos.filter(e=>e.concluido||e.data<hoje).length;
 }
-function render(){ if(filtroAtual==='semana') renderSemana(); else if(filtroAtual==='mes') renderMes(); else renderLista(); }
+function render(){ if(visaoAtual==='semana') renderSemana(); else if(visaoAtual==='mes') renderMes(); else renderLista(); }
 function card(e){
   const hora=[e.horario_inicio?.slice(0,5),e.horario_fim?.slice(0,5)].filter(Boolean).join('–');
   return `<article class="atividade-card ${e.concluido?'concluida':''}" data-id="${e.id}"><button type="button" class="atividade-check" data-act="toggle" aria-label="${e.concluido?'Reabrir':'Concluir'} estudo">${e.concluido?'✓':''}</button><div class="atividade-conteudo"><div class="atividade-topo"><h3>${esc(e.titulo)}</h3><span class="atividade-materia">${esc(materiaNome(e))}</span></div><div class="atividade-meta"><span>${fmt(e.data)}</span>${hora?`<span>${hora}</span>`:''}</div>${e.objetivo?`<p class="atividade-descricao">${esc(e.objetivo)}</p>`:''}</div><div class="atividade-acoes"><button type="button" class="atividade-editar" data-act="edit">Editar</button><button type="button" class="atividade-excluir" data-act="del">Excluir</button></div></article>`;
 }
 function bindCards(){document.querySelectorAll('[data-id]').forEach(el=>el.addEventListener('click',async ev=>{const b=ev.target.closest('[data-act]'); if(!b)return; const id=el.dataset.id; if(b.dataset.act==='edit') editar(id); if(b.dataset.act==='del') excluir(id); if(b.dataset.act==='toggle') alternar(id);}));}
+function statusEstudo(e){const h=hojeISO();if(e.concluido||e.data<h)return'realizada';if(e.data===h)return'hoje';return'proxima'}
+function estudosFiltrados(){if(filtroAtual==='hoje')return estudos.filter(e=>statusEstudo(e)==='hoje');if(filtroAtual==='realizadas')return estudos.filter(e=>statusEstudo(e)==='realizada');return estudos.filter(e=>['hoje','proxima'].includes(statusEstudo(e)))}
 function renderLista(){
   const box=$('listaEstudosPagina'); if(!box)return;
   box.className='atividades-lista';
-  box.innerHTML=estudos.length?estudos.map(card).join(''):`<div class="estado-vazio"><div class="vazio-icone">✎</div><h3>Nenhum estudo</h3><p>Você ainda não programou nenhum estudo.</p><button type="button" class="botao-vazio" id="novoVazio">+ Adicionar estudo</button></div>`;
+  const lista=estudosFiltrados().sort((a,b)=>a.data.localeCompare(b.data)||(a.horario_inicio||'99:99').localeCompare(b.horario_inicio||'99:99'));
+  box.innerHTML=lista.length?lista.map(card).join(''):`<div class="estado-vazio"><div class="vazio-icone">✎</div><h3>Nenhum estudo</h3><p>Você ainda não programou nenhum estudo.</p><button type="button" class="botao-vazio" id="novoVazio">+ Adicionar estudo</button></div>`;
   $('novoVazio')?.addEventListener('click',abrirNovo); bindCards();
 }
 function inicioSemana(d){const x=new Date(d); const day=(x.getDay()+6)%7; x.setDate(x.getDate()-day); x.setHours(12,0,0,0); return x;}
