@@ -67,12 +67,12 @@ function atualizarResumo(){
 function render(){ if(filtroAtual==='semana') renderSemana(); else if(filtroAtual==='mes') renderMes(); else renderLista(); }
 function card(e){
   const hora=[e.horario_inicio?.slice(0,5),e.horario_fim?.slice(0,5)].filter(Boolean).join('–');
-  return `<article class="prova-card ${e.concluido?'prova-realizada':''}" data-id="${e.id}"><div class="prova-conteudo"><span class="prova-materia">${esc(materiaNome(e))}</span><h3>${esc(e.titulo)}</h3><p>${fmt(e.data)}${hora?' • '+hora:''}</p>${e.objetivo?`<p>${esc(e.objetivo)}</p>`:''}</div><div class="prova-acoes"><button type="button" class="estudo-concluir" data-act="toggle">${e.concluido?'Reabrir':'Concluir'}</button><button type="button" class="prova-editar" data-act="edit">Editar</button><button type="button" class="prova-excluir" data-act="del">Excluir</button></div></article>`;
+  return `<article class="atividade-card ${e.concluido?'concluida':''}" data-id="${e.id}"><button type="button" class="atividade-check" data-act="toggle" aria-label="${e.concluido?'Reabrir':'Concluir'} estudo">${e.concluido?'✓':''}</button><div class="atividade-conteudo"><div class="atividade-topo"><h3>${esc(e.titulo)}</h3><span class="atividade-materia">${esc(materiaNome(e))}</span></div><div class="atividade-meta"><span>${fmt(e.data)}</span>${hora?`<span>${hora}</span>`:''}</div>${e.objetivo?`<p class="atividade-descricao">${esc(e.objetivo)}</p>`:''}</div><div class="atividade-acoes"><button type="button" class="atividade-editar" data-act="edit">Editar</button><button type="button" class="atividade-excluir" data-act="del">Excluir</button></div></article>`;
 }
 function bindCards(){document.querySelectorAll('[data-id]').forEach(el=>el.addEventListener('click',async ev=>{const b=ev.target.closest('[data-act]'); if(!b)return; const id=el.dataset.id; if(b.dataset.act==='edit') editar(id); if(b.dataset.act==='del') excluir(id); if(b.dataset.act==='toggle') alternar(id);}));}
 function renderLista(){
   const box=$('listaEstudosPagina'); if(!box)return;
-  box.className='estudos-lista';
+  box.className='atividades-lista';
   box.innerHTML=estudos.length?estudos.map(card).join(''):`<div class="estado-vazio"><div class="vazio-icone">✎</div><h3>Nenhum estudo</h3><p>Você ainda não programou nenhum estudo.</p><button type="button" class="botao-vazio" id="novoVazio">+ Adicionar estudo</button></div>`;
   $('novoVazio')?.addEventListener('click',abrirNovo); bindCards();
 }
@@ -80,7 +80,7 @@ function inicioSemana(d){const x=new Date(d); const day=(x.getDay()+6)%7; x.setD
 function estudoItemSemana(e){
   const el=document.createElement('div'); el.className='semana-item semana-item-atividade estudo-item'; el.dataset.edit=e.id;
   const hora=[e.horario_inicio?.slice(0,5),e.horario_fim?.slice(0,5)].filter(Boolean).join('–');
-  el.innerHTML=`<span class="semana-item-tipo">ESTUDO</span><strong>${esc(e.titulo)}</strong><span>${esc(materiaNome(e))}</span>${hora?`<span>${hora}</span>`:''}`;
+  el.innerHTML=`<span class="semana-item-tipo">ESTUDO</span><strong>${esc(e.titulo)}</strong><span class="semana-item-materia">${esc(materiaNome(e))}</span>${hora?`<span class="semana-item-horario">${hora}</span>`:''}`;
   el.onclick=()=>editar(e.id); return el;
 }
 function renderSemana(){
