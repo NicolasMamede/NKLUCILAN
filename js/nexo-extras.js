@@ -28,7 +28,7 @@
       }
 
       if(pub?.length){
-        const alvo=$('visaoAtividades')||document.querySelector('main');
+        const alvo=$('visaoGeral')||$('visaoAtividades')||document.querySelector('main');
         const sec=document.createElement('section');
         sec.className='painel nexo-trabalhos-publicos';
         sec.style.marginBottom='24px';
