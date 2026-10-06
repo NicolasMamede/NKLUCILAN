@@ -4123,4 +4123,47 @@ a {
     .aviso-publico-acoes { width: 100%; }
     .aviso-publico-acoes button { flex: 1; }
 }
-\n\n/* =====================================================\n   NEXO - CORREÇÃO DE AVISOS LONGOS\n===================================================== */\n.aviso-publico-card,\n.aviso-publico-conteudo,\n.aviso-publico-topo,\n.aviso-publico-titulo-linha {\n    min-width: 0;\n}\n\n.aviso-publico-titulo-linha {\n    flex: 1 1 auto;\n}\n\n.aviso-publico-titulo-linha h3,\n.aviso-publico-conteudo > p {\n    max-width: 100%;\n    overflow-wrap: anywhere;\n    word-break: break-word;\n}\n\n.aviso-publico-acoes {\n    flex: 0 0 auto;\n    position: relative;\n    z-index: 1;\n}\n\n@media (max-width: 650px) {\n    .aviso-publico-card {\n        align-items: flex-start;\n    }\n\n    .aviso-publico-topo {\n        width: 100%;\n    }\n}\n
+
+
+/* =====================================================
+   NEXO - CORREÇÃO DE AVISOS LONGOS
+===================================================== */
+.aviso-publico-card,
+.aviso-publico-conteudo,
+.aviso-publico-topo,
+.aviso-publico-titulo-linha {
+    min-width: 0;
+}
+
+.aviso-publico-titulo-linha {
+    flex: 1 1 auto;
+}
+
+.aviso-publico-titulo-linha h3,
+.aviso-publico-conteudo > p {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.aviso-publico-acoes {
+    flex: 0 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 650px) {
+    .aviso-publico-card {
+        align-items: flex-start;
+    }
+
+    .aviso-publico-topo {
+        width: 100%;
+    }
+}
+
+/* Garantia contra textos sem espaços estourarem o card */
+.aviso-publico-conteudo { min-width: 0; max-width: 100%; overflow: hidden; }
+.aviso-publico-conteudo > p { white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-word; }
+.aviso-publico-topo { min-width: 0; max-width: 100%; }
+.aviso-publico-acoes { flex-shrink: 0; }
