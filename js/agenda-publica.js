@@ -935,45 +935,15 @@ function criarCardPublico(item) {
 
         <div class="agenda-publica-acoes">
 
-            ${
-                !ehAutor
-                    ? `
-                        <button
-                            type="button"
-                            class="agenda-publica-adicionar"
-                            data-acao="adicionar"
-                            data-tipo="${item.tipo}"
-                            data-id="${item.id}"
-                        >
-                            + Minha agenda
-                        </button>
-                    `
-                    : `
-                        <span class="agenda-publica-seu-item">
-                            Sua publicação
-                        </span>
-
-                        <button
-                            type="button"
-                            class="agenda-publica-editar"
-                            data-acao="editar"
-                            data-tipo="${item.tipo}"
-                            data-id="${item.id}"
-                        >
-                            Editar
-                        </button>
-
-                        <button
-                            type="button"
-                            class="agenda-publica-excluir"
-                            data-acao="excluir"
-                            data-tipo="${item.tipo}"
-                            data-id="${item.id}"
-                        >
-                            Excluir
-                        </button>
-                    `
-            }
+            <button
+                type="button"
+                class="agenda-publica-adicionar"
+                data-acao="adicionar"
+                data-tipo="${item.tipo}"
+                data-id="${item.id}"
+            >
+                + Minha agenda
+            </button>
 
         </div>
     `;
@@ -2381,6 +2351,9 @@ async function adicionarMinhaAgenda(
                 visibilidade:
                     "privada",
 
+                no_calendario:
+                    true,
+
                 concluida:
                     false
             });
@@ -2441,7 +2414,10 @@ async function adicionarMinhaAgenda(
                     usuarioLogado.id,
 
                 visibilidade:
-                    "privada"
+                    "privada",
+
+                no_calendario:
+                    true
             });
 
 

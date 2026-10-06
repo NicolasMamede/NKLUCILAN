@@ -206,10 +206,6 @@ async function carregarMaterias() {
                     "usuario_id",
                     usuarioLogado.id
                 )
-                .eq(
-                    "visibilidade",
-                    "privada"
-                )
                 .order(
                     "nome",
                     {

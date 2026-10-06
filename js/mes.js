@@ -209,10 +209,6 @@ async function carregarDadosSupabase() {
                         "usuario_id",
                         usuarioLogado.id
                     )
-                .eq(
-                    "visibilidade",
-                    "privada"
-                )
                     .order(
                         "nome",
                         {
@@ -1340,9 +1336,6 @@ if (formAtividadeMes) {
                                 "privada",
 
                             no_calendario:
-                                Boolean(provaMesNoCalendario && provaMesNoCalendario.checked),
-
-                            no_calendario:
                                 Boolean(atividadeMesNoCalendario && atividadeMesNoCalendario.checked)
 
                         });
@@ -1563,7 +1556,10 @@ if (formProvaMes) {
                                 usuarioLogado.id,
 
                             visibilidade:
-                                "privada"
+                                "privada",
+
+                            no_calendario:
+                                Boolean(provaMesNoCalendario && provaMesNoCalendario.checked)
 
                         });
 

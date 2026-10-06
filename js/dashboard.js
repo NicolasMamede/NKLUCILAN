@@ -2643,10 +2643,7 @@ function criarFormularioModal(config) {
                                     noCalendario,
 
                                 concluida:
-                                    false,
-
-                                no_calendario:
-                                    noCalendario
+                                    false
 
                             });
 
@@ -2707,7 +2704,10 @@ function criarFormularioModal(config) {
                                     usuarioLogado.id,
 
                                 visibilidade:
-                                    "privada"
+                                    "privada",
+
+                                no_calendario:
+                                    noCalendario
 
                             });
 
