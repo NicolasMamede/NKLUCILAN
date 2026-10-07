@@ -95,29 +95,9 @@
         }
     };
 
-    /* ---------- aba Trabalhos ---------- */
-    const abaProvas = document.querySelector('.agenda-publica-aba[data-visao="provas"]');
-    if (abaProvas && !document.querySelector('.agenda-publica-aba[data-visao="trabalhos"]')) {
-        const aba = document.createElement("button");
-        aba.type = "button";
-        aba.className = "agenda-publica-aba";
-        aba.dataset.visao = "trabalhos";
-        aba.textContent = "Trabalhos";
-        abaProvas.after(aba);
-        aba.addEventListener("click", () => {
-            // As listas de abas/visões do agenda-publica.js são capturadas antes
-            // desta aba ser criada. Por isso fazemos a troca usando consultas
-            // atuais ao DOM, incluindo a visão de Trabalhos adicionada aqui.
-            document.querySelectorAll(".agenda-publica-aba").forEach(botao => {
-                botao.classList.toggle("ativo", botao.dataset.visao === "trabalhos");
-            });
-            document.querySelectorAll(".agenda-publica-visao").forEach(secao => {
-                secao.classList.toggle("ativo", secao.dataset.visaoConteudo === "trabalhos");
-            });
-            renderizarTrabalhos();
-        });
-    }
-
+    /* ---------- visão/aba Trabalhos ---------- */
+    // A agenda original guarda NodeLists estáticas das abas/visões no carregamento.
+    // Como Trabalhos é adicionado depois, controlamos esta visão diretamente.
     const visaoProvas = $("visaoProvas");
     if (visaoProvas && !$("visaoTrabalhos")) {
         const sec = document.createElement("section");
@@ -126,6 +106,43 @@
         sec.dataset.visaoConteudo = "trabalhos";
         sec.innerHTML = `<div class="painel"><div class="painel-cabecalho"><div><span class="painel-etiqueta">COMPARTILHADO</span><h2>Trabalhos</h2></div></div><div class="agenda-publica-lista" id="listaPublicaTrabalhos"></div></div>`;
         visaoProvas.after(sec);
+    }
+
+    const abaProvas = document.querySelector('.agenda-publica-aba[data-visao="provas"]');
+    if (abaProvas && !document.querySelector('.agenda-publica-aba[data-visao="trabalhos"]')) {
+        const aba = document.createElement("button");
+        aba.type = "button";
+        aba.className = "agenda-publica-aba";
+        aba.dataset.visao = "trabalhos";
+        aba.textContent = "Trabalhos";
+        abaProvas.after(aba);
+
+        aba.addEventListener("click", () => {
+            document.querySelectorAll(".agenda-publica-aba").forEach(botao => {
+                botao.classList.toggle("ativo", botao === aba);
+            });
+            document.querySelectorAll(".agenda-publica-visao").forEach(secao => {
+                const ehTrabalhos = secao.id === "visaoTrabalhos";
+                secao.classList.toggle("ativo", ehTrabalhos);
+                secao.style.display = ehTrabalhos ? "block" : "none";
+            });
+            renderizarTrabalhos();
+        });
+
+        // Ao voltar para uma aba original, removemos os estilos inline usados
+        // pela visão dinâmica para que trocarVisao() volte a controlar tudo.
+        document.querySelectorAll('.agenda-publica-aba:not([data-visao="trabalhos"])').forEach(botao => {
+            botao.addEventListener("click", () => {
+                const trabalhos = $("visaoTrabalhos");
+                if (trabalhos) {
+                    trabalhos.classList.remove("ativo");
+                    trabalhos.style.display = "none";
+                }
+                document.querySelectorAll('.agenda-publica-visao:not(#visaoTrabalhos)').forEach(secao => {
+                    secao.style.removeProperty("display");
+                });
+            }, true);
+        });
     }
 
     /* legendas Semana/Mês */
