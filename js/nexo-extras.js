@@ -104,7 +104,18 @@
         aba.dataset.visao = "trabalhos";
         aba.textContent = "Trabalhos";
         abaProvas.after(aba);
-        aba.addEventListener("click", () => trocarVisao("trabalhos"));
+        aba.addEventListener("click", () => {
+            // As listas de abas/visões do agenda-publica.js são capturadas antes
+            // desta aba ser criada. Por isso fazemos a troca usando consultas
+            // atuais ao DOM, incluindo a visão de Trabalhos adicionada aqui.
+            document.querySelectorAll(".agenda-publica-aba").forEach(botao => {
+                botao.classList.toggle("ativo", botao.dataset.visao === "trabalhos");
+            });
+            document.querySelectorAll(".agenda-publica-visao").forEach(secao => {
+                secao.classList.toggle("ativo", secao.dataset.visaoConteudo === "trabalhos");
+            });
+            renderizarTrabalhos();
+        });
     }
 
     const visaoProvas = $("visaoProvas");
