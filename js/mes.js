@@ -1340,6 +1340,7 @@ if (formAtividadeMes) {
                             "atividades"
                         )
                         .insert({
+                            lembretes: NexoLembretes.valores(formAtividadeMes),
 
                             titulo:
                                 titulo,
@@ -1566,6 +1567,7 @@ if (formProvaMes) {
                             "provas"
                         )
                         .insert({
+                            lembretes: NexoLembretes.valores(formProvaMes),
 
                             nome:
                                 nome,

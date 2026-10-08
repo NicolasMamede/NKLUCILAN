@@ -47,6 +47,7 @@
     const abrirNovo = () => {
         trabalhoEditandoId = "";
         $("nexoFormTrabalho").reset();
+        NexoLembretes.definir($("nexoFormTrabalho"),[1440]);
         $("nexoTituloModalTrabalho").textContent = "Publicar trabalho";
         $("nexoSalvarTrabalho").textContent = "Publicar trabalho";
         document.querySelectorAll(".modal-fundo.ativo").forEach(x => x.classList.remove("ativo"));
@@ -71,6 +72,7 @@
             data,
             horario: $("nexoTrabalhoHorario").value || null,
             materia_id,
+            lembretes: NexoLembretes.valores($("nexoFormTrabalho")),
             materia_nome: materias.find(m => m.id === materia_id)?.nome || null
         };
         try {
@@ -159,7 +161,7 @@
     carregarAgendaPublica = async function () {
         await carregarBase();
         const {data, error} = await nexoSupabase.from("trabalhos")
-            .select("id,nome,descricao,data,horario,materia_id,materia_nome,usuario_id,criado_em")
+            .select("id,nome,descricao,data,horario,materia_id,materia_nome,usuario_id,lembretes,criado_em")
             .eq("visibilidade","publica").order("data",{ascending:true}).order("horario",{ascending:true,nullsFirst:false});
         if (error) {
             console.error("Erro ao carregar trabalhos públicos:", error);
@@ -169,7 +171,7 @@
         trabalhosPublicos = (data || []).map(t => ({
             id:t.id, titulo:t.nome, nome:t.nome, descricao:t.descricao||"", data:t.data,
             horario:formatarHorario(t.horario), materiaId:t.materia_id||"", materiaNome:t.materia_nome||"",
-            usuarioId:t.usuario_id, criadoEm:t.criado_em||"", tipo:"trabalho"
+            usuarioId:t.usuario_id, lembretes:t.lembretes||[], criadoEm:t.criado_em||"", tipo:"trabalho"
         }));
     };
 
@@ -234,6 +236,7 @@
         $("nexoTrabalhoData").value = t.data || "";
         $("nexoTrabalhoHorario").value = t.horario || "";
         $("nexoTrabalhoDescricao").value = t.descricao || "";
+        NexoLembretes.definir($("nexoFormTrabalho"),t.lembretes);
         $("nexoTituloModalTrabalho").textContent = "Editar trabalho";
         $("nexoSalvarTrabalho").textContent = "Salvar alterações";
         modal.classList.add("ativo");

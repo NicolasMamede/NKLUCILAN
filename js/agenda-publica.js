@@ -596,7 +596,7 @@ async function carregarAgendaPublica() {
         nexoSupabase
             .from("atividades")
             .select(
-                "id, titulo, descricao, data, horario, materia_id, materia_nome, usuario_id, concluida, visibilidade, criado_em"
+                "id, titulo, descricao, data, horario, materia_id, materia_nome, usuario_id, concluida, visibilidade, lembretes, criado_em"
             )
             .eq(
                 "visibilidade",
@@ -619,7 +619,7 @@ async function carregarAgendaPublica() {
         nexoSupabase
             .from("provas")
             .select(
-                "id, nome, conteudo, data, horario, materia_id, materia_nome, usuario_id, visibilidade, criado_em"
+                "id, nome, conteudo, data, horario, materia_id, materia_nome, usuario_id, visibilidade, lembretes, criado_em"
             )
             .eq(
                 "visibilidade",
@@ -677,6 +677,7 @@ async function carregarAgendaPublica() {
                                 Boolean(
                                     item.concluida
                                 ),
+                            lembretes: item.lembretes || [],
                             criadoEm:
                                 item.criado_em || "",
                             tipo: "atividade"
@@ -721,6 +722,7 @@ async function carregarAgendaPublica() {
                                 item.materia_nome || "",
                             usuarioId:
                                 item.usuario_id,
+                            lembretes: item.lembretes || [],
                             criadoEm:
                                 item.criado_em || "",
                             tipo: "prova"
@@ -1632,6 +1634,7 @@ function fecharModal(modal) {
 function prepararNovaAtividade() {
 
     formAtividadePublica.reset();
+    NexoLembretes.definir(formAtividadePublica,[1440]);
 
     atividadePublicaId.value = "";
 
@@ -1665,6 +1668,7 @@ function prepararNovaAtividade() {
 function prepararNovaProva() {
 
     formProvaPublica.reset();
+    NexoLembretes.definir(formProvaPublica,[1440]);
 
     provaPublicaId.value = "";
 
@@ -1755,6 +1759,7 @@ async function salvarAtividadePublica(
 
 
     const dados = {
+        lembretes: NexoLembretes.valores(formAtividadePublica),
 
         titulo: titulo,
 
@@ -1807,7 +1812,8 @@ async function salvarAtividadePublica(
                         dados.materia_id,
 
                     materia_nome:
-                        dados.materia_nome
+                        dados.materia_nome,
+                    lembretes: dados.lembretes
                 })
                 .eq(
                     "id",
@@ -1897,6 +1903,7 @@ async function salvarProvaPublica(
 
 
     const dados = {
+        lembretes: NexoLembretes.valores(formProvaPublica),
 
         nome: nome,
 
@@ -1946,7 +1953,8 @@ async function salvarProvaPublica(
                         dados.materia_id,
 
                     materia_nome:
-                        dados.materia_nome
+                        dados.materia_nome,
+                    lembretes: dados.lembretes
                 })
                 .eq(
                     "id",
@@ -2030,6 +2038,7 @@ function editarItem(
 
         atividadePublicaDescricao.value =
             item.descricao || "";
+        NexoLembretes.definir(formAtividadePublica,item.lembretes);
 
         atividadePublicaMateria.value =
             item.materiaId || "";
@@ -2077,6 +2086,7 @@ function editarItem(
 
         provaPublicaConteudo.value =
             item.conteudo || "";
+        NexoLembretes.definir(formProvaPublica,item.lembretes);
 
         provaPublicaMateria.value =
             item.materiaId || "";

@@ -1391,6 +1391,7 @@ if (formAtividadeSemana) {
                             "atividades"
                         )
                         .insert({
+                            lembretes: NexoLembretes.valores(formAtividadeSemana),
 
                             titulo:
                                 titulo,
@@ -1614,6 +1615,7 @@ if (formProvaSemana) {
                             "provas"
                         )
                         .insert({
+                            lembretes: NexoLembretes.valores(formProvaSemana),
 
                             nome:
                                 nome,

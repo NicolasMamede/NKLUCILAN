@@ -169,6 +169,8 @@ function normalizarAtividade(item) {
         concluida:
             Boolean(item.concluida),
 
+        lembretes: item.lembretes || [],
+
         noCalendario:
             Boolean(item.no_calendario),
 
@@ -266,7 +268,7 @@ async function carregarAtividades() {
         } = await nexoSupabase
             .from("atividades")
             .select(
-                "id, titulo, descricao, data, horario, materia_id, concluida, no_calendario, criado_em"
+                "id, titulo, descricao, data, horario, materia_id, concluida, no_calendario, lembretes, criado_em"
             )
             .eq(
                 "usuario_id",
@@ -446,6 +448,7 @@ function abrirNovaAtividade() {
         "Nova atividade";
 
     formAtividade.reset();
+    NexoLembretes.definir(formAtividade,[1440]);
 
     preencherMaterias();
 
@@ -620,7 +623,8 @@ formAtividade.addEventListener(
                             materiaId || null,
 
                         no_calendario:
-                            noCalendario
+                            noCalendario,
+                            lembretes: NexoLembretes.valores(formAtividade)
 
                     })
                     .eq(
@@ -692,7 +696,8 @@ formAtividade.addEventListener(
                             false,
 
                         no_calendario:
-                            noCalendario
+                            noCalendario,
+                            lembretes: NexoLembretes.valores(formAtividade)
 
                     });
 
@@ -792,6 +797,7 @@ function editarAtividade(id) {
 
     descricaoAtividade.value =
         atividade.descricao || "";
+    NexoLembretes.definir(formAtividade,atividade.lembretes);
 
     if (atividadeNoCalendario) {
         atividadeNoCalendario.checked =

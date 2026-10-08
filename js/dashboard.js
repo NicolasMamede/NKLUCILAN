@@ -2460,6 +2460,7 @@ function criarFormularioModal(config) {
     formulario.appendChild(
         botoes
     );
+    NexoLembretes.montar(formulario);
 
 
     modal.appendChild(
@@ -2641,6 +2642,7 @@ function criarFormularioModal(config) {
 
                                 no_calendario:
                                     noCalendario,
+                                lembretes: NexoLembretes.valores(formulario),
 
                                 concluida:
                                     false
@@ -2707,7 +2709,8 @@ function criarFormularioModal(config) {
                                     "privada",
 
                                 no_calendario:
-                                    noCalendario
+                                    noCalendario,
+                                lembretes: NexoLembretes.valores(formulario)
 
                             });
 

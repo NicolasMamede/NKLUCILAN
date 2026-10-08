@@ -1,0 +1,9 @@
+
+/* Selecao de lembretes - utiliza o estilo original dos formularios */
+.nexo-lembretes{border:1px solid rgba(120,135,160,.25);border-radius:12px;padding:14px 16px;margin:10px 0;min-width:0;}
+.nexo-lembretes legend{font-weight:700;padding:0 6px;}
+.nexo-lembretes p{font-size:.9rem;margin:4px 0 12px;opacity:.75;}
+.nexo-lembretes-opcoes{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px 14px;}
+.nexo-lembretes-opcoes label{display:flex;align-items:center;gap:7px;font-size:.9rem;cursor:pointer;font-weight:400;}
+.nexo-lembretes-opcoes input{width:16px;height:16px;accent-color:#366be5;flex-shrink:0;}
+.nexo-lembretes small{display:block;margin-top:12px;opacity:.7;line-height:1.4;}

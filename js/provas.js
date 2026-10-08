@@ -170,6 +170,8 @@ function normalizarProva(item) {
         conteudo:
             item.conteudo || "",
 
+        lembretes: item.lembretes || [],
+
         noCalendario:
             Boolean(item.no_calendario),
 
@@ -265,7 +267,7 @@ async function carregarProvas() {
             await nexoSupabase
                 .from("provas")
                 .select(
-                    "id, nome, conteudo, data, horario, materia_id, no_calendario, criado_em"
+                    "id, nome, conteudo, data, horario, materia_id, no_calendario, lembretes, criado_em"
                 )
                 .eq(
                     "usuario_id",
@@ -449,6 +451,7 @@ function abrirNovaProva() {
 
 
     formProva.reset();
+    NexoLembretes.definir(formProva,[1440]);
 
 
     preencherMaterias();
@@ -643,7 +646,8 @@ formProva.addEventListener(
                                 null,
 
                             no_calendario:
-                                noCalendario
+                                noCalendario,
+                            lembretes: NexoLembretes.valores(formProva)
 
                         })
                         .eq(
@@ -716,7 +720,8 @@ formProva.addEventListener(
                                 "privada",
 
                             no_calendario:
-                                noCalendario
+                                noCalendario,
+                            lembretes: NexoLembretes.valores(formProva)
 
                         });
 
@@ -808,6 +813,7 @@ function editarProva(id) {
 
     conteudoProva.value =
         prova.conteudo || "";
+    NexoLembretes.definir(formProva,prova.lembretes);
 
     if (provaNoCalendario) {
         provaNoCalendario.checked =
