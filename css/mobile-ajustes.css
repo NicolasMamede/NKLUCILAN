@@ -1,0 +1,47 @@
+/* NEXO | Ajustes responsivos complementares
+   Mantém a identidade visual e não altera o layout desktop. */
+@media (max-width: 850px) {
+  .app, .conteudo, .dashboard { min-width: 0; }
+  .conteudo { max-width: 100%; }
+  .dashboard-grid > *, .resumo > * { min-width: 0; }
+  .semana-grade, .estudo-semana-grid, .estudos-calendario-wrap {
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+}
+@media (max-width: 650px) {
+  .topo { gap: 8px; }
+  .topo-acoes { gap: 6px; min-width: 0; }
+  .dashboard, .agenda-publica { max-width: 100%; min-width: 0; }
+  .modal-fundo { padding: 12px; align-items: center; }
+  .modal-fundo .modal {
+    width: 100%;
+    max-width: min(480px, 100%);
+    max-height: calc(100dvh - 24px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  .modal input:not([type=checkbox]):not([type=radio]),
+  .modal select, .modal textarea {
+    max-width: 100%;
+    min-width: 0;
+    font-size: 16px;
+  }
+  .agenda-publica-navegacao {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .agenda-publica-card-conteudo,
+  .agenda-publica-card-topo,
+  .agenda-publica-meta { min-width: 0; }
+  .agenda-publica-card h3,
+  .agenda-publica-descricao { overflow-wrap: anywhere; }
+}
+@media (max-width: 380px) {
+  .modal-fundo { padding: 8px; }
+  .modal-fundo .modal { padding: 16px; max-height: calc(100dvh - 16px); }
+  .topo { padding-left: 12px; padding-right: 12px; }
+}
