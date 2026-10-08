@@ -25,6 +25,23 @@
         anchor.after(btn);
     }
 
+    /* Restaurar opcao Trabalho nos menus Início, Semana e Mês. */
+    const opcoesTrabalho = [
+        ["opcaoProva", "nexoCriarTrabalhoInicio"],
+        ["criarProvaSemana", "nexoCriarTrabalhoSemana"],
+        ["criarProvaMes", "nexoCriarTrabalhoMes"]
+    ];
+    for (const [referencia, id] of opcoesTrabalho) {
+        const ancora = $(referencia);
+        if (!ancora || $(id)) continue;
+        const botao = document.createElement("button");
+        botao.type = "button";
+        botao.className = "modal-opcao";
+        botao.id = id;
+        botao.innerHTML = '<div class="modal-opcao-icone">▣</div><div><strong>Trabalho</strong><span>Criar um trabalho para esta data.</span></div>';
+        ancora.after(botao);
+    }
+
     /* ---------- modal criar/editar ---------- */
     const modal = document.createElement("div");
     modal.className = "modal-fundo";
@@ -54,6 +71,18 @@
         modal.classList.add("ativo");
     };
     $("nexoCriarTrabalho")?.addEventListener("click", abrirNovo);
+    for (const id of ["nexoCriarTrabalhoInicio", "nexoCriarTrabalhoSemana", "nexoCriarTrabalhoMes"]) {
+        $(id)?.addEventListener("click", () => {
+            // Semana e Mês já guardam a data selecionada em dataSelecionada.
+            let dia = "";
+            if (id !== "nexoCriarTrabalhoInicio") {
+                try { if (typeof dataSelecionada === "string") dia = dataSelecionada; } catch (_) {}
+            }
+            abrirNovo();
+            if (dia && /^\d{4}-\d{2}-\d{2}$/.test(dia)) $("nexoTrabalhoData").value = dia;
+        });
+    }
+
     $("nexoFecharTrabalho").onclick = fechar;
     $("nexoCancelarTrabalho").onclick = fechar;
     modal.onclick = e => { if (e.target === modal) fechar(); };
