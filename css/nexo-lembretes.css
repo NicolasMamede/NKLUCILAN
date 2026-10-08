@@ -1,32 +1,29 @@
-/* Nexo: campo de notificacoes recolhivel, harmonizado com o formulario. */
-.nexo-lembretes{display:block;min-width:0;margin:12px 0;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:#0f172a;overflow:hidden;}
-.nexo-lembretes>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 15px;cursor:pointer;list-style:none;font-size:.94rem;font-weight:600;user-select:none;}
-.nexo-lembretes>summary::-webkit-details-marker{display:none;}
-.nexo-lembretes>summary:focus-visible{outline:2px solid #2563eb;outline-offset:-3px;border-radius:9px;}
-.nexo-lembretes-titulo{display:flex;align-items:center;flex-wrap:wrap;gap:9px;}
-.nexo-lembretes-resumo{display:inline-block;padding:3px 9px;border-radius:999px;background:#eff6ff;color:#1d4ed8;font-size:.75rem;font-weight:600;}
-.nexo-lembretes-seta{width:9px;height:9px;flex:0 0 9px;border-right:2px solid #64748b;border-bottom:2px solid #64748b;transform:rotate(45deg);transition:transform .18s ease;margin-right:4px;margin-top:-5px;}
-.nexo-lembretes[open] .nexo-lembretes-seta{transform:rotate(225deg);margin-top:5px;}
-.nexo-lembretes[open]>summary{border-bottom:1px solid #e2e8f0;background:#f8fafc;}
-.nexo-lembretes-conteudo{padding:13px 15px 15px;}
-.nexo-lembretes-conteudo p{font-size:.88rem;color:#64748b;margin:0 0 12px;}
-.nexo-lembretes-opcoes{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px 14px;}
-.nexo-lembretes-opcoes label{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.88rem;font-weight:400;line-height:1.35;color:#334155;}
-.nexo-lembretes-opcoes input{width:16px;height:16px;flex:0 0 16px;accent-color:#2563eb;}
-.nexo-lembretes small{display:block;margin-top:14px;color:#64748b;font-size:.78rem;line-height:1.45;}
-@media(max-width:420px){.nexo-lembretes-opcoes{grid-template-columns:1fr 1fr;gap:12px 8px}.nexo-lembretes>summary{padding:12px}.nexo-lembretes-conteudo{padding:12px}.nexo-lembretes-opcoes label{font-size:.82rem}}
-
-/* Destaque discreto e clicavel, mantendo a secao compacta e recolhivel. */
-.nexo-lembretes{border-color:#bfdbfe;background:#f8fbff;box-shadow:0 1px 3px rgba(15,23,42,.06);}
-.nexo-lembretes>summary{min-height:76px;padding:12px 14px;background:linear-gradient(110deg,#eff6ff 0%,#fff 90%);transition:background .18s,border-color .18s;}
-.nexo-lembretes>summary:hover{background:#eaf3ff;}
-.nexo-lembretes-icone{display:grid;place-items:center;flex:0 0 39px;width:39px;height:39px;background:#dbeafe;border-radius:11px;font-size:1.3rem;}
-.nexo-lembretes-cabecalho{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px;}
-.nexo-lembretes-titulo{display:block;color:#1e40af;font-size:.96rem;font-weight:700;line-height:1.25;}
-.nexo-lembretes-chamada{display:block;color:#475569;font-size:.79rem;font-weight:500;line-height:1.3;}
-.nexo-lembretes-lado{display:flex;align-items:center;gap:11px;flex-shrink:0;}
-.nexo-lembretes-resumo{white-space:nowrap;}
-.nexo-lembretes[open]>summary{background:#eff6ff;}
-.nexo-lembretes[open] .nexo-lembretes-chamada{display:none;}
-.nexo-lembretes-conteudo{background:#fff;}
-@media(max-width:460px){.nexo-lembretes>summary{padding:11px;gap:9px}.nexo-lembretes-icone{width:34px;height:34px;flex-basis:34px;font-size:1.1rem}.nexo-lembretes-lado{gap:7px}.nexo-lembretes-resumo{font-size:.68rem;padding:3px 6px}.nexo-lembretes-titulo{font-size:.88rem}.nexo-lembretes-chamada{font-size:.72rem}}
+/* Nexo: lembretes compactos, sem rolagem interna adicionada. */
+.nexo-lembretes{display:block;min-width:0;margin:2px 0;border:1px solid #bfdbfe;border-radius:9px;background:#fff;color:#0f172a;overflow:hidden;box-shadow:0 1px 3px rgba(15,23,42,.05)}
+.nexo-lembretes>summary{display:flex;align-items:center;gap:9px;min-height:48px;padding:7px 11px;cursor:pointer;list-style:none;background:#eff6ff;user-select:none}
+.nexo-lembretes>summary::-webkit-details-marker{display:none}
+.nexo-lembretes>summary:focus-visible{outline:2px solid #2563eb;outline-offset:-2px}
+.nexo-lembretes-icone{display:grid;place-items:center;flex:0 0 30px;width:30px;height:30px;border-radius:8px;background:#dbeafe;font-size:1rem}
+.nexo-lembretes-cabecalho{display:flex;flex:1;min-width:0;flex-direction:column;gap:1px}
+.nexo-lembretes-titulo{display:block;color:#1e40af;font-size:.84rem;font-weight:700;line-height:1.2}
+.nexo-lembretes-chamada{display:block;color:#475569;font-size:.68rem;line-height:1.2}
+.nexo-lembretes-lado{display:flex;align-items:center;gap:7px;flex-shrink:0}
+.nexo-lembretes-resumo{display:inline-block;white-space:nowrap;padding:2px 6px;border-radius:999px;background:#dbeafe;color:#1d4ed8;font-size:.68rem;font-weight:700}
+.nexo-lembretes-seta{width:8px;height:8px;flex:0 0 8px;border-right:2px solid #2563eb;border-bottom:2px solid #2563eb;transform:rotate(45deg);transition:transform .18s;margin:-4px 2px 0 0}
+.nexo-lembretes[open] .nexo-lembretes-seta{transform:rotate(225deg);margin-top:4px}
+.nexo-lembretes[open] .nexo-lembretes-chamada{display:none}
+.nexo-lembretes-conteudo{padding:8px 11px 9px;background:#fff}
+.nexo-lembretes-conteudo p{margin:0 0 7px;color:#64748b;font-size:.73rem;line-height:1.2}
+.nexo-lembretes-opcoes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 10px}
+/* Especificidade intencional: formulario-campo input aplica altura 45px a TODOS os inputs. */
+.formulario-campo.nexo-lembretes .nexo-lembretes-opcoes label{display:flex;flex-direction:row;align-items:center;gap:6px;min-width:0;margin:0;padding:2px 0;color:#334155;font-size:.73rem;font-weight:600;line-height:1.25;cursor:pointer}
+.formulario-campo.nexo-lembretes .nexo-lembretes-opcoes input[type="checkbox"]{appearance:auto;display:inline-block;width:14px;min-width:14px;max-width:14px;height:14px;min-height:14px;max-height:14px;flex:0 0 14px;margin:0;padding:0;border-radius:3px;accent-color:#2563eb;box-shadow:none}
+.nexo-lembretes small{display:block;margin-top:6px;color:#64748b;font-size:.67rem;line-height:1.2}
+/* Compacta apenas os formularios que incluem lembretes, preservando os demais. */
+.formulario-nexo:has(> .nexo-lembretes){gap:10px}
+.formulario-nexo:has(> .nexo-lembretes)>.formulario-campo{gap:4px}
+.formulario-nexo:has(> .nexo-lembretes)>.formulario-campo:not(.nexo-lembretes) input,
+.formulario-nexo:has(> .nexo-lembretes)>.formulario-campo:not(.nexo-lembretes) select{height:39px}
+.formulario-nexo:has(> .nexo-lembretes)>.formulario-campo:not(.nexo-lembretes) textarea{min-height:58px;height:66px;padding:8px 11px}
+.formulario-nexo:has(> .nexo-lembretes)>.formulario-botoes{margin-top:0;gap:7px}
+@media(max-width:500px){.nexo-lembretes>summary{padding:7px 9px;gap:7px}.nexo-lembretes-icone{width:27px;height:27px;flex-basis:27px}.nexo-lembretes-titulo{font-size:.78rem}.nexo-lembretes-chamada{font-size:.64rem}.nexo-lembretes-resumo{font-size:.62rem}.nexo-lembretes-opcoes{gap:4px 6px}.formulario-campo.nexo-lembretes .nexo-lembretes-opcoes label{font-size:.68rem}.formulario-nexo:has(> .nexo-lembretes)>.formulario-botoes{flex-direction:row}.formulario-nexo:has(> .nexo-lembretes)>.formulario-botoes .botao-cancelar,.formulario-nexo:has(> .nexo-lembretes)>.formulario-botoes .botao-salvar{width:auto;flex:1;min-height:36px}}
