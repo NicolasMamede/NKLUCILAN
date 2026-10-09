@@ -1,4 +1,4 @@
-/* Nexo Push — carregue depois de supabase.js e auth.js */
+/* NK Lucilan Push — carregue depois de supabase.js e auth.js */
 (() => {
   'use strict';
   // Cole SOMENTE a chave VAPID PUBLICA gerada anteriormente.
@@ -54,6 +54,7 @@
     }, { onConflict: 'endpoint' });
     if (error) throw error;
     info('Notificações ativadas neste dispositivo!');
+    await atualizarBotaoAtivar();
     return reg;
   }
   async function testar() {
@@ -74,6 +75,44 @@
     if (!payload.enviados) throw new Error('Nenhum dispositivo recebeu. Ative as notificações primeiro.');
     info(`Teste enviado para ${payload.enviados} dispositivo(s)!`);
   }
+  // O botão só desaparece se este navegador tiver uma inscrição
+  // efetivamente associada ao usuário autenticado no banco.
+  async function atualizarBotaoAtivar() {
+    const btn = document.getElementById('nk-botao-ativar-push');
+    if (!btn) return;
+
+    btn.hidden = false;
+    btn.style.display = '';
+
+    if (!('Notification' in window) || Notification.permission !== 'granted' ||
+        !('serviceWorker' in navigator) || !('PushManager' in window)) return;
+
+    try {
+      const user = await getUser();
+      const registration = await navigator.serviceWorker.getRegistration(WORKER_PATH);
+      if (!registration) return;
+      const subscription = await registration.pushManager.getSubscription();
+      if (!subscription) return;
+
+      const { data, error } = await nexoSupabase
+        .from('push_subscriptions')
+        .select('id')
+        .eq('usuario_id', user.id)
+        .eq('endpoint', subscription.endpoint)
+        .limit(1);
+
+      if (error) throw error;
+      if (data && data.length) {
+        btn.hidden = true;
+        btn.style.display = 'none';
+        info('Notificações ativadas neste dispositivo.');
+      }
+    } catch (e) {
+      console.warn('[NK Lucilan Push] Não foi possível confirmar a inscrição:', e);
+      // Se houver dúvida, mantemos o botão para permitir reativação.
+    }
+  }
+
   function botao(label, fn) {
     const btn = document.createElement('button');
     btn.type = 'button';
@@ -96,13 +135,16 @@
     titulo.textContent = '🔔 Notificações do NK Lucilan';
     const linha = document.createElement('div');
     linha.style.cssText = 'display:flex;gap:8px;flex-wrap:wrap;margin-top:12px';
-    linha.append(botao('Ativar notificações', ativar), botao('Enviar teste', testar));
+    const ativarBtn = botao('Ativar notificações', ativar);
+    ativarBtn.id = 'nk-botao-ativar-push';
+    linha.append(ativarBtn, botao('Enviar teste', testar));
     const status = document.createElement('p');
     status.id = 'nexo-push-status';
     status.style.cssText = 'margin:10px 0 0;color:#475569';
     status.textContent = 'Ative e depois envie um teste.';
     painel.append(titulo, linha, status);
     document.body.append(painel);
+    void atualizarBotaoAtivar();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', montar);
   else montar();
