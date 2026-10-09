@@ -6,18 +6,18 @@ self.addEventListener("push", (event) => {
     dados = event.data ? event.data.json() : {};
   } catch {
     dados = {
-      title: "Nexo",
+      title: "NK Lucilan",
       body: event.data?.text() || "Você tem uma nova notificação."
     };
   }
 
-  const titulo = dados.title || "Nexo";
+  const titulo = dados.title || "NK Lucilan";
 
   const opcoes = {
     body: dados.body || "Você tem uma nova notificação.",
     icon: "./icons/icon-192.png",
     badge: "./icons/icon-192.png",
-    tag: dados.tag || "nexo-notificacao",
+    tag: dados.tag || "nk-lucilan-notificacao",
     data: {
       url: dados.url || "./dashboard.html"
     }

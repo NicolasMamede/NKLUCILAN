@@ -17,7 +17,7 @@
   }
   async function getUser() {
     const { data, error } = await nexoSupabase.auth.getUser();
-    if (error || !data.user) throw new Error('Faça login no Nexo novamente.');
+    if (error || !data.user) throw new Error('Faça login no NK Lucilan novamente.');
     return data.user;
   }
   async function ativar() {
@@ -93,7 +93,7 @@
     painel.id = 'nexo-push-painel';
     painel.style.cssText = 'position:fixed;right:16px;bottom:16px;z-index:9999;background:white;color:#1e293b;padding:16px;border-radius:14px;box-shadow:0 8px 30px #0003;max-width:340px;font:14px system-ui,sans-serif';
     const titulo = document.createElement('strong');
-    titulo.textContent = '🔔 Notificações do Nexo';
+    titulo.textContent = '🔔 Notificações do NK Lucilan';
     const linha = document.createElement('div');
     linha.style.cssText = 'display:flex;gap:8px;flex-wrap:wrap;margin-top:12px';
     linha.append(botao('Ativar notificações', ativar), botao('Enviar teste', testar));

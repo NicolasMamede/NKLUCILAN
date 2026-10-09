@@ -144,7 +144,7 @@ loginForm.addEventListener("submit", async function (event) {
         );
 
         mostrarMensagem(
-            "Não foi possível conectar ao Nexo. Tente novamente."
+            "Não foi possível conectar ao NK Lucilan. Tente novamente."
         );
 
 
