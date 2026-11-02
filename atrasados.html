@@ -1,0 +1,167 @@
+<!DOCTYPE html><html lang="pt-br"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>NK Lucilan | Atrasados</title><link rel="stylesheet" href="css/dashboard.css"><link rel="stylesheet" href="css/nk-atrasados.css?v=1"></head><body><!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NK Lucilan | Estudos</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/nexo-lembretes.css?v=4">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- ========================================
+             MENU LATERAL
+        ========================================= -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-logo">
+
+                <div class="logo-simbolo">
+                    N
+                </div>
+
+                <span>
+                    NK LUCILAN
+                </span>
+
+            </div>
+
+
+            <nav class="sidebar-menu">
+
+                <a href="dashboard.html" class="menu-item">
+                    <span class="menu-icone">⌂</span>
+                    <span>Início</span>
+                </a>
+
+                <a href="semana.html" class="menu-item">
+                    <span class="menu-icone">▣</span>
+                    <span>Semana</span>
+                </a>
+
+                <a href="mes.html" class="menu-item">
+                    <span class="menu-icone">□</span>
+                    <span>Mês</span>
+                </a>
+
+                <a href="atividades.html" class="menu-item">
+                    <span class="menu-icone">✓</span>
+                    <span>Atividades</span>
+                </a>
+
+                <a href="provas.html" class="menu-item">
+                    <span class="menu-icone">✎</span>
+                    <span>Provas</span>
+                </a>
+
+                <a href="trabalhos.html" class="menu-item">
+                    <span class="menu-icone">▤</span>
+                    <span>Trabalhos</span>
+                </a>
+
+                <a href="estudos.html" class="menu-item">
+                    <span class="menu-icone">◎</span>
+                    <span>Estudos</span>
+                </a>
+                <a href="atrasados.html" class="menu-item ativo" id="menuAtrasados">
+                    <span class="menu-icone">⏱</span>
+                    <span>Atrasados <span class="nk-atrasados-badge" hidden></span></span>
+                </a>
+
+
+                <a href="materias.html" class="menu-item">
+                    <span class="menu-icone">◫</span>
+                    <span>Matérias</span>
+                </a>
+
+            
+                <div class="menu-secao">
+                    COMPARTILHADO
+                </div>
+
+                <a href="agenda-publica.html" class="menu-item">
+                    <span class="menu-icone">◇</span>
+                    <span>Agenda Pública</span>
+                </a>
+
+            </nav>
+
+
+            <!-- USUÁRIO -->
+
+            <div class="sidebar-usuario">
+
+                <button
+                    class="usuario-botao"
+                    id="usuarioBotao"
+                    type="button"
+                >
+
+                    <div
+                        class="usuario-avatar"
+                        id="usuarioAvatar"
+                    >
+                        U
+                    </div>
+
+                    <div class="usuario-info">
+
+                        <strong id="usuarioNome">
+                            Usuário
+                        </strong>
+
+                        <span>
+                            Minha conta
+                        </span>
+
+                    </div>
+
+                    <span class="usuario-seta">
+                        ›
+                    </span>
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ========================================
+             CONTEÚDO
+        ========================================= -->
+
+        <main class="conteudo">
+            <div class="nk-atrasados-pagina">
+                <header class="nk-atrasados-cabecalho"><h1>⏱ Atrasados</h1><p>Atividades, trabalhos e estudos de dias anteriores que ainda não foram concluídos.</p></header>
+                <section class="nk-atrasados-resumo" aria-label="Resumo de pendências">
+                    <div class="nk-atrasados-metrica"><strong id="nk-total">—</strong><span>Total de atrasados</span></div>
+                    <div class="nk-atrasados-metrica"><strong id="nk-atividade">—</strong><span>Atividades</span></div>
+                    <div class="nk-atrasados-metrica"><strong id="nk-trabalho">—</strong><span>Trabalhos</span></div>
+                    <div class="nk-atrasados-metrica"><strong id="nk-estudo">—</strong><span>Estudos</span></div>
+                </section>
+                <div class="nk-atrasados-filtros" aria-label="Filtrar atrasados">
+                    <button type="button" data-nk-filtro="todos" class="ativo">Todos</button>
+                    <button type="button" data-nk-filtro="atividade">📘 Atividades</button>
+                    <button type="button" data-nk-filtro="trabalho">📂 Trabalhos</button>
+                    <button type="button" data-nk-filtro="estudo">📚 Estudos</button>
+                </div>
+                <section id="nk-atrasados-lista" class="nk-atrasados-lista" aria-live="polite"></section>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/usuario.js"></script>
+    <script src="js/nk-atrasados-menu.js?v=1"></script>
+    <script src="js/atrasados.js?v=1"></script>
+</body>
+</html>
