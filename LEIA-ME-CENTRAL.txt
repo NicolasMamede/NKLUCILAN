@@ -1,0 +1,63 @@
+NK LUCILAN • CENTRAL DE ADMINISTRAÇÃO E SUGESTÕES
+===================================================
+
+Esta versão foi feita sobre o ZIP enviado pelo usuário:
+"Site pessoal - Nicolas, Alan e Lucivan (9).zip".
+
+O QUE FOI ADICIONADO
+- Nova central.html: Novidades, Minhas sugestões e Administração.
+- Comunicados categorizados: Atualização, Aviso importante e Manutenção.
+- Pop-up para os outros perfis ao entrar em qualquer página logada,
+  mostrando o comunicado mais recente ainda não confirmado.
+- O botão "Entendi" registra a leitura no Supabase e evita repetição.
+- Histórico de comunicados, inclusive após fechar a janela.
+- Sugestões e relatos de problema, com acompanhamento de status e resposta.
+- Administração exclusiva para a conta que você autorizar.
+- Contador de sugestões recebidas no menu do administrador.
+- Link "Central do desenvolvedor" dentro de Minha conta, só no admin.
+
+PASSO 1 – BANCO DE DADOS (SUPABASE)
+1. Abra o projeto no Supabase > SQL Editor > New query.
+2. Cole e execute TODO o arquivo SQL_CENTRAL_ADMINISTRACAO.sql.
+3. Aguarde o retorno "Success". Nada foi removido das tabelas antigas.
+
+PASSO 2 – ESCOLHER QUEM É ADMINISTRADOR (OBRIGATÓRIO)
+1. No SQL Editor, execute: SELECT id, nome FROM public.perfis ORDER BY nome;
+2. Identifique seu perfil e COPIE seu id UUID (não de Alan/Lucivan).
+3. Execute o comando abaixo, substituindo o UUID pelo id copiado:
+
+   INSERT INTO public.nk_administradores (usuario_id)
+   VALUES ('SEU-UUID-AQUI');
+
+4. Confira:
+
+   SELECT a.usuario_id, p.nome
+   FROM public.nk_administradores a
+   LEFT JOIN public.perfis p ON p.id = a.usuario_id;
+
+O banco impede cadastrar um segundo administrador por engano. Nunca conceda
+privilégios pelo nome da pessoa: o id é a identidade confiável.
+
+PASSO 3 – ATUALIZAR O SITE
+1. Faça um backup da pasta do projeto.
+2. Extraia o ZIP completo e substitua os arquivos existentes, SEM apagar .git.
+3. Faça seu commit e push para o GitHub Pages.
+4. Abra o site e use Ctrl+Shift+R caso veja arquivos antigos.
+
+PASSO 4 – TESTAR COM AS TRÊS CONTAS
+- Na sua conta: abra "Administração", escreva um comunicado e publique.
+- Na conta de um amigo: faça login no NK Lucilan e confirme o pop-up.
+- Na conta do amigo: abra "Sugestões" e envie uma mensagem.
+- Na sua conta: responda e altere o status em Administração.
+- Na conta do amigo: confirme que a resposta e o status aparecem.
+
+NOTAS
+- Não precisa alterar a Edge Function de push, o cron ou as chaves VAPID.
+- O link Administração é escondido para não administradores, MAS a segurança
+  real está nas regras RLS do SQL, não no visual.
+- A edição de um comunicado antigo não dispara novo pop-up para quem
+  já o confirmou. Para uma novidade, publique um novo comunicado.
+- O banner de um aviso é mostrado uma vez por usuário e por comunicado.
+- Se as tabelas ainda não existirem, a central exibirá um erro de configuração.
+- Testes locais utilizaram dados simulados; as regras reais devem ser
+  verificadas no seu Supabase depois de executar o SQL.

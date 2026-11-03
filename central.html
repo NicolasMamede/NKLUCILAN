@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NK Lucilan | Novidades e Sugestões</title>
+
+    <link rel="stylesheet" href="css/dashboard.css?v=black2">
+    <link rel="stylesheet" href="css/nk-atrasados.css?v=black2">
+    <link rel="stylesheet" href="css/nk-dark-premium.css?v=colors1">
+    <link rel="stylesheet" href="css/nk-central.css?v=1">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- ========================================
+             MENU LATERAL
+        ========================================= -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-logo">
+
+                <div class="logo-simbolo">
+                    N
+                </div>
+
+                <span>
+                    NK LUCILAN
+                </span>
+
+            </div>
+
+
+            <nav class="sidebar-menu">
+
+                <a href="dashboard.html" class="menu-item">
+                    <span class="menu-icone"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9"/><path d="M9 20v-7h6v7"/></svg></span>
+                    <span>Início</span>
+                </a>
+
+                <a href="semana.html" class="menu-item">
+                    <span class="menu-icone"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h3M14 14h3M8 17h3"/></svg></span>
+                    <span>Semana</span>
+                </a>
+
+                <a href="mes.html" class="menu-item">
+                    <span class="menu-icone"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></span>
+                    <span>Mês</span>
+                </a>
+
+                <a href="atividades.html" class="menu-item">
+                    <span class="menu-icone"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M8 6h13M8 12h13M8 18h13"/><path d="m3 6 1.5 1.5L6.5 5M3 12l1.5 1.5L6.5 11M3 18l1.5 1.5L6.5 17"/></svg></span>
+                    <span>Atividades</span>
+                </a>
+
+                <a href="provas.html" class="menu-item">
+                    <span class="menu-icone"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M9 3h6l2 2h3v16H4V5h3z"/><path d="M8 10h8M8 14h8M8 18h5"/></svg></span>
+                    <span>Provas</span>
+                </a>
+
+                <a href="trabalhos.html" class="menu-item">
+                    <span class="menu-icone"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18M10 12v2h4v-2"/></svg></span>
+                    <span>Trabalhos</span>
+                </a>
+
+                <a href="estudos.html" class="menu-item">
+                    <span class="menu-icone"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M12 7v14M3 6.4c3-1.7 6-1.7 9 .2 3-1.9 6-1.9 9-.2v13c-3-1.7-6-1.7-9 .2-3-1.9-6-1.9-9-.2z"/></svg></span>
+                    <span>Estudos</span>
+                </a>
+                <a href="atrasados.html" class="menu-item" id="menuAtrasados">
+                    <span class="menu-icone"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+                    <span>Atrasados <span class="nk-atrasados-badge" hidden></span></span>
+                </a>
+
+
+                <a href="materias.html" class="menu-item">
+                    <span class="menu-icone"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 4v16M9 9h11M9 15h11"/></svg></span>
+                    <span>Matérias</span>
+                </a>
+
+            
+                <div class="menu-secao">
+                    COMPARTILHADO
+                </div>
+
+                <a href="agenda-publica.html" class="menu-item">
+                    <span class="menu-icone"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="5" r="2"/><path d="M6 3h6M4 7v14h16V10M4 11h11M8 15h8M8 18h5"/></svg></span>
+                    <span>Agenda Pública</span>
+                </a>
+
+            </nav>
+
+
+            <!-- USUÁRIO -->
+
+            <div class="sidebar-usuario">
+
+                <button
+                    class="usuario-botao"
+                    id="usuarioBotao"
+                    type="button"
+                >
+
+                    <div
+                        class="usuario-avatar"
+                        id="usuarioAvatar"
+                    >
+                        U
+                    </div>
+
+                    <div class="usuario-info">
+
+                        <strong id="usuarioNome">
+                            Usuário
+                        </strong>
+
+                        <span>
+                            Minha conta
+                        </span>
+
+                    </div>
+
+                    <span class="usuario-seta">
+                        ›
+                    </span>
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ========================================
+             CONTEÚDO
+        ========================================= -->
+
+        <main class="conteudo">
+            <header class="topo">
+                <button type="button" class="menu-mobile" id="menuMobile" aria-label="Abrir menu lateral" aria-expanded="false">☰</button>
+                <div class="topo-data">Central de novidades e sugestões</div>
+            </header>
+            <div class="nk-c-shell" id="nk-c-shell">
+                <header class="nk-c-heading">
+                    <div><span class="nk-c-kicker">NK Lucilan • Comunicação</span>
+                      <h1>Novidades e sugestões</h1>
+                      <p>Fique por dentro das atualizações, compartilhe ideias e acompanhe melhorias do sistema.</p></div>
+                    <div class="nk-c-head-icon" aria-hidden="true">📣</div>
+                </header>
+                <div id="nk-c-alerta" class="nk-c-alerta" role="status" aria-live="polite" hidden></div>
+                <section class="nk-c-stats" aria-label="Indicadores">
+                    <div class="nk-c-stat"><small>Novidades publicadas</small><strong id="nk-c-num-novidades">—</strong></div>
+                    <div class="nk-c-stat"><small>Minhas sugestões</small><strong id="nk-c-num-enviadas">—</strong></div>
+                    <div class="nk-c-stat" id="nk-c-num-pendentes-box"><small>Recebidas para análise</small><strong id="nk-c-num-pendentes">—</strong></div>
+                </section>
+                <nav class="nk-c-tabs" aria-label="Seções da central">
+                    <button type="button" class="nk-c-tab ativo" data-nk-tab="novidades">📣 Novidades</button>
+                    <button type="button" class="nk-c-tab" data-nk-tab="sugestoes">💡 Minhas sugestões</button>
+                    <button type="button" class="nk-c-tab" id="nk-c-tab-admin" data-nk-tab="admin" hidden>🛡️ Administração</button>
+                </nav>
+                <section data-nk-panel="novidades" aria-label="Histórico de atualizações">
+                    <div class="nk-c-section-head"><h2>Histórico de atualizações</h2><p>Comunicados oficiais publicados pelo desenvolvedor.</p></div>
+                    <div class="nk-c-column" id="nk-c-novidades-lista"><div class="nk-c-empty">Carregando novidades...</div></div>
+                </section>
+                <section data-nk-panel="sugestoes" aria-label="Sugestões" hidden>
+                    <div class="nk-c-grid">
+                      <div class="nk-c-column">
+                        <article class="nk-c-card"><div class="nk-c-section-head"><h2>Enviar sugestão</h2><p>Conte como podemos melhorar o NK Lucilan ou relate um problema.</p></div>
+                        <form id="nk-c-form-sug" class="nk-c-form">
+                            <label>Tipo de mensagem<select id="nk-c-sug-categoria"><option value="sugestao">💡 Sugestão de melhoria</option><option value="problema">🐞 Relatar um problema</option></select></label>
+                            <label>Título<input id="nk-c-sug-titulo" type="text" required minlength="3" maxlength="120" placeholder="Ex.: Cronômetro de estudos"/></label>
+                            <label>Descrição<textarea id="nk-c-sug-descricao" required minlength="5" maxlength="5000" placeholder="Explique sua ideia ou o que aconteceu..."></textarea></label>
+                            <button class="nk-c-btn nk-c-btn-primary" type="submit" id="nk-c-enviar-sug">Enviar sugestão</button>
+                        </form></article>
+                      </div>
+                      <div class="nk-c-column"><div class="nk-c-section-head"><h2>Minhas sugestões</h2><p>Acompanhe o status e as respostas do desenvolvedor.</p></div>
+                        <div class="nk-c-column" id="nk-c-minhas-lista"><div class="nk-c-empty">Carregando sugestões...</div></div>
+                      </div>
+                    </div>
+                </section>
+                <section data-nk-panel="admin" aria-label="Administração" hidden>
+                    <div class="nk-c-section-head"><h2>🛡️ Central do desenvolvedor</h2><p>Área exclusiva da conta administradora. Seus amigos não podem publicar ou responder avisos.</p></div>
+                    <div class="nk-c-grid">
+                      <div class="nk-c-column">
+                        <article class="nk-c-card"><div class="nk-c-section-head"><h2>Publicar comunicado</h2><p>Os usuários verão o aviso ao abrir o NK Lucilan e poderão consultar o histórico.</p></div>
+                          <form id="nk-c-form-com" class="nk-c-form">
+                            <label>Categoria<select id="nk-c-com-categoria"><option value="atualizacao">✨ Atualização</option><option value="importante">📣 Aviso importante</option><option value="manutencao">🛠️ Manutenção</option></select></label>
+                            <label>Título<input id="nk-c-com-titulo" type="text" required minlength="3" maxlength="120" placeholder="Ex.: Novas cores para as matérias"/></label>
+                            <label>Mensagem<textarea id="nk-c-com-mensagem" required minlength="5" maxlength="5000" placeholder="Descreva as novidades ou o aviso que seus amigos verão..."></textarea></label>
+                            <label class="nk-c-check"><input id="nk-c-com-ativo" type="checkbox" checked/> Publicar agora (desmarque para deixar arquivado)</label>
+                            <div class="nk-c-form-actions"><button class="nk-c-btn nk-c-btn-primary" type="submit" id="nk-c-com-salvar">Publicar comunicado</button><button class="nk-c-btn nk-c-btn-ghost" type="button" id="nk-c-com-cancelar" hidden>Cancelar edição</button></div>
+                          </form>
+                        </article>
+                        <div class="nk-c-section-head"><h2>Gerenciar comunicados</h2><p>Edite, arquive, republique ou exclua avisos.</p></div>
+                        <div id="nk-c-admin-com-lista" class="nk-c-column"></div>
+                      </div>
+                      <div class="nk-c-column">
+                        <div class="nk-c-filter-wrap"><div class="nk-c-section-head"><h2>Caixa de sugestões</h2><p>Ideias e problemas enviados pelos usuários.</p></div>
+                        <select id="nk-c-filtro-status" class="nk-c-filter" aria-label="Filtrar sugestões por status"><option value="todos">Todos os status</option><option value="recebida">Recebidas</option><option value="em_analise">Em análise</option><option value="em_desenvolvimento">Em desenvolvimento</option><option value="implementada">Implementadas</option><option value="recusada">Não implementadas</option></select></div>
+                        <div id="nk-c-admin-sug-lista" class="nk-c-column"></div>
+                      </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/usuario.js"></script>
+    <script src="js/nk-atrasados-menu.js?v=2"></script>
+    <script src="js/nk-central.js?v=1"></script>
+    <script src="js/nk-central-page.js?v=1"></script>
+    <script src="js/nk-atrasados-mobile.js?v=1"></script>
+</body>
+</html>
