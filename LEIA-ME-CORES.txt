@@ -1,0 +1,30 @@
+NK LUCILAN • BLACK EDITION + CORES PERSONALIZADAS
+
+PASSO 1 — SUPABASE (OBRIGATÓRIO):
+Abra SQL Editor, cole e execute TODO o SQL em SQL_CORES_SUPABASE.sql.
+A consulta das novas colunas será realizada no navegador somente após essa atualização.
+Não é preciso editar Edge Functions, Secrets, nem Cron.
+
+PASSO 2 — SITE:
+Substitua os arquivos do projeto por estes (preserve a sua pasta .git).
+Faça o commit e o push. No navegador, atualize com Ctrl+Shift+R.
+
+COMO FUNCIONA:
+• Matérias > Nova matéria ou Editar > Cor da matéria: selecione uma cor livre ou sugerida.
+• Semana ou Mês: clique no quadrado do evento, escolha a cor e salve.
+• Use 'Usar cor da matéria / padrão' para remover uma cor individual.
+• Prioridade: cor individual > cor da matéria > cor padrão do tipo.
+• Cores salvas no Supabase, respeitando usuário autenticado.
+• Atividades, provas e trabalhos sem seleção continuam tendo cores por tipo.
+• Alteração da matéria afeta automaticamente os respectivos eventos que não têm cor individual.
+• Tema: preto e grafite com acentos azul elétrico, substituindo o roxo anterior.
+• Scripts de notificações e automação NÃO foram alterados.
+
+TESTE SUGERIDO:
+1. Crie/edite matéria e selecione azul ou verde.
+2. Acesse Semana/Mês e confirme a cor nos eventos da matéria.
+3. Clique em um evento e escolha laranja no seletor.
+4. Altere a cor da matéria: evento personalizado deverá preservar o laranja.
+5. Clique novamente no evento e restaure a cor automática.
+
+Atenção: a validação final com as suas credenciais e seu Supabase só pode ser feita por você.

@@ -31,6 +31,27 @@ const nomeMateria =
 const professorMateria =
     document.getElementById("professorMateria");
 
+const corMateria = document.getElementById("corMateria");
+const corMateriaResumo = document.getElementById("corMateriaResumo");
+const limparCorMateria = document.getElementById("limparCorMateria");
+const materiaAmostras = document.getElementById("materiaAmostras");
+let corMateriaSelecionada = null;
+
+function definirCorMateria(cor) {
+    corMateriaSelecionada = NKPaleta.normalizar(cor);
+    const exibida = corMateriaSelecionada || NKPaleta.PADRAO.atividade;
+    if (corMateria) corMateria.value = exibida;
+    if (corMateriaResumo) corMateriaResumo.textContent =
+        corMateriaSelecionada ? corMateriaSelecionada.toUpperCase() : "Sem cor definida · cores por tipo";
+    if (materiaAmostras) materiaAmostras.querySelectorAll('.nk-paleta-amostra').forEach(botao => {
+        botao.classList.toggle('selecionada', botao.title.toLowerCase() === corMateriaSelecionada);
+    });
+}
+if (corMateria) corMateria.addEventListener('input', e => definirCorMateria(e.target.value));
+if (limparCorMateria) limparCorMateria.addEventListener('click', () => definirCorMateria(null));
+if (materiaAmostras) NKPaleta.amostras(materiaAmostras, definirCorMateria);
+
+
 const tituloModalMateria =
     document.getElementById("tituloModalMateria");
 
@@ -79,8 +100,9 @@ async function carregarMaterias() {
         } = await nexoSupabase
             .from("materias")
             .select(
-                "id, nome, professor, criado_em"
+                "id, nome, professor, cor, criado_em"
             )
+            .eq("usuario_id", usuarioLogado.id)
             .order("nome", {
                 ascending: true
             });
@@ -134,6 +156,7 @@ function abrirModalNovaMateria() {
         "Nova matéria";
 
     formMateria.reset();
+    definirCorMateria(null);
 
     modalMateria.classList.add(
         "ativo"
@@ -162,6 +185,7 @@ function fecharModal() {
     );
 
     formMateria.reset();
+    definirCorMateria(null);
 
     materiaEmEdicao = null;
 
@@ -391,7 +415,9 @@ if (formMateria) {
                                 nome,
 
                             professor:
-                                professor || null
+                                professor || null,
+
+                            cor: corMateriaSelecionada
 
                         })
                         .eq(
@@ -435,6 +461,8 @@ if (formMateria) {
 
                             professor:
                                 professor || null,
+
+                            cor: corMateriaSelecionada,
 
                             usuario_id:
                                 usuarioLogado.id
@@ -621,6 +649,10 @@ function criarCardMateria(materia) {
 
     icone.textContent =
         inicial || "M";
+    if (NKPaleta.normalizar(materia.cor)) {
+        icone.classList.add('nk-materia-icone-colorido');
+        icone.style.setProperty('--nk-evento-cor', materia.cor);
+    }
 
 
     /* =========================
@@ -826,6 +858,8 @@ function editarMateria(id) {
 
     professorMateria.value =
         materia.professor || "";
+
+    definirCorMateria(materia.cor);
 
 
     modalMateria.classList.add(

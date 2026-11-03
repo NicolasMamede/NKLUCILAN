@@ -7,53 +7,53 @@
 :root {
   color-scheme: dark;
   --nk-bg:#121214; --nk-side:#202023; --nk-surface:#202023;
-  --nk-surface2:#27272b; --nk-raised:#2d2d32; --nk-ink:#f6f5f9;
-  --nk-muted:#b4b2bf; --nk-low:#92909f; --nk-line:#39393f;
-  --nk-purple:#9476ff; --nk-purple2:#7458ed; --nk-purple-dim:#342c4d;
+  --nk-surface2:#27272b; --nk-raised:#2d2d32; --nk-ink:#f8f8f8;
+  --nk-muted:#b2b8bf; --nk-low:#92909f; --nk-line:#39393f;
+  --nk-purple:#76b8ff; --nk-purple2:#58a0ed; --nk-purple-dim:#2c3c4d;
   --nk-orange:#ff8b4b; --nk-red:#ff8296; --nk-green:#6fddb1;
   --nk-shadow:0 18px 46px rgba(0,0,0,.18);
-  --cor-primaria:#9476ff; --texto-secundario:#b4b2bf;
+  --cor-primaria:#76b8ff; --texto-secundario:#b2b8bf;
 }
 html {background:var(--nk-bg); scrollbar-color:#55545e var(--nk-bg)}
 body,body .app,body .conteudo,body .dashboard{background:var(--nk-bg)!important;color:var(--nk-ink)!important}
 body{font-family:'Inter',ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif!important;line-height:1.5;font-size:14px;-webkit-font-smoothing:antialiased}
 button,input,textarea,select{font-family:inherit!important}
 :where(h1,h2,h3,h4,h5,strong){color:var(--nk-ink)}
-::selection{background:#7154d8;color:#fff}
-:focus-visible{outline:2px solid #b6a3ff!important;outline-offset:3px}
+::selection{background:#5494d8;color:#fff}
+:focus-visible{outline:2px solid #a3cfff!important;outline-offset:3px}
 [hidden]{display:none!important}
 /* ESTRUTURA: sidebar e topo como um aplicativo de verdade */
 .sidebar{width:256px!important;padding:25px 14px 18px!important;background:#202023!important;color:var(--nk-ink)!important;border-right:1px solid #303034!important;box-shadow:0 0 0 transparent!important}
 .conteudo{margin-left:256px!important;width:calc(100% - 256px)!important;min-width:0}
 .sidebar-logo{padding:5px 10px!important;margin-bottom:26px!important;gap:11px!important}
 .sidebar-logo>span{letter-spacing:-.45px!important;font-size:17px!important;font-weight:800!important;color:#fff!important;line-height:1.1}
-.logo-simbolo{width:41px!important;height:41px!important;min-width:41px!important;font-size:13px!important;letter-spacing:-1px!important;border-radius:13px!important;background:linear-gradient(135deg,#a891ff,#7354ef)!important;color:#fff!important;box-shadow:0 5px 18px #8c6bf340!important}
+.logo-simbolo{width:41px!important;height:41px!important;min-width:41px!important;font-size:13px!important;letter-spacing:-1px!important;border-radius:13px!important;background:linear-gradient(135deg,#91c6ff,#549fef)!important;color:#fff!important;box-shadow:0 5px 18px #6badf340!important}
 .sidebar-menu{gap:4px!important;overflow-y:auto;scrollbar-width:thin;min-height:0;padding:4px 2px 12px}
 .menu-item{min-height:43px!important;border-radius:11px!important;border:1px solid transparent!important;padding:0 12px!important;gap:13px!important;color:#b4b1bb!important;font-size:13px!important;font-weight:550!important;letter-spacing:.01em!important;background:transparent!important;box-shadow:none!important}
 .menu-item:hover{background:#303035!important;color:#fff!important;border-color:#3b3a41!important;transform:none!important}
-.menu-item.ativo{background:#34303f!important;border-color:#4e426b!important;color:#fff!important;box-shadow:inset 3px 0 0 #997eff!important}
-.menu-icone{color:#a6a2b2!important;width:21px!important;flex:0 0 21px!important}
+.menu-item.ativo{background:#30373f!important;border-color:#42566b!important;color:#fff!important;box-shadow:inset 3px 0 0 #7ebcff!important}
+.menu-icone{color:#a2aab2!important;width:21px!important;flex:0 0 21px!important}
 .menu-icone svg{display:block;width:18px;height:18px;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;fill:none}
-.menu-item.ativo .menu-icone,.menu-item:hover .menu-icone{color:#b6a4ff!important}
+.menu-item.ativo .menu-icone,.menu-item:hover .menu-icone{color:#a4d0ff!important}
 .menu-secao{margin:22px 11px 9px!important;color:#787580!important;font-size:10px!important;font-weight:750!important;letter-spacing:.17em!important}
 .sidebar-usuario{padding-top:14px!important;border-top:1px solid #39383d!important}
-.usuario-botao{min-height:59px;padding:8px!important;border-radius:12px!important;background:#29292d!important;color:#f7f6fa!important}
-.usuario-botao:hover{background:#35343a!important}.usuario-avatar{background:#4a3a79!important;color:#ded5ff!important;border-radius:12px!important}
-.usuario-info strong{color:#f6f5f9!important}.usuario-info span,.usuario-seta{color:#9e9aa8!important}
+.usuario-botao{min-height:59px;padding:8px!important;border-radius:12px!important;background:#29292d!important;color:#f9f9f9!important}
+.usuario-botao:hover{background:#35343a!important}.usuario-avatar{background:#3a5879!important;color:#d5e9ff!important;border-radius:12px!important}
+.usuario-info strong{color:#f8f8f8!important}.usuario-info span,.usuario-seta{color:#9e9aa8!important}
 .topo{height:69px!important;padding:0 36px!important;background:#1c1c1f!important;border-bottom:1px solid #323137!important;backdrop-filter:blur(14px)!important}
-.topo-data{color:#c3c1cc!important;font-size:12px!important;letter-spacing:.01em}
-.menu-mobile,.botao-icone{border:1px solid #48454f!important;border-radius:11px!important;background:#29292e!important;color:#e6e3ee!important}
-.menu-mobile:hover,.botao-icone:hover{background:#3b354c!important;color:#e8deff!important}
+.topo-data{color:#c1c6cc!important;font-size:12px!important;letter-spacing:.01em}
+.menu-mobile,.botao-icone{border:1px solid #48454f!important;border-radius:11px!important;background:#29292e!important;color:#e3e8ee!important}
+.menu-mobile:hover,.botao-icone:hover{background:#35404c!important;color:#deeeff!important}
 .dashboard{max-width:1540px!important;padding:37px 39px 62px!important}
 /* TIPOGRAFIA, TÍTULOS E LINK */
 :is(.boas-vindas,.atividades-cabecalho,.provas-cabecalho,.trabalhos-cabecalho,.estudos-cabecalho,.materias-cabecalho,.semana-cabecalho,.mes-cabecalho,.agenda-publica-cabecalho,.perfil-cabecalho) h1,
-.nk-atrasados-cabecalho h1{color:#f9f8fb!important;font-size:clamp(25px,2.5vw,33px)!important;letter-spacing:-1.3px!important;line-height:1.18!important;font-weight:750!important}
-.boas-vindas h1 span{color:#a58aff!important}
-.pagina-etiqueta,.painel-etiqueta{color:#ad9cef!important;font-size:10px!important;font-weight:800!important;letter-spacing:.16em!important}
+.nk-atrasados-cabecalho h1{color:#fbfbfb!important;font-size:clamp(25px,2.5vw,33px)!important;letter-spacing:-1.3px!important;line-height:1.18!important;font-weight:750!important}
+.boas-vindas h1 span{color:#8ac3ff!important}
+.pagina-etiqueta,.painel-etiqueta{color:#9cc4ef!important;font-size:10px!important;font-weight:800!important;letter-spacing:.16em!important}
 :is(.boas-vindas,.atividades-cabecalho,.provas-cabecalho,.trabalhos-cabecalho,.estudos-cabecalho,.materias-cabecalho,.semana-cabecalho,.mes-cabecalho,.agenda-publica-cabecalho,.perfil-cabecalho,.nk-atrasados-cabecalho)>div>p,
 :is(.boas-vindas,.semana-cabecalho,.mes-cabecalho,.agenda-publica-cabecalho,.nk-atrasados-cabecalho) p{color:var(--nk-muted)!important;font-size:13px!important}
-.painel-cabecalho h2{color:#f6f5f9!important;font-size:17px!important;letter-spacing:-.45px!important;font-weight:700!important}
-.painel-cabecalho>a,.contador-materias{color:#b8a4ff!important}
+.painel-cabecalho h2{color:#f8f8f8!important;font-size:17px!important;letter-spacing:-.45px!important;font-weight:700!important}
+.painel-cabecalho>a,.contador-materias{color:#a4d0ff!important}
 /* PAINÉIS, CARTÕES E RESUMOS */
 .painel,.resumo-card,.atividade-card,.prova-card,.trabalho-card,.estudo-card,.materia-card,.agenda-publica-card,.perfil-painel,.semana-dia,.calendario-mes,.estudo-dia,.estudo-mes-dia,.agenda-publica-resumo,
 .nk-atrasados-metrica,.nk-atrasados-item,.nk-atrasados-vazio{
@@ -63,16 +63,16 @@ button,input,textarea,select{font-family:inherit!important}
 }
 .painel{overflow:hidden!important}
 .resumo-card{padding:21px 22px!important;position:relative;min-height:147px!important}
-.resumo-card::before{content:"";position:absolute;left:21px;right:21px;top:0;height:2px;background:linear-gradient(90deg,#8f6ff7,transparent);opacity:.7}
+.resumo-card::before{content:"";position:absolute;left:21px;right:21px;top:0;height:2px;background:linear-gradient(90deg,#6fb1f7,transparent);opacity:.7}
 .resumo-card:nth-child(2)::before{background:linear-gradient(90deg,#ff9759,transparent)}
 .resumo-card:nth-child(3)::before{background:linear-gradient(90deg,#76d7b0,transparent)}
-.resumo-card>strong,.nk-atrasados-metrica strong{font-size:31px!important;letter-spacing:-1.5px!important;color:#f9f8fd!important}
+.resumo-card>strong,.nk-atrasados-metrica strong{font-size:31px!important;letter-spacing:-1.5px!important;color:#fcfcfc!important}
 .resumo-card>p,.resumo-topo>span,.nk-atrasados-metrica span{color:var(--nk-muted)!important;font-size:12px!important}
-.resumo-icone,.vazio-icone,.materia-icone{background:#39304d!important;color:#b9a5ff!important;border-radius:12px!important;box-shadow:none!important}
+.resumo-icone,.vazio-icone,.materia-icone{background:#303e4d!important;color:#a5d0ff!important;border-radius:12px!important;box-shadow:none!important}
 .resumo-card:nth-child(2) .resumo-icone{background:#42352c!important;color:#ffc08d!important}
 .resumo-card:nth-child(3) .resumo-icone{background:#273c35!important;color:#93edc4!important}
 .resumo-card:hover,.atividade-card:hover,.prova-card:hover,.trabalho-card:hover,.estudo-card:hover,.materia-card:hover,.agenda-publica-card:hover{
-  background:var(--nk-surface2)!important;border-color:#65577d!important;box-shadow:var(--nk-shadow)!important;transform:translateY(-2px)
+  background:var(--nk-surface2)!important;border-color:#57697d!important;box-shadow:var(--nk-shadow)!important;transform:translateY(-2px)
 }
 .dashboard-grid{gap:18px!important}.resumo{gap:14px!important;margin-bottom:18px!important}
 .painel-cabecalho{min-height:75px!important;padding:18px 22px!important;border-bottom:1px solid var(--nk-line)!important;background:#242428!important}
@@ -80,124 +80,124 @@ button,input,textarea,select{font-family:inherit!important}
 :is(.atividade-card,.prova-card,.trabalho-card,.estudo-card,.materia-card){background:#27272b!important;border-color:#414047!important}
 :is(.atividade-card,.prova-card,.trabalho-card,.estudo-card){padding:16px!important;margin-bottom:3px}
 :is(.atividade-topo,.prova-topo,.trabalho-topo,.estudo-topo) h3,.materia-info h3,
-:is(.atividade-conteudo,.prova-conteudo,.trabalho-conteudo,.estudo-conteudo)>h3{color:#f5f3f9!important;font-weight:650!important;font-size:13px!important;line-height:1.5}
-:is(.atividade-descricao,.prova-observacao,.trabalho-descricao,.estudo-objetivo,.agenda-publica-descricao){color:#c8c5d1!important;line-height:1.65!important}
+:is(.atividade-conteudo,.prova-conteudo,.trabalho-conteudo,.estudo-conteudo)>h3{color:#f7f7f7!important;font-weight:650!important;font-size:13px!important;line-height:1.5}
+:is(.atividade-descricao,.prova-observacao,.trabalho-descricao,.estudo-objetivo,.agenda-publica-descricao){color:#c5cbd1!important;line-height:1.65!important}
 :is(.atividade-meta,.prova-meta,.trabalho-meta,.estudo-meta,.agenda-publica-meta,.agenda-publica-autor,.materia-info p,.estudo-data){color:var(--nk-muted)!important;font-size:11px!important}
-:is(.atividade-materia,.prova-materia,.trabalho-materia,.estudo-materia,.agenda-publica-materia){background:#372f4d!important;color:#c7b7ff!important;border:1px solid #53446e!important;border-radius:999px!important;padding:4px 9px!important;font-weight:700!important;font-size:10px!important}
-:is(.prova-data,.trabalho-data,.estudo-data,.agenda-publica-card-icone){background:#393047!important;color:#ccbaff!important;border:1px solid #534966!important;border-radius:12px!important}
-.prova-data strong,.trabalho-data strong{color:#e8dfff!important}
+:is(.atividade-materia,.prova-materia,.trabalho-materia,.estudo-materia,.agenda-publica-materia){background:#2f3d4d!important;color:#b7daff!important;border:1px solid #44586e!important;border-radius:999px!important;padding:4px 9px!important;font-weight:700!important;font-size:10px!important}
+:is(.prova-data,.trabalho-data,.estudo-data,.agenda-publica-card-icone){background:#303b47!important;color:#badbff!important;border:1px solid #495766!important;border-radius:12px!important}
+.prova-data strong,.trabalho-data strong{color:#dfeeff!important}
 .atividade-check{background:#27272b!important;border-color:#777182!important;color:#fff!important}
 .atividade-card.concluida,.prova-card.prova-realizada{background:#222327!important;opacity:.86}
-.atividade-card.concluida .atividade-check{background:#7656e9!important;border-color:#7656e9!important}
+.atividade-card.concluida .atividade-check{background:#569de9!important;border-color:#569de9!important}
 .atividade-card.concluida .atividade-conteudo h3{color:#a7a4b0!important}
-.prova-card.prova-hoje{background:#302b3d!important;border-color:#7458bb!important}
+.prova-card.prova-hoje{background:#2b343d!important;border-color:#5888bb!important}
 /* BOTÕES: nada de pequenos retângulos brancos */
 .botao-criar,.botao-salvar,.botao-vazio,.agenda-publica-adicionar{
-  background:linear-gradient(130deg,#9275fb,#7656e9)!important;color:white!important;
-  border:1px solid #9e85ff!important;border-radius:11px!important;
-  box-shadow:0 7px 18px #7454df30!important;font-weight:700!important
+  background:linear-gradient(130deg,#75b6fb,#569de9)!important;color:white!important;
+  border:1px solid #85c0ff!important;border-radius:11px!important;
+  box-shadow:0 7px 18px #5497df30!important;font-weight:700!important
 }
-.botao-criar:hover,.botao-salvar:hover,.botao-vazio:hover,.agenda-publica-adicionar:hover{background:linear-gradient(130deg,#a18aff,#8467fc)!important;filter:none!important}
-:is(.atividade-editar,.prova-editar,.trabalho-editar,.estudo-editar,.materia-editar,.agenda-publica-editar,.estudo-concluir,.botao-cancelar,.botao-sair,.modal-fechar,.modal-opcao,.calendario-adicionar,.semana-adicionar){background:#323137!important;color:#e6dcff!important;border:1px solid #4a4654!important;border-radius:9px!important}
-:is(.atividade-editar,.prova-editar,.trabalho-editar,.estudo-editar,.materia-editar,.agenda-publica-editar,.estudo-concluir,.botao-cancelar,.botao-sair,.modal-fechar,.modal-opcao,.calendario-adicionar,.semana-adicionar):hover{background:#423b56!important;color:#fff!important;border-color:#8069b4!important}
+.botao-criar:hover,.botao-salvar:hover,.botao-vazio:hover,.agenda-publica-adicionar:hover{background:linear-gradient(130deg,#8ac3ff,#67affc)!important;filter:none!important}
+:is(.atividade-editar,.prova-editar,.trabalho-editar,.estudo-editar,.materia-editar,.agenda-publica-editar,.estudo-concluir,.botao-cancelar,.botao-sair,.modal-fechar,.modal-opcao,.calendario-adicionar,.semana-adicionar){background:#323137!important;color:#dcedff!important;border:1px solid #464d54!important;border-radius:9px!important}
+:is(.atividade-editar,.prova-editar,.trabalho-editar,.estudo-editar,.materia-editar,.agenda-publica-editar,.estudo-concluir,.botao-cancelar,.botao-sair,.modal-fechar,.modal-opcao,.calendario-adicionar,.semana-adicionar):hover{background:#3b4856!important;color:#fff!important;border-color:#698db4!important}
 :is(.atividade-excluir,.prova-excluir,.trabalho-excluir,.estudo-excluir,.materia-excluir,.agenda-publica-excluir){background:#35282e!important;color:#ff9db0!important;border:1px solid #63414e!important;border-radius:9px!important}
 :is(.atividade-excluir,.prova-excluir,.trabalho-excluir,.estudo-excluir,.materia-excluir,.agenda-publica-excluir):hover{background:#49313a!important;color:#ffc4cf!important}
-:is(.filtro-atividade,.filtro-prova,.filtro-trabalho,.filtro-estudo,.agenda-publica-aba,.nk-atrasados-filtros button){background:transparent!important;color:#bfbcc8!important;border:1px solid transparent!important;border-radius:9px!important}
+:is(.filtro-atividade,.filtro-prova,.filtro-trabalho,.filtro-estudo,.agenda-publica-aba,.nk-atrasados-filtros button){background:transparent!important;color:#bcc2c8!important;border:1px solid transparent!important;border-radius:9px!important}
 :is(.filtro-atividade,.filtro-prova,.filtro-trabalho,.filtro-estudo,.agenda-publica-aba,.nk-atrasados-filtros button):hover{background:#3b3943!important;color:white!important}
-:is(.filtro-atividade,.filtro-prova,.filtro-trabalho,.filtro-estudo,.agenda-publica-aba,.nk-atrasados-filtros button).ativo{background:#4e416b!important;color:#f5eeff!important;border-color:#77619e!important;box-shadow:none!important}
+:is(.filtro-atividade,.filtro-prova,.filtro-trabalho,.filtro-estudo,.agenda-publica-aba,.nk-atrasados-filtros button).ativo{background:#41556b!important;color:#f7f7f7!important;border-color:#617e9e!important;box-shadow:none!important}
 :is(.atividades-filtros,.provas-filtros,.trabalhos-filtros,.estudos-filtros,.agenda-publica-navegacao,.nk-atrasados-filtros){background:#2b2b2f!important;border:1px solid #403f46!important;border-radius:12px!important}
 /* FORMULÁRIOS, MODAIS, MODAIS DE ESCOLHA */
-.modal-fundo{background:#09080cc9!important;backdrop-filter:blur(6px)}
-.modal{background:#242428!important;color:#f5f3f9!important;border:1px solid #4c4855!important;border-radius:20px!important;box-shadow:0 30px 90px #0009!important}
-.modal-cabecalho{border-color:#44414b!important}.modal-cabecalho h2{color:#f8f6fc!important}.modal-cabecalho span{color:#ac95ff!important}
-.modal-opcoes{background:transparent!important}.modal-opcao{padding:14px!important}.modal-opcao strong{color:#f6f5f9!important}.modal-opcao span{color:#bcb9c8!important}
-.modal-opcao-icone{background:#393049!important;color:#c6b6ff!important}
-.formulario-campo label,#nexoModalTrabalho .formulario-campo label{color:#e7e4ee!important;font-size:12px!important;font-weight:650!important}
+.modal-fundo{background:#080a0cc9!important;backdrop-filter:blur(6px)}
+.modal{background:#242428!important;color:#f7f7f7!important;border:1px solid #4c4855!important;border-radius:20px!important;box-shadow:0 30px 90px #0009!important}
+.modal-cabecalho{border-color:#44414b!important}.modal-cabecalho h2{color:#fafafa!important}.modal-cabecalho span{color:#95c8ff!important}
+.modal-opcoes{background:transparent!important}.modal-opcao{padding:14px!important}.modal-opcao strong{color:#f8f8f8!important}.modal-opcao span{color:#b9c0c8!important}
+.modal-opcao-icone{background:#303c49!important;color:#b6d9ff!important}
+.formulario-campo label,#nexoModalTrabalho .formulario-campo label{color:#e4e9ee!important;font-size:12px!important;font-weight:650!important}
 input:not([type=checkbox]):not([type=radio]),select,textarea,
 #nexoModalTrabalho .formulario-campo input,#nexoModalTrabalho .formulario-campo select,#nexoModalTrabalho .formulario-campo textarea{
-  background:#19191d!important;color:#f5f3f9!important;border:1px solid #4b4854!important;
+  background:#19191d!important;color:#f7f7f7!important;border:1px solid #4b4854!important;
   border-radius:10px!important;color-scheme:dark!important
 }
 input::placeholder,textarea::placeholder{color:#9995a6!important;opacity:1!important}
-input:focus,select:focus,textarea:focus{outline:none!important;border-color:#a18aff!important;box-shadow:0 0 0 3px #8a6af333!important}
-input[type=checkbox],input[type=radio]{accent-color:#9476ff!important}
-.calendario-opcao,.nexo-lembretes{background:#29292d!important;color:#f5f3f9!important;border:1px solid #48434f!important}
-.calendario-opcao:hover{background:#35313f!important;border-color:#7864a5!important}
-.calendario-opcao strong,.calendario-opcao small{color:#e5e2ed!important}
-.nexo-lembretes>summary,.nexo-lembretes-conteudo{background:#29292d!important;color:#eae7f3!important}
+input:focus,select:focus,textarea:focus{outline:none!important;border-color:#8ac3ff!important;box-shadow:0 0 0 3px #6aacf333!important}
+input[type=checkbox],input[type=radio]{accent-color:#76b8ff!important}
+.calendario-opcao,.nexo-lembretes{background:#29292d!important;color:#f7f7f7!important;border:1px solid #48434f!important}
+.calendario-opcao:hover{background:#31383f!important;border-color:#6483a5!important}
+.calendario-opcao strong,.calendario-opcao small{color:#e2e7ed!important}
+.nexo-lembretes>summary,.nexo-lembretes-conteudo{background:#29292d!important;color:#e7edf3!important}
 .nexo-lembretes>summary{border-bottom:1px solid #44414d!important}
-.nexo-lembretes-titulo{color:#d7c9ff!important}.nexo-lembretes-chamada,.nexo-lembretes-conteudo p,.nexo-lembretes small{color:#c7c2d1!important}
-.nexo-lembretes-icone,.nexo-lembretes-resumo{background:#45375f!important;color:#e1d5ff!important}
-.nexo-lembretes-seta{border-color:#ba9dff!important}
-.formulario-campo.nexo-lembretes .nexo-lembretes-opcoes label{color:#eeeaf8!important}
+.nexo-lembretes-titulo{color:#c9e3ff!important}.nexo-lembretes-chamada,.nexo-lembretes-conteudo p,.nexo-lembretes small{color:#c2c9d1!important}
+.nexo-lembretes-icone,.nexo-lembretes-resumo{background:#374a5f!important;color:#d5e9ff!important}
+.nexo-lembretes-seta{border-color:#9dccff!important}
+.formulario-campo.nexo-lembretes .nexo-lembretes-opcoes label{color:#eaf1f8!important}
 /* DIA / SEMANA: remover branco e proteger contraste de cada texto */
 .semana-hoje,.semana-seta,.mes-hoje,.mes-seta,.estudo-cal-nav button,.estudo-cal-nav>button{
- background:#2c2b31!important;color:#eeeaf6!important;border:1px solid #49464f!important;border-radius:10px!important
+ background:#2c2b31!important;color:#eaf0f6!important;border:1px solid #49464f!important;border-radius:10px!important
 }
-.semana-hoje:hover,.semana-seta:hover,.mes-hoje:hover,.mes-seta:hover,.estudo-cal-nav button:hover{background:#403753!important;color:#fff!important;border-color:#8e76c4!important}
-.semana-legenda,.mes-legenda{color:#c2bfca!important;font-size:11px!important}.legenda-atividade{background:#9f86ff!important}.legenda-prova{background:#ff9c6b!important}.legenda-estudo{background:#82ddb9!important}
+.semana-hoje:hover,.semana-seta:hover,.mes-hoje:hover,.mes-seta:hover,.estudo-cal-nav button:hover{background:#374553!important;color:#fff!important;border-color:#769cc4!important}
+.semana-legenda,.mes-legenda{color:#bfc4ca!important;font-size:11px!important}.legenda-atividade{background:#86c0ff!important}.legenda-prova{background:#ff9c6b!important}.legenda-estudo{background:#82ddb9!important}
 .semana-grade{gap:9px!important}
 .semana-dia{background:#242428!important;border-color:#3d3b43!important;min-height:470px!important;overflow:hidden}
-.semana-dia-hoje{background:#2a2537!important;border-color:#967bdb!important;box-shadow:inset 0 0 0 1px #6d58a1!important}
+.semana-dia-hoje{background:#252e37!important;border-color:#7ba9db!important;box-shadow:inset 0 0 0 1px #587ba1!important}
 .semana-dia-cabecalho,.semana-dia-hoje .semana-dia-cabecalho{background:#2b2a2f!important;border-bottom:1px solid #45424b!important;min-height:78px!important}
-.semana-dia-hoje .semana-dia-cabecalho{background:#383048!important}
-.semana-dia-nome{color:#c7c3d0!important;font-size:10px!important}
-.semana-dia-numero,.semana-dia-hoje .semana-dia-numero{color:#f6f3fa!important;font-size:23px!important}
-.semana-dia-hoje .semana-dia-numero{color:#c1acff!important}
-.semana-adicionar{background:#3c3943!important;color:#f6efff!important;border-color:#55505f!important}
+.semana-dia-hoje .semana-dia-cabecalho{background:#303c48!important}
+.semana-dia-nome{color:#c3c9d0!important;font-size:10px!important}
+.semana-dia-numero,.semana-dia-hoje .semana-dia-numero{color:#f7f7f7!important;font-size:23px!important}
+.semana-dia-hoje .semana-dia-numero{color:#acd4ff!important}
+.semana-adicionar{background:#3c3943!important;color:#f8f8f8!important;border-color:#55505f!important}
 .semana-itens{background:transparent!important;padding:9px!important;gap:9px!important}
 .semana-dia-vazio{color:#b2aebb!important;font-size:11px!important}
-.semana-item{background:#34303e!important;border:1px solid #554a69!important;border-left:3px solid #997ef7!important;color:#f6f2ff!important;border-radius:10px!important;padding:11px 10px!important}
-.semana-item-atividade{background:#332e48!important;border-color:#65538d!important}
+.semana-item{background:#30373e!important;border:1px solid #4a5969!important;border-left:3px solid #7eb8f7!important;color:#f9f9f9!important;border-radius:10px!important;padding:11px 10px!important}
+.semana-item-atividade{background:#2e3b48!important;border-color:#536f8d!important}
 .semana-item-prova{background:#41312d!important;border-color:#785448!important}
 .semana-item-trabalho{background:#3b332b!important;border-color:#806043!important}
 .semana-item-estudo{background:#293b34!important;border-color:#4c806b!important}
-.semana-item-tipo{color:#ccbfff!important;font-size:9px!important}
+.semana-item-tipo{color:#bfdeff!important;font-size:9px!important}
 .semana-item-prova .semana-item-tipo{color:#ffc2a3!important}
 .semana-item-trabalho .semana-item-tipo{color:#ffc68c!important}
 .semana-item-estudo .semana-item-tipo{color:#9decc8!important}
-.semana-item>strong{color:#f8f6fb!important;font-size:12px!important;line-height:1.45!important;white-space:normal!important;overflow-wrap:anywhere!important}
-.semana-item-materia,.semana-item-horario{color:#dbd5e4!important;font-size:10px!important;white-space:normal!important}
+.semana-item>strong{color:#f9f9f9!important;font-size:12px!important;line-height:1.45!important;white-space:normal!important;overflow-wrap:anywhere!important}
+.semana-item-materia,.semana-item-horario{color:#d5dce4!important;font-size:10px!important;white-space:normal!important}
 /* MÊS: sem branco, sem dias cinzentos ilegíveis, células contíguas */
 .calendario-mes{background:#202023!important;border-color:#3d3b43!important;overflow-x:auto!important}
 .calendario-semana-nomes{background:#2b2a2f!important;border-bottom:1px solid #49474f!important}
-.calendario-semana-nomes span{color:#c7c3d0!important;font-size:10px!important}
+.calendario-semana-nomes span{color:#c3c9d0!important;font-size:10px!important}
 .calendario-grade{background:#37353d!important;gap:1px!important}
-.calendario-dia,.calendario-outro-mes{background:#252529!important;color:#f4f1f8!important;border:0!important;border-radius:0!important;min-height:137px!important;opacity:1!important}
-.calendario-dia:hover{background:#302d39!important}
+.calendario-dia,.calendario-outro-mes{background:#252529!important;color:#f5f5f5!important;border:0!important;border-radius:0!important;min-height:137px!important;opacity:1!important}
+.calendario-dia:hover{background:#2d3339!important}
 .calendario-outro-mes{background:#1c1c20!important}
 .calendario-outro-mes .calendario-numero{color:#96929f!important}
-.calendario-hoje{background:#322b43!important;box-shadow:inset 0 0 0 1px #9579db!important}
-.calendario-numero{color:#eeebf5!important;font-size:12px!important}
-.calendario-hoje .calendario-numero{background:#8e70f4!important;color:white!important}
-.calendario-adicionar{background:transparent!important;color:#c9baf5!important}
+.calendario-hoje{background:#2b3743!important;box-shadow:inset 0 0 0 1px #79a8db!important}
+.calendario-numero{color:#ebf0f5!important;font-size:12px!important}
+.calendario-hoje .calendario-numero{background:#70b0f4!important;color:white!important}
+.calendario-adicionar{background:transparent!important;color:#bad7f5!important}
 .calendario-dia:hover .calendario-adicionar,.calendario-adicionar:focus-visible{opacity:1!important}
-.calendario-item{border:1px solid transparent!important;border-radius:8px!important;padding:7px 8px 7px 11px!important;min-width:0;background:#352d49!important}
-.calendario-item-atividade{background:#393150!important;border-color:#635185!important}
+.calendario-item{border:1px solid transparent!important;border-radius:8px!important;padding:7px 8px 7px 11px!important;min-width:0;background:#2d3b49!important}
+.calendario-item-atividade{background:#314050!important;border-color:#516a85!important}
 .calendario-item-prova{background:#49332c!important;border-color:#765244!important}
 .calendario-item-trabalho{background:#493b2c!important;border-color:#806345!important}
 .calendario-item-estudo{background:#2d4038!important;border-color:#497960!important}
-.calendario-item strong,.calendario-item span{color:#f4effb!important;font-size:10px!important;line-height:1.35!important}
-.calendario-item span{color:#d1cbd8!important;font-size:9px!important}
-.calendario-mais{color:#c6b7f3!important;font-size:10px!important}
+.calendario-item strong,.calendario-item span{color:#f6f6f6!important;font-size:10px!important;line-height:1.35!important}
+.calendario-item span{color:#cbd1d8!important;font-size:9px!important}
+.calendario-mais{color:#b7d4f3!important;font-size:10px!important}
 /* Estudos em visão semanal/mensal */
-.estudo-dia{background:#27272b!important;color:#f6f3fa!important;border-color:#414047!important}
-.estudo-dia>strong,.estudo-dia h3,.estudo-cal-nav>div strong{color:#f6f3fa!important}
-.estudo-cal-nav>div span{color:#bebaca!important}
+.estudo-dia{background:#27272b!important;color:#f7f7f7!important;border-color:#414047!important}
+.estudo-dia>strong,.estudo-dia h3,.estudo-cal-nav>div strong{color:#f7f7f7!important}
+.estudo-cal-nav>div span{color:#bac2ca!important}
 .estudo-mes-grid{background:#34323b!important;border:1px solid #47434f!important;gap:1px!important}
-.estudo-mes-dia{background:#28272d!important;color:#f5f3f9!important;border:0!important;opacity:1!important}
+.estudo-mes-dia{background:#28272d!important;color:#f7f7f7!important;border:0!important;opacity:1!important}
 .estudo-mes-dia.fora{background:#202024!important;color:#9f9aa9!important}
-.estudo-mes-dia>strong,.estudo-mes-dia>span{color:#eee9f5!important}
-.estudo-mes-item{background:#403654!important;color:#f6f2ff!important;border:1px solid #675487!important;border-radius:7px!important}
+.estudo-mes-dia>strong,.estudo-mes-dia>span{color:#e9eff5!important}
+.estudo-mes-item{background:#364454!important;color:#f9f9f9!important;border:1px solid #546d87!important;border-radius:7px!important}
 /* Agenda pública e avisos: fundo preto em vez de "páginas bege" */
 .agenda-publica-navegacao{background:#28272d!important}
-.agenda-publica-card{background:#28272d!important;color:#f6f4fa!important}
-.agenda-publica-card h3,.agenda-publica-autor strong{color:#f8f6fc!important}
-.agenda-publica-card-icone{background:#433954!important;color:#d4bfff!important}
+.agenda-publica-card{background:#28272d!important;color:#f8f8f8!important}
+.agenda-publica-card h3,.agenda-publica-autor strong{color:#fafafa!important}
+.agenda-publica-card-icone{background:#394654!important;color:#bfdeff!important}
 .agenda-publica-tipo-atividade{background:#2c463a!important;color:#a1f2c8!important}
-.agenda-publica-tipo-estudo{background:#453044!important;color:#f0bfe9!important}
-.agenda-publica-autor-avatar{background:#3b3451!important;color:#cfbfff!important}
-.agenda-publica-controle,.agenda-publica-semana-autor{background:transparent!important;color:#f0ecf6!important}
+.agenda-publica-tipo-estudo{background:#303a45!important;color:#f0bfe9!important}
+.agenda-publica-autor-avatar{background:#344251!important;color:#bfdeff!important}
+.agenda-publica-controle,.agenda-publica-semana-autor{background:transparent!important;color:#ecf1f6!important}
 .avisos-destaque{background:#242125!important;border:1px solid #685239!important;border-left:4px solid #ff9659!important;border-radius:17px!important;box-shadow:none!important}
 .avisos-destaque::before{display:none!important}
 .avisos-destaque-titulo span,.avisos-destaque-contador,.aviso-publico-meta{color:#ffb882!important}
@@ -211,39 +211,39 @@ input[type=checkbox],input[type=radio]{accent-color:#9476ff!important}
 .aviso-publico-acoes button.excluir{color:#ffabb7!important}
 /* Atrasados: antes era a única página inteiramente clara */
 .nk-atrasados-pagina{max-width:1480px!important;padding:37px 39px 60px!important}
-.nk-atrasados-cabecalho h1{color:#f9f8fb!important}
+.nk-atrasados-cabecalho h1{color:#fbfbfb!important}
 .nk-atrasados-cabecalho p{color:var(--nk-muted)!important}
 .nk-atrasados-resumo{gap:14px!important}
 .nk-atrasados-metrica{background:#202023!important;padding:21px!important;min-height:121px!important}
-.nk-atrasados-metrica strong{color:#f6f3fa!important}
+.nk-atrasados-metrica strong{color:#f7f7f7!important}
 .nk-atrasados-filtros{display:flex!important;gap:6px!important;padding:5px!important;width:fit-content;max-width:100%;margin-bottom:20px!important}
-.nk-atrasados-filtros button{color:#d3cfdb!important;padding:8px 14px!important}
-.nk-atrasados-item{background:#28272b!important;color:#f6f3fa!important}
-.nk-atrasados-item h3,.nk-atrasados-vazio strong{color:#f6f3fa!important}
-.nk-atrasados-item p,.nk-atrasados-vazio{color:#c1bcc9!important}
+.nk-atrasados-filtros button{color:#cfd5db!important;padding:8px 14px!important}
+.nk-atrasados-item{background:#28272b!important;color:#f7f7f7!important}
+.nk-atrasados-item h3,.nk-atrasados-vazio strong{color:#f7f7f7!important}
+.nk-atrasados-item p,.nk-atrasados-vazio{color:#bcc2c9!important}
 .nk-atrasados-tipo{color:#ffc3ad!important;background:#48312c!important}
-.nk-atrasados-acoes button{background:#7759e9!important;color:#fff!important;border:1px solid #9177f8!important}
-.nk-atrasados-acoes a{background:#39363f!important;color:#e8dfff!important;border:1px solid #5f556a!important}
+.nk-atrasados-acoes button{background:#599fe9!important;color:#fff!important;border:1px solid #77b5f8!important}
+.nk-atrasados-acoes a{background:#39363f!important;color:#dfeeff!important;border:1px solid #555f6a!important}
 .nk-atrasados-vazio{background:#222125!important;border:1px dashed #504b58!important}
 .nk-atrasados-badge:not([hidden]){background:#ff784f!important;color:#190c07!important;font-weight:800!important}
 /* Status e pequenos cartões que antes eram brancos */
 .estado-vazio,.estado-vazio-menor{background:transparent!important;color:var(--nk-ink)!important;border:0!important;box-shadow:none!important}
-.estado-vazio h3,.estado-vazio-menor h3{color:#f6f3f9!important}
-.estado-vazio p,.estado-vazio-menor p{color:#b9b5c3!important}
-.dia-semana{background:#29292d!important;border-color:#44414c!important;color:#f6f3fa!important}
-.dia-semana:hover,.dia-semana.hoje{background:#383049!important;border-color:#8064bf!important}
-.dia-numero,.dia-semana.hoje .dia-numero{color:#f4eefa!important}
-.dia-nome,.dia-quantidade{color:#c2bece!important}
-.perfil-identidade h2,.perfil-sessao h3{color:#f7f3fc!important}
-.perfil-identidade p,.perfil-sessao p,.perfil-ajuda{color:#b7b2c2!important}
-.perfil-avatar-grande{background:#4c3a7b!important;color:#f3eaff!important}
+.estado-vazio h3,.estado-vazio-menor h3{color:#f7f7f7!important}
+.estado-vazio p,.estado-vazio-menor p{color:#b5bcc3!important}
+.dia-semana{background:#29292d!important;border-color:#44414c!important;color:#f7f7f7!important}
+.dia-semana:hover,.dia-semana.hoje{background:#303c49!important;border-color:#6490bf!important}
+.dia-numero,.dia-semana.hoje .dia-numero{color:#f5f5f5!important}
+.dia-nome,.dia-quantidade{color:#bec6ce!important}
+.perfil-identidade h2,.perfil-sessao h3{color:#f9f9f9!important}
+.perfil-identidade p,.perfil-sessao p,.perfil-ajuda{color:#b2bac2!important}
+.perfil-avatar-grande{background:#3a597b!important;color:#f5f5f5!important}
 .perfil-divisor{border-color:#45414c!important}
 .perfil-sessao-conteudo{background:#29282c!important;border:1px solid #403e47!important;border-radius:12px!important}
 /* painel de notificações no dashboard */
-#nexo-push-painel{background:#252429!important;color:#f5f2fa!important;border:1px solid #4c445c!important;border-radius:16px!important;box-shadow:0 18px 50px #0008!important}
-#nexo-push-painel strong{color:#f8f5fb!important}
-#nexo-push-status{color:#bbb6c9!important}
-#nexo-push-painel button{background:#7054d9!important;color:white!important;border-radius:9px!important}
+#nexo-push-painel{background:#252429!important;color:#f7f7f7!important;border:1px solid #44505c!important;border-radius:16px!important;box-shadow:0 18px 50px #0008!important}
+#nexo-push-painel strong{color:#f9f9f9!important}
+#nexo-push-status{color:#b6bfc9!important}
+#nexo-push-painel button{background:#5494d9!important;color:white!important;border-radius:9px!important}
 /* UX: sem animação para quem prefere movimento reduzido */
 @media(max-width:1100px){.dashboard{padding:28px 22px 48px!important}}
 @media(max-width:900px){
@@ -275,3 +275,67 @@ input[type=checkbox],input[type=radio]{accent-color:#9476ff!important}
 @media (min-width:851px) and (max-width:900px){
  .menu-mobile{display:flex!important;align-items:center;justify-content:center}
 }
+
+/* ================================================================
+   NK LUCILAN • PALETA PESSOAL | Azul sobre preto, sem roxo
+   ================================================================ */
+:root{--nk-cor-acento:#60a5fa;--nk-cor-acento-forte:#3b82f6;--cor-primaria:#60a5fa}
+:is(.semana-item,.calendario-item).nk-evento-colorido{
+  background:var(--nk-evento-fundo)!important;
+  border:1px solid var(--nk-evento-borda)!important;
+  border-left:4px solid var(--nk-evento-cor)!important;
+  color:#f5f7fa!important;
+  transition:background .15s,border-color .15s,transform .15s!important;
+}
+:is(.semana-item,.calendario-item).nk-evento-colorido:hover,
+:is(.semana-item,.calendario-item).nk-evento-colorido:focus-visible{
+  background:var(--nk-evento-fundo)!important;
+  border-color:var(--nk-evento-cor)!important;
+  box-shadow:0 0 0 2px var(--nk-evento-borda)!important;
+}
+:is(.semana-item,.calendario-item).nk-evento-colorido .semana-item-tipo{color:var(--nk-evento-cor)!important}
+:is(.semana-item,.calendario-item).nk-evento-colorido strong{color:#fff!important}
+:is(.semana-item,.calendario-item).nk-evento-colorido span:not(.semana-item-tipo){color:#d6dce5!important}
+.nk-evento-editavel{cursor:pointer!important}
+.nk-evento-editavel:focus-visible{outline:2px solid #60a5fa!important;outline-offset:2px!important}
+.nk-materia-icone-colorido{background:color-mix(in srgb,var(--nk-evento-cor) 17%,#202023)!important;color:var(--nk-evento-cor)!important;border:1px solid var(--nk-evento-cor)!important}
+.nk-materia-cor-campo{border:1px solid #424550;padding:15px;border-radius:12px;background:#1c1c20}
+.nk-materia-cor-ajuda{color:#b5beca!important;font-size:12px!important;margin:5px 0 12px}
+.nk-materia-cor-controles{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.nk-materia-cor-controles input[type=color]{width:58px!important;height:42px!important;border-radius:9px!important;padding:3px!important;cursor:pointer!important;background:#30343a!important;border:1px solid #565d68!important}
+.nk-materia-cor-controles>span{color:#d4deea!important;font-size:12px!important;flex:1}
+.nk-materia-cor-limpar{background:#30343a!important;color:#dbe5f2!important;border:1px solid #596474!important;border-radius:9px!important;padding:9px 12px!important;cursor:pointer!important}
+.nk-paleta-amostras{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0 6px}
+.nk-paleta-amostra{display:inline-block;flex:0 0 26px;width:26px;height:26px;border-radius:8px!important;border:2px solid #43464f!important;cursor:pointer;outline:none}
+.nk-paleta-amostra.selecionada,.nk-paleta-amostra:hover{outline:2px solid #e7eefb!important;outline-offset:2px!important}
+.nk-paleta-sobreposicao{position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:20000;display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(7px)}
+.nk-paleta-dialogo{width:min(100%,470px);max-height:calc(100vh - 32px);overflow-y:auto;padding:25px;background:#222226;color:#f5f7fa;border:1px solid #4e535c;border-radius:19px;box-shadow:0 32px 80px #000c;font-family:Inter,system-ui,sans-serif}
+.nk-paleta-topo{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.nk-paleta-topo>div>span{display:block;font-size:10px;font-weight:800;letter-spacing:.14em;color:#71b0ff}
+.nk-paleta-topo h2{margin:4px 0 0;font-size:21px;color:#fff}
+.nk-paleta-fechar{background:#34383f;border:1px solid #525763;border-radius:10px;width:36px;height:36px;color:#f9fafb;cursor:pointer}
+.nk-paleta-explicacao{font-size:13px;color:#bfc8d4;margin:12px 0 16px}
+.nk-paleta-preview{--nk-evento-cor:#3b82f6;--nk-evento-fundo:#203b5d;--nk-evento-borda:#557fb4;display:flex;align-items:center;gap:10px;background:var(--nk-evento-fundo);border:1px solid var(--nk-evento-borda);border-left:4px solid var(--nk-evento-cor);border-radius:10px;padding:13px 14px;min-width:0}
+.nk-paleta-preview-marca{width:9px;height:9px;border-radius:50%;background:var(--nk-evento-cor);flex-shrink:0}
+.nk-paleta-preview-titulo{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px;color:#fff}
+.nk-paleta-preview-hex{font-size:11px;color:#d6e2f2}
+.nk-paleta-livre{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:17px 0 12px}
+.nk-paleta-livre label{font-size:12px;color:#e6ebf2;flex:1;min-width:150px}
+.nk-paleta-livre input[type=color]{width:50px!important;height:39px!important;border-radius:9px!important;padding:3px!important;cursor:pointer!important;background:#353942!important;border:1px solid #566274!important}
+.nk-paleta-livre input.nk-paleta-hex{width:99px!important;min-width:0!important;height:38px!important;background:#17191d!important;color:#e7f1ff!important;border:1px solid #545d6c!important;border-radius:9px!important;padding:8px!important;text-transform:uppercase!important}
+.nk-paleta-automatica{width:100%;background:#282f38;border:1px solid #576273;border-radius:10px;padding:11px;color:#dae7f7;cursor:pointer;text-align:left}
+.nk-paleta-automatica.selecionada{border-color:#60a5fa;background:#1f3953;color:#b9dcff}
+.nk-paleta-acoes{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}
+.nk-paleta-acoes button{border:1px solid #555e6b;border-radius:10px;padding:11px 15px;font:600 12px Inter,system-ui,sans-serif;cursor:pointer}
+.nk-paleta-cancelar{background:#34383e;color:#e5e7eb}
+.nk-paleta-salvar{background:#2878d7;color:#fff;border-color:#4189e4!important}
+.nk-paleta-salvar:disabled{opacity:.6;cursor:wait}
+.nk-paleta-erro{color:#fecaca;background:#4e2529;border-radius:8px;padding:10px;margin-top:10px;font-size:12px}
+.nk-paleta-erro[hidden]{display:none!important}
+@media(max-width:480px){.nk-paleta-dialogo{padding:18px}.nk-paleta-hex{max-width:100px}}
+
+/* Legenda atualizada com matérias que possuem cor própria. */
+.nk-legenda-materias{display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;margin:3px 0 18px;padding:10px 12px;background:#1e2024;border:1px solid #343b44;border-radius:11px}
+.nk-legenda-materias>strong{font-size:9px;font-weight:800;letter-spacing:.1em;color:#9fb8d8;margin-right:3px}
+.nk-legenda-materia{display:inline-flex;align-items:center;gap:6px;color:#dce4ed;font-size:11px}
+.nk-legenda-materia i{width:10px;height:10px;border-radius:4px;border:1px solid #ffffff3c;flex-shrink:0}

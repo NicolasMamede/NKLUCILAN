@@ -206,7 +206,7 @@ async function carregarDadosSupabase() {
                 nexoSupabase
                     .from("materias")
                     .select(
-                        "id, nome, professor"
+                        "id, nome, professor, cor"
                     )
                     .eq(
                         "usuario_id",
@@ -222,7 +222,7 @@ async function carregarDadosSupabase() {
                 nexoSupabase
                     .from("atividades")
                     .select(
-                        "id, titulo, descricao, data, horario, materia_id, concluida, no_calendario, criado_em"
+                        "id, titulo, descricao, data, horario, materia_id, cor_personalizada, concluida, no_calendario, criado_em"
                     )
                     .eq(
                         "usuario_id",
@@ -246,7 +246,7 @@ async function carregarDadosSupabase() {
                 nexoSupabase
                     .from("provas")
                     .select(
-                        "id, nome, conteudo, data, horario, materia_id, no_calendario, criado_em"
+                        "id, nome, conteudo, data, horario, materia_id, cor_personalizada, no_calendario, criado_em"
                     )
                     .eq(
                         "usuario_id",
@@ -269,7 +269,7 @@ async function carregarDadosSupabase() {
 
                 nexoSupabase
                     .from("trabalhos")
-                    .select("id, nome, descricao, data, horario, materia_id, criado_em")
+                    .select("id, nome, descricao, data, horario, materia_id, cor_personalizada, criado_em")
                     .eq("usuario_id", usuarioLogado.id)
                     .order("data", { ascending: true })
 
@@ -342,6 +342,8 @@ async function carregarDadosSupabase() {
                             materiaId:
                                 item.materia_id || "",
 
+                            corPersonalizada: item.cor_personalizada || null,
+
                             concluida:
                                 Boolean(
                                     item.concluida
@@ -403,6 +405,8 @@ async function carregarDadosSupabase() {
                             materiaId:
                                 item.materia_id || "",
 
+                            corPersonalizada: item.cor_personalizada || null,
+
                             criadoEm:
                                 item.criado_em || ""
 
@@ -422,7 +426,7 @@ async function carregarDadosSupabase() {
             trabalhosSupabase = (respostaTrabalhos.data || []).map(function (item) {
                 return { id: item.id, nome: item.nome, descricao: item.descricao || "", data: item.data,
                     horario: item.horario ? String(item.horario).slice(0,5) : "",
-                    materiaId: item.materia_id || "", criadoEm: item.criado_em || "" };
+                    materiaId: item.materia_id || "", corPersonalizada: item.cor_personalizada || null, criadoEm: item.criado_em || "" };
             });
         }
 
@@ -564,6 +568,8 @@ function renderizarMes() {
 
     }
 
+
+    NKPaleta.atualizarLegenda(materiasSupabase, '.mes-legenda');
 
     calendarioGrade.innerHTML =
         "";
@@ -827,6 +833,7 @@ function renderizarMes() {
 
                         materiaId:
                             atividade.materiaId,
+                        id: atividade.id, corPersonalizada: atividade.corPersonalizada,
 
                         horario:
                             atividade.horario || ""
@@ -860,6 +867,7 @@ function renderizarMes() {
 
                         materiaId:
                             prova.materiaId,
+                        id: prova.id, corPersonalizada: prova.corPersonalizada,
 
                         horario:
                             prova.horario || ""
@@ -873,7 +881,7 @@ function renderizarMes() {
         trabalhos
             .filter(function (trabalho) { return trabalho.data === iso; })
             .forEach(function (trabalho) {
-                itens.push({ tipo: "trabalho", titulo: trabalho.nome, materiaId: trabalho.materiaId, horario: trabalho.horario || "" });
+                itens.push({ tipo: "trabalho", titulo: trabalho.nome, materiaId: trabalho.materiaId, id: trabalho.id, corPersonalizada: trabalho.corPersonalizada, horario: trabalho.horario || "" });
             });
 
 
@@ -1040,6 +1048,29 @@ function criarItemCalendario(item) {
         detalhe
     );
 
+
+    // Cor individual > cor da matéria > cor padrão do tipo.
+    NKPaleta.aplicar(elemento, item, materiasSupabase);
+    elemento.classList.add('nk-evento-editavel');
+    elemento.setAttribute('role', 'button');
+    elemento.setAttribute('tabindex', '0');
+    elemento.setAttribute('aria-label', `Personalizar cor de ${item.titulo}`);
+    const editarCor = () => NKPaleta.editarCompromisso(item, materiasSupabase, usuarioLogado?.id, async () => {
+        await carregarDadosSupabase();
+        renderizarMes();
+    });
+    elemento.addEventListener('click', event => {
+        event.stopPropagation();
+        editarCor();
+    });
+    elemento.addEventListener('dblclick', event => event.stopPropagation());
+    elemento.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            event.stopPropagation();
+            editarCor();
+        }
+    });
 
     return elemento;
 

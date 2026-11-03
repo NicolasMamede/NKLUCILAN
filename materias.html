@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/dashboard.css?v=black2">
     <link rel="stylesheet" href="css/nexo-lembretes.css?v=4">
     <link rel="stylesheet" href="css/nk-atrasados.css?v=black2">
-    <link rel="stylesheet" href="css/nk-dark-premium.css?v=black2">
+    <link rel="stylesheet" href="css/nk-dark-premium.css?v=colors1">
 </head>
 
 <body>
@@ -409,6 +409,18 @@
 
 
 
+                <!-- PERSONALIZAÇÃO DA COR DA MATÉRIA -->
+                <div class="formulario-campo nk-materia-cor-campo">
+                    <label for="corMateria">Cor da matéria (opcional)</label>
+                    <p class="nk-materia-cor-ajuda">Aplicada automaticamente aos eventos desta matéria na Semana e no Mês.</p>
+                    <div class="nk-materia-cor-controles">
+                        <input type="color" id="corMateria" value="#3b82f6" aria-label="Escolher cor da matéria">
+                        <span id="corMateriaResumo">Sem cor definida · cores por tipo</span>
+                        <button type="button" id="limparCorMateria" class="nk-materia-cor-limpar">Restaurar padrão</button>
+                    </div>
+                    <div id="materiaAmostras" class="nk-paleta-amostras" aria-label="Sugestões de cores"></div>
+                </div>
+
                 <!-- BOTÕES -->
 
                 <div class="formulario-botoes">
@@ -447,7 +459,8 @@
     <script src="js/supabase.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/usuario.js"></script>
-    <script src="js/materias.js"></script>
+    <script src="js/nk-paleta.js?v=colors1"></script>
+    <script src="js/materias.js?v=colors1"></script>
 
     <script src="js/nexo-lembretes.js?v=3"></script>
     <script src="js/nk-atrasados-menu.js?v=2"></script>
