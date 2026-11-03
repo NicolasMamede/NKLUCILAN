@@ -1,0 +1,23 @@
+NK LUCILAN — BLACK EDITION (versão 2)
+========================================
+Tema visual inspirado no exemplo enviado: preto/grafite, roxo, detalhes quentes, fonte Inter.
+
+ARQUIVOS MODIFICADOS
+- 12 páginas HTML (incluindo login e Atrasados).
+- css/nk-dark-premium.css (estilos globais, calendários, formulários e Agenda Pública).
+- css/nk-dark-login.css (login com fundo escuro, campos e textos legíveis).
+- js/nk-atrasados-mobile.js (menu lateral no celular somente para Atrasados).
+
+Todos os outros arquivos JavaScript e o service worker foram preservados.
+Sem mudanças no Supabase, nas tabelas, nas notificações ou no cron.
+
+INSTALAÇÃO
+1) Faça uma cópia do projeto atual.
+2) Extraia o conteúdo deste ZIP para a pasta do projeto, substituindo os arquivos correspondentes.
+3) Preserve sua pasta .git (não incluída no ZIP).
+4) Teste localmente com Live Server no VS Code e depois publique via git add / commit / push.
+5) Recarregue com Ctrl+Shift+R para descartar CSS antigo do cache.
+
+A fonte Inter é carregada do Google Fonts; se ficar indisponível, o site usa fontes do sistema.
+Teste principalmente as páginas Semana, Mês, Estudos, Agenda Pública e Atrasados,
+além do login e do menu lateral no celular, antes de considerar concluída a publicação.

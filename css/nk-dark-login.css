@@ -1,2 +1,33 @@
-/* NK Lucilan Dark Premium — Login */
-:root{color-scheme:dark}body.pagina-login{background:#0b1120!important;color:#edf4ff!important;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif!important}.login-apresentacao{background:radial-gradient(circle at 20% 25%,#1d3f72 0%,transparent 42%),linear-gradient(160deg,#101d33,#0b1120)!important}.login-area{background:#0b1120!important;color:#edf4ff!important}.login-box{background:#172236!important;border:1px solid #2b3c55!important;border-radius:22px!important;box-shadow:0 25px 70px #0004!important;padding:34px!important}.login-cabecalho h2,.login-box label{color:#edf4ff!important}.login-cabecalho p,.login-box p{color:#a3b4cc!important}.login-box input{background:#101d31!important;color:#f8fbff!important;border:1px solid #344760!important;border-radius:10px!important;color-scheme:dark}.login-box input::placeholder{color:#8094b1!important}.login-box input:focus{border-color:#60a5fa!important;box-shadow:0 0 0 3px #3b82f626!important}.login-box button[type=submit]{background:linear-gradient(135deg,#2563eb,#3b82f6)!important;color:white!important;border-radius:10px!important}.logo-simbolo{background:linear-gradient(145deg,#2563eb,#60a5fa)!important}@media(max-width:750px){.login-box{padding:25px!important}}
+/* NK Lucilan Black Edition — tela de login */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{color-scheme:dark;--nk-login-purple:#9578ff}
+body.pagina-login{background:#121214!important;color:#f7f4fa!important;font-family:'Inter',ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif!important}
+.login-container{background:#121214!important}
+.login-apresentacao{background:radial-gradient(circle at 22% 27%,#3f335f 0%,transparent 45%),linear-gradient(155deg,#252328,#161518)!important;color:#fff!important}
+.login-apresentacao::before{border-color:#6c5b8d!important}
+.login-area{background:#151517!important;color:#f8f5fb!important}
+.login-box{background:#242428!important;border:1px solid #434047!important;border-radius:22px!important;box-shadow:0 25px 70px #0005!important;padding:36px!important}
+.login-cabecalho h2,.login-box label{color:#f9f6fc!important}
+.login-cabecalho p,.login-box p,.login-apresentacao-conteudo p{color:#c5c0ce!important}
+.login-apresentacao-conteudo h1{color:#fff!important}
+.login-apresentacao-conteudo h1 span,.login-etiqueta{color:#ba9fff!important}
+.logo-simbolo{background:linear-gradient(135deg,#a48cff,#7656e9)!important;border-radius:12px!important;color:#fff!important}
+.login-box input{background:#18181c!important;color:#f7f3fa!important;border:1px solid #4d4858!important;border-radius:10px!important;color-scheme:dark}
+.login-box input::placeholder{color:#9d97aa!important}
+.login-box input:focus{border-color:#a98cff!important;box-shadow:0 0 0 3px #9476ff30!important}
+.login-box button[type=submit]{background:linear-gradient(135deg,#9475fb,#7354e9)!important;color:white!important;border-radius:10px!important}
+@media(max-width:750px){.login-box{padding:25px!important}}
+.login-apresentacao :is(.decoracao,.login-decoracao) span{background:#413552!important}
+.login-mobile-logo,.senha-label a,.mostrar-senha{color:#b9a3ff!important}
+.login-mobile-logo:hover,.senha-label a:hover,.mostrar-senha:hover{color:#d6caff!important}
+.login-ajuda span{background:#45414d!important}
+.login-ajuda p,.login-conta{color:#bdb8c5!important}
+.login-conta strong{color:#e1d9f6!important}
+.login-rodape{color:#b8b0c3!important}
+.login-mensagem.ativo{background:#3c252a!important;border:1px solid #84505c!important;color:#ffc3cc!important}
+.campo input:-webkit-autofill,.campo input:-webkit-autofill:hover,.campo input:-webkit-autofill:focus{
+ -webkit-box-shadow:0 0 0 1000px #19191d inset!important;
+ -webkit-text-fill-color:#f5f3f9!important;
+ caret-color:#f5f3f9!important
+}
+@media(prefers-reduced-motion:reduce){.login-apresentacao-conteudo,.login-box{animation:none!important}}
