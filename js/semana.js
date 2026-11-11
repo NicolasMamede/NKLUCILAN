@@ -135,6 +135,20 @@ let inicioSemanaAtual =
 let dataSelecionada =
     "";
 
+let ultimaDataRenderizadaSemana = null;
+
+function verificarViradaDiaSemana() {
+    if (!usuarioLogado || document.hidden) return;
+    if (ultimaDataRenderizadaSemana !== NKPrazos.hojeISO()) {
+        renderizarSemana();
+        if (window.NKAtrasadosAtualizar) void window.NKAtrasadosAtualizar();
+    }
+}
+
+document.addEventListener("visibilitychange", verificarViradaDiaSemana);
+window.addEventListener("focus", verificarViradaDiaSemana);
+setInterval(verificarViradaDiaSemana, 60000);
+
 
 /* =====================================================
    DATAS
@@ -312,7 +326,7 @@ async function carregarDadosSupabase() {
 
             nexoSupabase
                 .from("trabalhos")
-                .select("id, nome, descricao, data, horario, materia_id, cor_personalizada, criado_em")
+                .select("id, nome, descricao, data, horario, materia_id, cor_personalizada, concluido, criado_em")
                 .eq("usuario_id", usuarioLogado.id)
                 .order("data", { ascending: true })
 
@@ -465,7 +479,7 @@ async function carregarDadosSupabase() {
                 return {
                     id: item.id, nome: item.nome, descricao: item.descricao || "",
                     data: item.data, horario: item.horario ? String(item.horario).slice(0, 5) : "",
-                    materiaId: item.materia_id || "", corPersonalizada: item.cor_personalizada || null, criadoEm: item.criado_em || ""
+                    materiaId: item.materia_id || "", corPersonalizada: item.cor_personalizada || null, concluido: Boolean(item.concluido), criadoEm: item.criado_em || ""
                 };
             });
         }
@@ -601,10 +615,8 @@ function renderizarSemana() {
         "";
 
 
-    const hojeISO =
-        dataParaISO(
-            new Date()
-        );
+    const hojeISO = NKPrazos.hojeISO();
+    ultimaDataRenderizadaSemana = hojeISO;
 
 
     const fimSemana =
@@ -828,7 +840,7 @@ function renderizarSemana() {
 
                         return (
                             atividade.data === iso &&
-                            !atividade.concluida
+                            NKPrazos.pendenteNoCalendario(atividade, hojeISO)
                         );
 
                     }
@@ -844,7 +856,8 @@ function renderizarSemana() {
                     function (prova) {
 
                         return (
-                            prova.data === iso
+                            prova.data === iso &&
+                            NKPrazos.pendenteNoCalendario(prova, hojeISO)
                         );
 
                     }
@@ -855,7 +868,9 @@ function renderizarSemana() {
 
 
         const trabalhosDia = trabalhos
-            .filter(function (trabalho) { return trabalho.data === iso; })
+            .filter(function (trabalho) {
+                return trabalho.data === iso && NKPrazos.pendenteNoCalendario(trabalho, hojeISO);
+            })
             .sort(ordenarPorHorario);
 
 

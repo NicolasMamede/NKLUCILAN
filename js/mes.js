@@ -143,6 +143,20 @@ let dataMesAtual =
 let dataSelecionada =
     "";
 
+let ultimaDataRenderizadaMes = null;
+
+function verificarViradaDiaMes() {
+    if (!usuarioLogado || document.hidden) return;
+    if (ultimaDataRenderizadaMes !== NKPrazos.hojeISO()) {
+        renderizarMes();
+        if (window.NKAtrasadosAtualizar) void window.NKAtrasadosAtualizar();
+    }
+}
+
+document.addEventListener("visibilitychange", verificarViradaDiaMes);
+window.addEventListener("focus", verificarViradaDiaMes);
+setInterval(verificarViradaDiaMes, 60000);
+
 
 /* =====================================================
    DATAS
@@ -269,7 +283,7 @@ async function carregarDadosSupabase() {
 
                 nexoSupabase
                     .from("trabalhos")
-                    .select("id, nome, descricao, data, horario, materia_id, cor_personalizada, criado_em")
+                    .select("id, nome, descricao, data, horario, materia_id, cor_personalizada, concluido, criado_em")
                     .eq("usuario_id", usuarioLogado.id)
                     .order("data", { ascending: true })
 
@@ -426,7 +440,7 @@ async function carregarDadosSupabase() {
             trabalhosSupabase = (respostaTrabalhos.data || []).map(function (item) {
                 return { id: item.id, nome: item.nome, descricao: item.descricao || "", data: item.data,
                     horario: item.horario ? String(item.horario).slice(0,5) : "",
-                    materiaId: item.materia_id || "", corPersonalizada: item.cor_personalizada || null, criadoEm: item.criado_em || "" };
+                    materiaId: item.materia_id || "", corPersonalizada: item.cor_personalizada || null, concluido: Boolean(item.concluido), criadoEm: item.criado_em || "" };
             });
         }
 
@@ -646,10 +660,8 @@ function renderizarMes() {
     const trabalhos = trabalhosSupabase;
 
 
-    const hojeISO =
-        dataParaISO(
-            new Date()
-        );
+    const hojeISO = NKPrazos.hojeISO();
+    ultimaDataRenderizadaMes = hojeISO;
 
 
     /*
@@ -815,7 +827,7 @@ function renderizarMes() {
 
                     return (
                         atividade.data === iso &&
-                        !atividade.concluida
+                        NKPrazos.pendenteNoCalendario(atividade, hojeISO)
                     );
 
                 }
@@ -849,7 +861,8 @@ function renderizarMes() {
                 function (prova) {
 
                     return (
-                        prova.data === iso
+                        prova.data === iso &&
+                        NKPrazos.pendenteNoCalendario(prova, hojeISO)
                     );
 
                 }
@@ -879,7 +892,9 @@ function renderizarMes() {
 
 
         trabalhos
-            .filter(function (trabalho) { return trabalho.data === iso; })
+            .filter(function (trabalho) {
+                return trabalho.data === iso && NKPrazos.pendenteNoCalendario(trabalho, hojeISO);
+            })
             .forEach(function (trabalho) {
                 itens.push({ tipo: "trabalho", titulo: trabalho.nome, materiaId: trabalho.materiaId, id: trabalho.id, corPersonalizada: trabalho.corPersonalizada, horario: trabalho.horario || "" });
             });

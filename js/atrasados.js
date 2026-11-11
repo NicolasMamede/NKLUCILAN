@@ -5,7 +5,7 @@
   { tabela:'trabalhos', tipo:'trabalho', nome:'Trabalho', campo:'concluido', titulo:'nome', pagina:'trabalhos.html', emoji:'📂' },
   { tabela:'estudos', tipo:'estudo', nome:'Estudo', campo:'concluido', titulo:'titulo', pagina:'estudos.html', emoji:'📚' }
  ];
- let usuario, itens=[], filtro='todos';
+ let usuario, itens=[], filtro='todos', ultimoDiaCarregado=null;
  const $ = id => document.getElementById(id);
  function hojeBrasil(){const p=Object.fromEntries(new Intl.DateTimeFormat('en-US',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date()).map(x=>[x.type,x.value]));return `${p.year}-${p.month}-${p.day}`;}
  function fmt(data){if(!data)return '';const [a,m,d]=data.split('-');return `${d}/${m}/${a}`;}
@@ -13,6 +13,7 @@
  async function carregar(){
   $('nk-atrasados-lista').innerHTML='<div class="nk-atrasados-vazio">Carregando pendências...</div>';
   const hoje=hojeBrasil();
+  ultimoDiaCarregado=hoje;
   const resultados=await Promise.all(fontes.map(async fonte=>{
    const campos=`id, data, ${fonte.titulo}, materia_nome`;
    const {data,error}=await nexoSupabase.from(fonte.tabela).select(campos).eq('usuario_id',usuario.id).lt('data',hoje).eq(fonte.campo,false).order('data',{ascending:true});
@@ -44,5 +45,15 @@
   $('nk-atrasados-lista').addEventListener('click',e=>{const b=e.target.closest('[data-nk-concluir]');if(b)void concluir(b.dataset.nkConcluir,b.dataset.nkTipo,b);});
   try{await carregar();}catch(e){$('nk-atrasados-lista').innerHTML='<div class="nk-atrasados-vazio">'+escapeHTML(e.message)+'</div>';}
  }
+ function verificarViradaDiaAtrasados() {
+  if (!usuario || document.hidden || ultimoDiaCarregado === hojeBrasil()) return;
+  void carregar().catch(erro => {
+   console.error('[NK Atrasados] Falha ao atualizar a data:', erro);
+   $('nk-atrasados-lista').innerHTML='<div class="nk-atrasados-vazio">'+escapeHTML(erro.message)+'</div>';
+  });
+ }
+ document.addEventListener('visibilitychange', verificarViradaDiaAtrasados);
+ window.addEventListener('focus', verificarViradaDiaAtrasados);
+ setInterval(verificarViradaDiaAtrasados, 60000);
  document.addEventListener('DOMContentLoaded',iniciar);
 })();
