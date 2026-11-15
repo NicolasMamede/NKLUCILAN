@@ -153,7 +153,11 @@
       toggle.setAttribute('aria-expanded', String(!value));
       toggle.textContent = value ? '🔔 Notificações' : '× Recolher';
     };
-    toggle.addEventListener('click', () => setCompact(!painel.classList.contains('nk-push-minimized')));
+    toggle.addEventListener('click', () => {
+      const next = !painel.classList.contains('nk-push-minimized');
+      setCompact(next);
+      if (next) painel.classList.remove('nk-push-open');
+    });
     painel.append(toggle, titulo, linha, status);
     document.body.append(painel);
     setCompact(compact.matches);

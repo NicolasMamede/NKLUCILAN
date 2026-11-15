@@ -1760,6 +1760,7 @@ function criarSemana() {
 
             quantidade.textContent =
                 "Nenhum item";
+            quantidade.classList.add("nk-empty-day");
 
         }
 

@@ -1,0 +1,263 @@
+/* NKLUCILAN Focus 3.0 — visual mobile inspirado em boas práticas de apps de tarefas.
+   Escopo deliberado: até 900px. Estilos desktop não são alterados.
+   Design próprio NKLUCILAN; sem assets ou marcas do TickTick. */
+@media (max-width:900px) {
+  :root { color-scheme: light;
+    --nk-bg:#f8fafc;--nk-side:#ffffff;--nk-surface:#ffffff;
+    --nk-surface2:#f8fafc;--nk-raised:#f1f5f9;--nk-ink:#202936;
+    --nk-muted:#6f7b8c;--nk-low:#8b97a5;--nk-line:#e9edf2;
+    --nk-purple:#4976eb;--nk-purple2:#3265e2;--nk-purple-dim:#edf3ff;
+    --nk-shadow:none;--cor-primaria:#4976eb;--texto-secundario:#6f7b8c;
+  }
+  html {background:#f8fafc!important;scrollbar-color:#cbd5e1 #f8fafc;color-scheme:light!important}
+  body,body .app,body .conteudo,body .dashboard {background:#f8fafc!important;color:#202936!important}
+  body {font-size:14px!important;line-height:1.5!important}
+  :where(h1,h2,h3,h4,h5,strong){color:#202936}
+  .conteudo {margin-left:0!important;width:100%!important;padding-bottom:calc(93px + env(safe-area-inset-bottom))!important}
+  .topo {height:62px!important;min-height:62px!important;padding:0 18px!important;background:rgba(255,255,255,.96)!important;border-bottom:1px solid #eef1f5!important;box-shadow:none!important;backdrop-filter:blur(14px)}
+  .topo-data {font-size:13px!important;color:#455268!important;font-weight:650!important}
+  .menu-mobile,.botao-icone {width:42px!important;height:42px!important;border:0!important;border-radius:13px!important;background:#f1f4f8!important;color:#293951!important;box-shadow:none!important}
+  .menu-mobile {font-size:21px!important;line-height:1!important}
+  .topo-acoes .botao-icone {font-size:19px!important}
+  .dashboard {max-width:760px!important;margin:0 auto!important;padding:22px 18px 42px!important}
+  .dashboard > section {min-width:0}
+  .boas-vindas,.mes-cabecalho,.semana-cabecalho,.atividades-cabecalho,.provas-cabecalho,.trabalhos-cabecalho,.estudos-cabecalho,.materias-cabecalho,.agenda-publica-cabecalho,.perfil-cabecalho {gap:12px!important}
+  :is(.boas-vindas,.mes-cabecalho,.semana-cabecalho,.atividades-cabecalho,.provas-cabecalho,.trabalhos-cabecalho,.estudos-cabecalho,.materias-cabecalho,.agenda-publica-cabecalho,.perfil-cabecalho) h1,.nk-atrasados-cabecalho h1 {
+    color:#1e293b!important;font-size:clamp(23px,6.5vw,30px)!important;line-height:1.18!important;letter-spacing:-.8px!important;font-weight:750!important;
+  }
+  .boas-vindas h1 span{color:#4976eb!important}
+  :is(.boas-vindas,.mes-cabecalho,.semana-cabecalho,.atividades-cabecalho,.provas-cabecalho,.trabalhos-cabecalho,.estudos-cabecalho,.materias-cabecalho,.agenda-publica-cabecalho,.perfil-cabecalho,.nk-atrasados-cabecalho) p{color:#718096!important;font-size:12px!important;line-height:1.5!important}
+  .pagina-etiqueta,.painel-etiqueta {display:none!important}
+  .painel-cabecalho h2 {color:#1e293b!important;font-size:16px!important;font-weight:700!important;letter-spacing:-.4px!important}
+  .painel-cabecalho>a,.contador-materias{color:#4976eb!important}
+  /* Menos molduras: as listas viram linhas simples dentro de superfícies brancas. */
+  :is(.painel,.resumo-card,.atividade-card,.prova-card,.trabalho-card,.estudo-card,.materia-card,.agenda-publica-card,.perfil-painel,.semana-dia,.calendario-mes,.estudo-dia,.estudo-mes-dia,.agenda-publica-resumo,.nk-atrasados-metrica,.nk-atrasados-item,.nk-atrasados-vazio){
+    color:#263345!important;background:#fff!important;border:1px solid #e9edf2!important;box-shadow:none!important;border-radius:16px!important;
+  }
+  :is(.resumo-card,.atividade-card,.prova-card,.trabalho-card,.estudo-card,.materia-card,.agenda-publica-card,.semana-dia):hover{transform:none!important;box-shadow:none!important;border-color:#e9edf2!important;background:#fff!important}
+  .painel {overflow:hidden!important}
+  .painel-cabecalho {background:#fff!important;border-color:#eff2f6!important;min-height:0!important;padding:17px!important}
+  :is(.lista-atividades,.lista-provas,.atividades-lista,.provas-lista,.trabalhos-lista,.estudos-lista,.materias-lista) {background:#fff!important}
+  :is(.atividade-card,.prova-card,.trabalho-card,.estudo-card,.materia-card,.agenda-publica-card){border-radius:0!important;border:0!important;border-bottom:1px solid #f0f2f6!important;padding:15px 16px!important;margin:0!important;background:#fff!important}
+  :is(.atividade-card,.prova-card,.trabalho-card,.estudo-card,.materia-card,.agenda-publica-card):last-child {border-bottom:0!important}
+  :is(.atividade-conteudo,.prova-conteudo,.trabalho-conteudo,.estudo-conteudo)>h3,
+  :is(.atividade-topo,.prova-topo,.trabalho-topo,.estudo-topo) h3,.materia-info h3,
+  :is(.semana-item,.calendario-item) strong{color:#263345!important;font-size:13px!important;font-weight:620!important}
+  :is(.atividade-descricao,.prova-observacao,.trabalho-descricao,.estudo-objetivo,.agenda-publica-descricao){color:#64748b!important}
+  :is(.atividade-meta,.prova-meta,.trabalho-meta,.estudo-meta,.agenda-publica-meta,.agenda-publica-autor,.materia-info p,.estudo-data){color:#7e899a!important}
+  :is(.atividade-materia,.prova-materia,.trabalho-materia,.estudo-materia,.agenda-publica-materia){background:#edf3fe!important;color:#496db9!important;border-color:#e1eafa!important;font-weight:600!important}
+  :is(.prova-data,.trabalho-data,.estudo-data,.agenda-publica-card-icone,.resumo-icone,.vazio-icone,.materia-icone){background:#edf3fe!important;color:#5679bd!important;border-color:#edf3fe!important}
+  :is(.prova-data,.trabalho-data) strong,.resumo-card strong,.nk-atrasados-metrica strong {color:#1e293b!important}
+  .atividade-check{background:#fff!important;border-color:#abb7c7!important;color:#fff!important}
+  .atividade-card.concluida,.prova-card.prova-realizada{background:#fafbfc!important}
+  .atividade-card.concluida .atividade-check{background:#4976eb!important;border-color:#4976eb!important}
+  .atividade-card.concluida .atividade-conteudo h3{color:#9aa5b6!important}
+  .prova-card.prova-hoje{background:#f1f6ff!important;border-color:#d6e4ff!important}
+  /* Resumo: números pequenos e úteis, sem três cards altos. */
+  .resumo {display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important;margin:14px 0 20px!important}
+  .resumo-card{padding:13px 10px!important;min-height:94px!important;gap:2px!important;border-radius:14px!important}
+  .resumo-card::before{display:none!important}
+  .resumo-card>strong {font-size:24px!important;letter-spacing:-.7px!important;line-height:1.1!important}
+  .resumo-card>p,.resumo-topo>span,.nk-atrasados-metrica span{font-size:10px!important;color:#7b8797!important}
+  .resumo-icone{width:27px!important;height:27px!important;font-size:15px!important;border-radius:9px!important}
+  .dashboard-grid{gap:12px!important}
+  .resumo-topo{align-items:center}
+  .botao-criar,.botao-salvar,.botao-vazio,.agenda-publica-adicionar {background:#4976eb!important;color:white!important;border:1px solid #4976eb!important;border-radius:12px!important;box-shadow:none!important;font-weight:650!important}
+  :is(.atividade-editar,.prova-editar,.trabalho-editar,.estudo-editar,.materia-editar,.agenda-publica-editar,.estudo-concluir,.botao-cancelar,.botao-sair,.modal-fechar,.modal-opcao,.calendario-adicionar,.semana-adicionar){background:#f5f7fb!important;color:#455369!important;border-color:#e7edf4!important;border-radius:10px!important}
+  :is(.atividade-excluir,.prova-excluir,.trabalho-excluir,.estudo-excluir,.materia-excluir,.agenda-publica-excluir){background:#fff5f5!important;color:#d95a6a!important;border-color:#ffe5e8!important}
+  :is(.atividades-filtros,.provas-filtros,.trabalhos-filtros,.estudos-filtros,.agenda-publica-navegacao,.nk-atrasados-filtros){background:#eff3f8!important;border:0!important;border-radius:12px!important;gap:3px!important;padding:4px!important}
+  :is(.filtro-atividade,.filtro-prova,.filtro-trabalho,.filtro-estudo,.agenda-publica-aba,.nk-atrasados-filtros button){background:transparent!important;border:0!important;color:#6d7a8e!important;border-radius:9px!important;font-size:12px!important}
+  :is(.filtro-atividade,.filtro-prova,.filtro-trabalho,.filtro-estudo,.agenda-publica-aba,.nk-atrasados-filtros button).ativo{background:#fff!important;color:#3764bd!important;box-shadow:0 1px 5px #234a8215!important}
+  /* Formulários e confirmações coerentes com a interface clara. */
+  .modal-fundo {background:#1a294a8a!important;backdrop-filter:blur(4px)!important}
+  .modal,.nk-paleta-dialogo {background:#fff!important;color:#202936!important;border-color:#dfe6f0!important;box-shadow:0 24px 80px #0c20353b!important}
+  .modal-cabecalho{border-color:#eef1f5!important}.modal-cabecalho h2,.modal-opcao strong{color:#263345!important}
+  .modal-cabecalho span,.modal-opcao span,.formulario-campo label,#nexoModalTrabalho .formulario-campo label{color:#64748b!important}
+  .modal-opcao-icone{background:#edf3fe!important;color:#4976eb!important}
+  input:not([type=checkbox]):not([type=radio]),select,textarea,
+  #nexoModalTrabalho .formulario-campo input,#nexoModalTrabalho .formulario-campo select,#nexoModalTrabalho .formulario-campo textarea{
+    background:#fff!important;color:#263345!important;border:1px solid #dbe2ec!important;color-scheme:light!important
+  }
+  input::placeholder,textarea::placeholder{color:#97a1b0!important}
+  input[type=checkbox],input[type=radio]{accent-color:#4976eb!important}
+  .calendario-opcao,.nexo-lembretes{background:#f8fafc!important;color:#263345!important;border-color:#e4eaf2!important}
+  .calendario-opcao strong,.calendario-opcao small,.nexo-lembretes>summary,.nexo-lembretes-conteudo{color:#374151!important;background:#f8fafc!important}
+  .nexo-lembretes-chamada,.nexo-lembretes-conteudo p,.nexo-lembretes small{color:#687589!important}
+  /* O menu lateral é uma lista simples; mantém todas as áreas do sistema. */
+  .sidebar {background:#fff!important;border-right:1px solid #edf0f5!important;color:#202936!important;box-shadow:18px 0 45px #14294a14!important}
+  .sidebar-logo>span {color:#1e293b!important}
+  .logo-simbolo{background:#4976eb!important;color:white!important;box-shadow:none!important}
+  .menu-item{color:#637083!important;background:transparent!important;border:0!important;border-radius:11px!important}
+  .menu-item:hover{background:#f1f5fb!important;color:#29374d!important}
+  .menu-item.ativo{background:#edf3ff!important;color:#3764bd!important;border:0!important;box-shadow:none!important}
+  .menu-icone,.menu-item.ativo .menu-icone,.menu-item:hover .menu-icone{color:inherit!important}
+  .menu-secao{color:#a3adba!important}
+  .sidebar-usuario{border-color:#edf0f5!important}
+  .usuario-botao{background:#f6f8fb!important;color:#202936!important}
+  .usuario-info strong{color:#243247!important}.usuario-info span,.usuario-seta{color:#7a8698!important}
+  .usuario-avatar{background:#e5efff!important;color:#436bc6!important}
+  .nk-mobile-close{background:#f1f5f9!important;color:#39465a!important;border:0!important}
+  .nk-mobile-overlay{background:#0c1b3180!important}
+  .nk-mobile-tabs{background:rgba(255,255,255,.98)!important;border-top:1px solid #eaeef4!important;box-shadow:none!important;padding:6px 8px calc(6px + env(safe-area-inset-bottom))!important;grid-template-columns:repeat(5,minmax(0,1fr))}
+  .nk-mobile-tab{color:#97a2b2!important;font-size:10px!important;font-weight:600!important;gap:4px!important;min-height:57px!important}
+  .nk-mobile-tab-icon{display:flex;align-items:center;justify-content:center;width:23px;height:23px}
+  .nk-mobile-tab-icon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .nk-mobile-tab.nk-current{color:#4976eb!important;background:transparent!important}
+  .nk-mobile-tab.nk-current .nk-mobile-tab-icon{color:#4976eb!important}
+  .nk-mobile-tab:focus-visible,.nk-mobile-tab:active{background:#edf3ff!important}
+  .nk-mobile-fab {position:fixed;z-index:990;right:19px;bottom:calc(87px + env(safe-area-inset-bottom));width:55px;height:55px;display:grid;place-items:center;background:#4976eb;color:#fff;border:0;border-radius:18px;box-shadow:0 9px 22px #4976eb55;font-size:30px;line-height:1;cursor:pointer}
+  .nk-mobile-fab:active{transform:scale(.96)}
+  .nk-mobile-sheet-shade {position:fixed;inset:0;z-index:1190;background:#11213d70;backdrop-filter:blur(2px);display:none}
+  .nk-mobile-sheet-shade.nk-visible{display:block}
+  .nk-mobile-sheet {position:fixed;z-index:1191;bottom:0;left:0;right:0;display:none;max-width:680px;margin:auto;padding:22px 18px calc(23px + env(safe-area-inset-bottom));background:#fff;color:#263345;border-radius:22px 22px 0 0;box-shadow:0 -14px 52px #0f254533}
+  .nk-mobile-sheet.nk-visible{display:block}
+  .nk-mobile-sheet-heading{display:flex;align-items:center;justify-content:space-between;margin:0 0 15px}
+  .nk-mobile-sheet-heading strong{font-size:17px;color:#1e293b}
+  .nk-mobile-sheet-close{width:36px;height:36px;border-radius:11px;border:0;background:#f1f5f9;color:#344054;font-size:22px}
+  .nk-mobile-sheet a{display:flex;align-items:center;gap:12px;min-height:56px;padding:12px;border-bottom:1px solid #f0f3f7;color:#263345;text-decoration:none;font-weight:600}
+  .nk-mobile-sheet a:last-child{border-bottom:0}
+  .nk-mobile-sheet a svg{width:20px;height:20px;color:#4976eb;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .nk-mobile-sheet a span{margin-left:auto;font-size:12px;color:#8b96a7;font-weight:500}
+  .nk-app-install,.nk-app-update{background:#fff!important;color:#263345!important;border-color:#dbe5f5!important;box-shadow:0 12px 30px #1f29372a!important}
+  /* Distâncias mínimas e manutenção de boa legibilidade em telas pequenas. */
+  .nk-atrasados-pagina{color:#263345!important}
+  .nk-atrasados-item,.nk-atrasados-metrica,.nk-atrasados-vazio{background:#fff!important;color:#263345!important;border-color:#e9edf2!important}
+  .nk-legenda-materias {background:#fff!important;border-color:#edf0f5!important;color:#546478!important}
+  .nk-legenda-materia{color:#546478!important}
+  .nk-legenda-materias>strong{color:#78879b!important}
+  .nk-push-toggle{background:#edf3ff!important;color:#3d6bd0!important}
+}
+@media (max-width:700px) {
+  .dashboard {padding:17px 16px 38px!important}
+  /* Contexto do título aparece sem competir com os compromissos. */
+  :is(.mes-cabecalho,.semana-cabecalho){margin-bottom:12px!important;gap:9px!important}
+  :is(.mes-cabecalho,.semana-cabecalho)>div>p {display:none!important}
+  .mes-navegacao,.semana-navegacao{align-items:center!important;justify-content:flex-end!important;gap:8px!important;margin-bottom:2px}
+  .mes-hoje,.semana-hoje{flex:0 1 auto!important;padding:0 13px!important;min-width:60px!important;height:38px!important;min-height:38px!important;background:#edf3ff!important;color:#416dce!important;border:0!important;border-radius:11px!important;font-size:12px!important}
+  .mes-seta,.semana-seta{width:38px!important;min-width:38px!important;height:38px!important;min-height:38px!important;background:#fff!important;color:#53637a!important;border:1px solid #e6ebf3!important;border-radius:11px!important;font-size:22px!important}
+  .mes-legenda,.semana-legenda{margin-bottom:12px!important;gap:15px!important;color:#8794a5!important;font-size:10px!important}
+  .mes-legenda span,.semana-legenda span{color:#8190a3!important}
+  /* Calendário mensal: dias sem cercas de quadradinhos, calendário legível. */
+  .calendario-mes {border:1px solid #e9edf4!important;border-radius:17px!important;overflow:hidden!important;background:#fff!important}
+  .calendario-semana-nomes {background:#fff!important;border:0!important;padding:9px 0 0!important}
+  .calendario-semana-nomes span{background:#fff!important;color:#9aa5b3!important;font-size:10px!important;padding:6px 0!important}
+  .calendario-grade {background:#fff!important;gap:0!important;border:0!important}
+  .calendario-dia,.calendario-outro-mes{background:#fff!important;color:#263345!important;border:0!important;border-radius:0!important;min-height:50px!important;height:clamp(50px,13.5vw,62px)!important;padding:2px!important}
+  .calendario-dia:hover{background:#f7faff!important}
+  .calendario-outro-mes{background:#fff!important}
+  .calendario-outro-mes .calendario-numero{color:#c6cbd3!important}
+  .calendario-dia-topo{gap:4px!important}
+  .calendario-numero{font-size:12px!important;font-weight:600!important;color:#415169!important}
+  .calendario-hoje{background:#fff!important;box-shadow:none!important}
+  .calendario-hoje .calendario-numero{background:#4976eb!important;color:#fff!important;border-radius:50%!important;width:27px!important;height:27px!important}
+  .calendario-dia.nk-dia-selecionado{background:#eef4ff!important;box-shadow:inset 0 0 0 1px #dfe8fa!important;border-radius:11px!important}
+  .nk-dia-contador{width:5px!important;min-width:5px!important;height:5px!important;min-height:5px!important;padding:0!important;border-radius:50%!important;overflow:hidden;color:transparent!important;font-size:0!important;background:#6592ea!important}
+  .calendario-outro-mes .nk-dia-contador{opacity:.3}
+  .nk-mobile-agenda {background:#fff!important;border:1px solid #e9edf4!important;border-radius:17px!important;padding:17px!important;margin-top:12px!important;color:#263345!important}
+  .nk-mobile-agenda-heading {margin-bottom:9px!important}
+  .nk-mobile-agenda-heading span{color:#8a96a7!important;font-size:9px!important}
+  .nk-mobile-agenda-heading h3{color:#263345!important;font-size:17px!important}
+  .nk-mobile-add{color:#4771c8!important;background:#eff4ff!important;border:0!important;border-radius:11px!important;min-height:38px!important;font-size:12px!important}
+  .nk-mobile-agenda-empty{padding:8px 0!important;color:#8a96a7!important;font-size:13px!important}
+  .nk-mobile-agenda-items{gap:0!important}
+  .nk-mobile-agenda-item{background:#fff!important;color:#263345!important;border:0!important;border-bottom:1px solid #eef1f5!important;border-radius:0!important;padding:12px 8px!important;min-height:58px!important}
+  .nk-mobile-agenda-item:last-child{border-bottom:0!important}
+  .nk-mobile-agenda-item strong{color:#263345!important}
+  .nk-mobile-agenda-item span{color:#748398!important}
+  .nk-mobile-agenda-item.nk-evento-colorido{background:#fff!important;border-left:3px solid var(--nk-evento-cor,#4976eb)!important}
+  /* A semana se parece mais com agenda diária e menos com sete painéis grandes. */
+  .semana-grade{gap:9px!important}
+  .semana-dia{min-height:0!important;border-radius:15px!important;border-color:#e9edf2!important;background:#fff!important}
+  .semana-dia-hoje{border-color:#adc6fc!important;box-shadow:none!important;background:#fff!important}
+  .semana-dia-cabecalho,.semana-dia-hoje .semana-dia-cabecalho{min-height:50px!important;background:#fff!important;border-bottom:1px solid #f1f3f6!important;padding:8px 13px!important}
+  .semana-dia-hoje .semana-dia-cabecalho{background:#f5f8ff!important}
+  .semana-dia-nome{color:#7b889b!important;font-size:11px!important}
+  .semana-dia-numero,.semana-dia-hoje .semana-dia-numero{color:#2b374a!important;font-size:19px!important}
+  .semana-dia-hoje .semana-dia-numero{color:#4776e3!important}
+  .semana-adicionar{background:#eef4ff!important;color:#4976eb!important;border:0!important}
+  .semana-itens{padding:4px 11px!important;min-height:0!important;gap:0!important}
+  .semana-dia-vazio{color:#a0aabb!important;font-size:11px!important;padding:9px 3px!important}
+  .semana-item {color:#263345!important;background:#fff!important;border:0!important;border-bottom:1px solid #f0f3f7!important;border-radius:0!important;min-height:57px!important;padding:10px 5px 10px 13px!important;margin:0!important}
+  .semana-item:last-child{border-bottom:0!important}
+  .semana-item::before{width:3px!important;left:0!important;border-radius:2px!important}
+  .semana-item>strong,.semana-item.nk-evento-colorido strong{color:#263345!important;font-size:13px!important}
+  .semana-item-tipo,.semana-item-materia,.semana-item-horario{font-size:10px!important;color:#798598!important}
+  .semana-item.nk-evento-colorido{background:#fff!important;border-left:3px solid var(--nk-evento-cor,#4976eb)!important}
+  .semana-item.nk-evento-colorido .semana-item-tipo{color:var(--nk-evento-cor,#4776e3)!important}
+  /* Remover margens excessivas de métricas e filtros. */
+  .boas-vindas{gap:10px!important}
+  .boas-vindas>.botao-criar{font-size:12px!important}
+  .resumo-card{padding:11px 8px!important}
+  .resumo-card .resumo-icone{display:none!important}
+  .resumo-topo{margin-bottom:5px!important}
+  .painel-cabecalho{flex-wrap:wrap!important;gap:10px!important}
+  .atividades-filtros,.provas-filtros,.trabalhos-filtros,.estudos-filtros{width:100%;overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap!important}
+  /* Elementos existentes de cores das matérias continuam aparecendo nos itens. */
+  .nk-materia-icone-colorido{background:color-mix(in srgb,var(--nk-evento-cor) 14%,#fff)!important;color:var(--nk-evento-cor)!important;border-color:color-mix(in srgb,var(--nk-evento-cor) 20%,#fff)!important}
+  .nk-legenda-materias{padding:8px 10px!important;gap:8px!important;margin:4px 0 10px!important}
+  .nk-legenda-materias>strong{display:none!important}
+}
+@media (max-width:370px){
+  .dashboard {padding-left:12px!important;padding-right:12px!important}
+  .nk-mobile-tab{font-size:9px!important}
+  .calendario-dia,.calendario-outro-mes{height:47px!important;min-height:47px!important}
+}
+
+@media(max-width:900px){
+  .nk-mobile-tab{border:0;background:transparent;font-family:inherit;cursor:pointer}
+  body.nk-sheet-aberto{overflow:hidden}
+  .nk-mobile-sheet[aria-hidden="true"]{display:none!important}
+  .nk-mobile-fab:focus-visible,.nk-mobile-sheet button:focus-visible,.nk-mobile-sheet a:focus-visible{outline:2px solid #2d63e7!important;outline-offset:3px}
+}
+@media(min-width:901px){.nk-mobile-fab,.nk-mobile-sheet,.nk-mobile-sheet-shade{display:none!important}}
+
+/* Refinamentos: agenda da página inicial e avisos sob demanda. */
+@media(max-width:900px){
+  .estado-vazio h3,.estado-vazio-menor h3{color:#263345!important}
+  .estado-vazio p,.estado-vazio-menor p{color:#8a96a8!important}
+  .estado-vazio,.estado-vazio-menor{background:transparent!important;color:#263345!important}
+  #nexo-push-painel{display:none!important;background:#fff!important;color:#263345!important;border:1px solid #e2e8f0!important;box-shadow:0 14px 35px #18283f2e!important;z-index:1205!important}
+  #nexo-push-painel.nk-push-open{display:block!important}
+  #nexo-push-painel strong{color:#263345!important}
+  #nexo-push-status{color:#617186!important}
+  #nexo-push-painel .nk-push-toggle{background:#edf3ff!important;color:#436ac5!important}
+  #nexo-push-painel button:not(.nk-push-toggle){background:#4976eb!important}
+  .dias-semana{display:grid!important;grid-template-columns:repeat(7,minmax(0,1fr))!important;gap:3px!important;padding:10px 12px 12px!important}
+  .dia-semana,.dia-semana:hover{background:#fff!important;color:#27354b!important;border:0!important;box-shadow:none!important;min-width:0!important;min-height:78px!important;border-radius:11px!important;padding:8px 2px!important;transform:none!important}
+  .dia-semana.hoje,.dia-semana.hoje:hover{background:#edf3ff!important;border:0!important;box-shadow:none!important}
+  .dia-nome{color:#8796ab!important;letter-spacing:0!important;font-size:9px!important}
+  .dia-numero,.dia-semana.hoje .dia-numero{color:#33465e!important;font-size:17px!important;line-height:1!important;margin:8px 0 0!important}
+  .dia-semana.hoje .dia-numero{color:#4775e2!important}
+  .dia-quantidade{color:#9ca8b5!important;font-size:8px!important;line-height:1.15!important;margin:7px 0 0!important;min-height:12px!important}
+}
+@media(max-width:700px){
+  .painel-hoje .estado-vazio,.painel-proximas .estado-vazio{padding:18px 10px!important}
+  .painel-hoje .estado-vazio .vazio-icone,.painel-proximas .estado-vazio .vazio-icone{width:43px!important;height:43px!important;font-size:20px!important}
+}
+
+@media(max-width:900px){
+  .dia-quantidade.nk-empty-day{display:none!important}
+  .nk-atrasados-pagina{padding:22px 18px 50px!important}
+  .nk-atrasados-cabecalho h1,.nk-atrasados-item h3,.nk-atrasados-vazio strong{color:#263345!important}
+  .nk-atrasados-item p,.nk-atrasados-vazio{color:#708096!important}
+  .nk-atrasados-tipo{background:#fff0e9!important;color:#b76441!important}
+  .nk-atrasados-acoes a{background:#eef3ff!important;color:#3764bd!important;border-color:#e1eafa!important}
+  .nk-atrasados-acoes button{background:#4976eb!important;color:#fff!important;border-color:#4976eb!important}
+  .perfil-identidade h2,.perfil-sessao h3{color:#263345!important}
+  .perfil-identidade p,.perfil-sessao p,.perfil-ajuda{color:#718096!important}
+  .avisos-destaque,.aviso-publico-card,.aviso-publico-novo {background:#fff!important;color:#263345!important;border-color:#e8edf3!important}
+  .avisos-destaque-titulo h2,.aviso-publico-titulo-linha h3{color:#263345!important}
+  .aviso-publico-conteudo>p{color:#738095!important}
+  .agenda-publica-card h3,.agenda-publica-autor strong{color:#263345!important}
+  .agenda-publica-controle,.agenda-publica-semana-autor{color:#59677b!important}
+  .agenda-publica-tipo-atividade{background:#e7f7ed!important;color:#247a52!important}
+  .agenda-publica-tipo-estudo{background:#f7ecff!important;color:#7844a9!important}
+  .estudo-mes-dia{background:#fff!important;color:#263345!important;border-color:#e9edf2!important}
+  .estudo-mes-dia.fora{background:#f8fafc!important;color:#a0aab8!important}
+  .estudo-mes-dia>strong,.estudo-mes-dia>span{color:#38485c!important}
+  .estudo-mes-item{background:#edf3ff!important;color:#345eae!important;border-color:#dce8fb!important}
+}
+@media(max-width:700px){
+  .estado-vazio,.estado-vazio-menor{min-height:175px!important;padding:18px 14px!important}
+  .dashboard-grid .estado-vazio .vazio-icone{display:none!important}
+}
