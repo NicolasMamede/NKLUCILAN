@@ -65,6 +65,24 @@
           proxy.type = 'button';
           proxy.className = original.className.replace('nk-mobile-extra', '') + ' nk-mobile-agenda-item';
           proxy.innerHTML = original.innerHTML;
+
+          // No Mês, o resumo do dia mostra a categoria acima do título,
+          // como os cartões da Semana. Não interfere nos outros calendários.
+          if (grid.id === 'calendarioGrade') {
+            const categorias = [
+              ['calendario-item-atividade', 'ATIVIDADE'],
+              ['calendario-item-trabalho', 'TRABALHO'],
+              ['calendario-item-prova', 'PROVA']
+            ];
+            const categoria = categorias.find(([classe]) => original.classList.contains(classe));
+            if (categoria) {
+              const tipo = document.createElement('span');
+              tipo.className = 'nk-mobile-agenda-tipo';
+              tipo.textContent = categoria[1];
+              proxy.prepend(tipo);
+            }
+          }
+
           const originalStyle = original.getAttribute('style');
           if (originalStyle) proxy.setAttribute('style', originalStyle);
           if (original.hasAttribute('role') || original.onclick) {
