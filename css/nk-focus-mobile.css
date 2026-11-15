@@ -318,3 +318,58 @@
       .nk-atrasados-cabecalho) p { color:#596b80!important; }
   .nk-mobile-tab:not(.nk-current) {color:#596b80!important}
 }
+
+
+/* ============================================================
+   NKLUCILAN Focus 3.2 | Cartões coloridos com contraste
+   Recupera a área preenchida por cor da versão anterior, sem
+   voltar aos títulos brancos nem alterar a experiência desktop.
+   A cor efetiva continua vindo de NKPaleta (matéria/compromisso).
+   ============================================================ */
+@media (max-width:900px) {
+  /* Evita que compromissos pareçam linhas simples no calendário. */
+  .semana-itens {
+    gap:7px!important;
+    padding:9px 11px 11px!important;
+  }
+  .nk-mobile-agenda-items {gap:9px!important;}
+
+  :is(.semana-item,.nk-mobile-agenda-item).nk-evento-colorido {
+    /* Base cinza quase branca: até a matéria BRANCA aparece como cartão.
+       Misturar 28% da cor dá uma tonalidade perceptível em toda a área,
+       sem reduzir a leitura das cores vibrantes e das mais escuras. */
+    background:color-mix(in srgb,var(--nk-evento-cor,#4976eb) 28%,#e9eef5)!important;
+    border:1px solid color-mix(in srgb,var(--nk-evento-cor,#4976eb) 52%,#b4c0d0)!important;
+    border-left:4px solid color-mix(in srgb,var(--nk-evento-cor,#4976eb) 77%,#64748b)!important;
+    border-radius:12px!important;
+    padding:11px 12px!important;
+    min-height:58px!important;
+    margin:0!important;
+    color:#202b3c!important;
+    box-shadow:none!important;
+    transition:background-color .15s,box-shadow .15s,border-color .15s!important;
+  }
+  /* A antiga barra interna duplicava a nova borda esquerda. */
+  :is(.semana-item,.nk-mobile-agenda-item).nk-evento-colorido::before {
+    display:none!important;
+  }
+  :is(.semana-item,.nk-mobile-agenda-item).nk-evento-colorido:is(:hover,:focus-visible) {
+    background:color-mix(in srgb,var(--nk-evento-cor,#4976eb) 33%,#e9eef5)!important;
+    border-color:color-mix(in srgb,var(--nk-evento-cor,#4976eb) 56%,#9aaac1)!important;
+    border-left-color:color-mix(in srgb,var(--nk-evento-cor,#4976eb) 77%,#64748b)!important;
+  }
+  :is(.semana-item,.nk-mobile-agenda-item).nk-evento-colorido:focus-visible {
+    outline:2px solid #3b70d8!important;
+    outline-offset:2px!important;
+  }
+  /* A cor da matéria fica no FUNDO, e nunca prejudica a leitura. */
+  :is(.semana-item,.nk-mobile-agenda-item).nk-evento-colorido strong {
+    color:#1d2939!important;
+    font-weight:700!important;
+    opacity:1!important;
+  }
+  :is(.semana-grade .semana-item,.calendario-item.nk-mobile-agenda-item).nk-evento-colorido span {
+    color:#233247!important;
+    opacity:1!important;
+  }
+}
