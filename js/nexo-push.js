@@ -142,8 +142,21 @@
     status.id = 'nexo-push-status';
     status.style.cssText = 'margin:10px 0 0;color:#475569';
     status.textContent = 'Ative e depois envie um teste.';
-    painel.append(titulo, linha, status);
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'nk-push-toggle';
+    toggle.textContent = '🔔 Notificações';
+    toggle.setAttribute('aria-label', 'Abrir ou recolher painel de notificações');
+    const compact = window.matchMedia('(max-width: 900px)');
+    const setCompact = value => {
+      painel.classList.toggle('nk-push-minimized', Boolean(value));
+      toggle.setAttribute('aria-expanded', String(!value));
+      toggle.textContent = value ? '🔔 Notificações' : '× Recolher';
+    };
+    toggle.addEventListener('click', () => setCompact(!painel.classList.contains('nk-push-minimized')));
+    painel.append(toggle, titulo, linha, status);
     document.body.append(painel);
+    setCompact(compact.matches);
     void atualizarBotaoAtivar();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', montar);

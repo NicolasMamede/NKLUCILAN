@@ -922,19 +922,11 @@ function renderizarMes() {
         */
 
         itens
-            .slice(
-                0,
-                3
-            )
             .forEach(
-                function (item) {
-
-                    areaItens.appendChild(
-                        criarItemCalendario(
-                            item
-                        )
-                    );
-
+                function (item, indice) {
+                    const bloco = criarItemCalendario(item);
+                    if (indice >= 3) bloco.classList.add('nk-mobile-extra');
+                    areaItens.appendChild(bloco);
                 }
             );
 

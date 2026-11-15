@@ -185,6 +185,11 @@
         }
     });
 
+    /* Esta extensão é carregada também no Início, Semana e Mês.
+       Nesses locais não existe o controlador da Agenda Pública;
+       não devemos interromper os demais scripts com ReferenceError. */
+    if (typeof carregarAgendaPublica !== 'function') return;
+
     /* ---------- carregar junto da agenda ---------- */
     const carregarBase = carregarAgendaPublica;
     carregarAgendaPublica = async function () {

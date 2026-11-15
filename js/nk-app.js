@@ -4,10 +4,39 @@
   'use strict';
   if (!window.isSecureContext || !('serviceWorker' in navigator)) return;
 
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').catch((error) => {
+  window.addEventListener('load', async () => {
+    try {
+      const registration = await navigator.serviceWorker.register('./sw.js', {updateViaCache:'none'});
+      // O app instalado pode ficar dias em segundo plano; conferir ao reabrir.
+      const check = () => {
+        if (!document.hidden && navigator.onLine) registration.update().catch(() => {});
+      };
+      check();
+      window.addEventListener('pageshow', check);
+      document.addEventListener('visibilitychange', check);
+    } catch (error) {
       console.warn('Instalação PWA indisponível:', error);
-    });
+    }
+  });
+
+  // Nunca recarregamos automaticamente uma página com formulário aberto.
+  // Quando uma nova versão assumir, o usuário escolhe a hora de atualizar.
+  let updateNotified = false;
+  const hadControllerAtLoad = Boolean(navigator.serviceWorker.controller);
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!hadControllerAtLoad || updateNotified) return;
+    updateNotified = true;
+    const prompt = document.createElement('div');
+    prompt.className = 'nk-app-update';
+    prompt.setAttribute('role', 'status');
+    const label = document.createElement('span');
+    label.textContent = 'Nova versão do NKLUCILAN disponível';
+    const action = document.createElement('button');
+    action.type = 'button';
+    action.textContent = 'Atualizar agora';
+    action.addEventListener('click', () => location.reload());
+    prompt.append(label, action);
+    document.body.appendChild(prompt);
   });
 
   const isStandalone = () =>

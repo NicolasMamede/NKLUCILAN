@@ -2,7 +2,7 @@
    Só salvamos arquivos estáticos do mesmo domínio. Respostas de login,
    chamadas Supabase e informações privadas NÃO são armazenadas neste cache.
    O comportamento de notificações push preexistente é preservado abaixo. */
-const NK_CACHE = 'nklucilan-app-v1';
+const NK_CACHE = 'nklucilan-app-v2';
 const NK_OFFLINE_URL = new URL('./offline.html', self.registration.scope).href;
 const NK_SHELL = [
   './offline.html',
@@ -37,7 +37,7 @@ self.addEventListener('fetch', (event) => {
 
   if (req.mode === 'navigate') {
     // Nunca cachear páginas que podem levar a estados de sessão desatualizados.
-    event.respondWith(fetch(req).catch(async () =>
+    event.respondWith(fetch(req, { cache: 'no-cache' }).catch(async () =>
       (await caches.match(NK_OFFLINE_URL)) || Response.error()
     ));
     return;
@@ -47,7 +47,7 @@ self.addEventListener('fetch', (event) => {
   if (!/\.(?:css|js|png|jpg|jpeg|webp|svg|ico|webmanifest)$/i.test(url.pathname)) return;
   event.respondWith((async () => {
     try {
-      const response = await fetch(req);
+      const response = await fetch(req, { cache: 'no-cache' });
       if (response.ok && response.type === 'basic') {
         const cache = await caches.open(NK_CACHE);
         await cache.put(req, response.clone());

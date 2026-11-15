@@ -1481,9 +1481,8 @@ function renderizarMesPublico() {
 
 
         itensDia
-            .slice(0, 3)
             .forEach(
-                function (item) {
+                function (item, indice) {
 
                     const elemento =
                         document.createElement("div");
@@ -1508,6 +1507,7 @@ function renderizarMesPublico() {
                         </span>
                     `;
 
+                    if (indice >= 3) elemento.classList.add('nk-mobile-extra');
                     container.appendChild(
                         elemento
                     );
