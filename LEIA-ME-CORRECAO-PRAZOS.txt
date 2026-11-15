@@ -1,0 +1,23 @@
+NKLUCILAN — CORREÇÃO DE PRAZOS
+
+O QUE MUDOU
+• Semana e Mês: não mostram provas, trabalhos ou atividades com data anterior à data atual (horário de Brasília).
+• Atividades e trabalhos concluídos também não aparecem nessas duas grades.
+• Calendários da página Trabalhos: mesma regra de ocultação dos itens vencidos/concluídos.
+• A página Trabalhos deixa de marcar trabalhos atrasados e não concluídos como "Realizados".
+• Atrasados continua listando atividades, trabalhos e estudos pendentes com prazo vencido; é possível concluí-los nela.
+• Provas antigas continuam acessíveis em Provas → Realizadas (o cadastro atual não possui campo de conclusão para provas).
+• A mudança de dia atualiza automaticamente as grades e a lista de atrasados com a página aberta, verificada a cada minuto ou ao voltar para a aba.
+• Os registros NÃO são apagados nem alterados no Supabase. Não é necessário executar SQL.
+
+COMO PUBLICAR
+1. Faça uma cópia de segurança do repositório.
+2. Substitua os arquivos antigos pelo conteúdo completo deste ZIP, incluindo js/nk-prazos.js.
+3. Envie as alterações ao GitHub (commit / push).
+4. Recarregue o site. Os scripts alterados têm novo parâmetro de versão nas páginas para evitar cache antigo.
+
+VALIDAÇÃO
+• Um item ontem: não fica na Semana ou no Mês, mas uma atividade/trabalho não concluído aparece em Atrasados.
+• Um item hoje ou amanhã: aparece, desde que não esteja concluído e seja cadastrado para o calendário.
+• Um item já concluído: não aparece na grade nem em Atrasados.
+• Uma prova passada: sai da grade e aparece no histórico da página Provas como Realizada.

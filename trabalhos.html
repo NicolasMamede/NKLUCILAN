@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NK Lucilan | Trabalhos</title>
+
+    <link rel="stylesheet" href="css/dashboard.css?v=black2">
+    <link rel="stylesheet" href="css/nexo-lembretes.css?v=4">
+    <link rel="stylesheet" href="css/nk-atrasados.css?v=black2">
+    <link rel="stylesheet" href="css/nk-dark-premium.css?v=colors1">
+    <link rel="stylesheet" href="css/nk-central.css?v=1">
+    <!-- NKLUCILAN — instalação como aplicativo -->
+    <link rel="manifest" href="./manifest.webmanifest">
+    <meta name="theme-color" content="#121214">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="NKLUCILAN">
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+    <link rel="stylesheet" href="css/nk-app.css?v=2">
+    <link rel="stylesheet" href="css/nk-focus-mobile.css?v=3.1">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- ========================================
+             MENU LATERAL
+        ========================================= -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-logo">
+
+                <div class="logo-simbolo">
+                    N
+                </div>
+
+                <span>
+                    NK LUCILAN
+                </span>
+
+            </div>
+
+
+            <nav class="sidebar-menu">
+
+                <a href="dashboard.html" class="menu-item">
+                    <span class="menu-icone"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9"/><path d="M9 20v-7h6v7"/></svg></span>
+                    <span>Início</span>
+                </a>
+
+                <a href="semana.html" class="menu-item">
+                    <span class="menu-icone"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h3M14 14h3M8 17h3"/></svg></span>
+                    <span>Semana</span>
+                </a>
+
+                <a href="mes.html" class="menu-item">
+                    <span class="menu-icone"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></span>
+                    <span>Mês</span>
+                </a>
+
+                <a href="atividades.html" class="menu-item">
+                    <span class="menu-icone"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M8 6h13M8 12h13M8 18h13"/><path d="m3 6 1.5 1.5L6.5 5M3 12l1.5 1.5L6.5 11M3 18l1.5 1.5L6.5 17"/></svg></span>
+                    <span>Atividades</span>
+                </a>
+
+                <a href="provas.html" class="menu-item">
+                    <span class="menu-icone"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M9 3h6l2 2h3v16H4V5h3z"/><path d="M8 10h8M8 14h8M8 18h5"/></svg></span>
+                    <span>Provas</span>
+                </a>
+
+                <a href="trabalhos.html" class="menu-item ativo">
+                    <span class="menu-icone"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18M10 12v2h4v-2"/></svg></span>
+                    <span>Trabalhos</span>
+                </a>
+
+                <a href="estudos.html" class="menu-item">
+                    <span class="menu-icone"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M12 7v14M3 6.4c3-1.7 6-1.7 9 .2 3-1.9 6-1.9 9-.2v13c-3-1.7-6-1.7-9 .2-3-1.9-6-1.9-9-.2z"/></svg></span>
+                    <span>Estudos</span>
+                </a>
+                <a href="atrasados.html" class="menu-item" id="menuAtrasados">
+                    <span class="menu-icone"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+                    <span>Atrasados <span class="nk-atrasados-badge" hidden></span></span>
+                </a>
+
+
+                <a href="materias.html" class="menu-item">
+                    <span class="menu-icone"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 4v16M9 9h11M9 15h11"/></svg></span>
+                    <span>Matérias</span>
+                </a>
+
+            
+                <div class="menu-secao">
+                    COMPARTILHADO
+                </div>
+
+                <a href="agenda-publica.html" class="menu-item">
+                    <span class="menu-icone"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="5" r="2"/><path d="M6 3h6M4 7v14h16V10M4 11h11M8 15h8M8 18h5"/></svg></span>
+                    <span>Agenda Pública</span>
+                </a>
+
+            </nav>
+
+
+            <!-- USUÁRIO -->
+
+            <div class="sidebar-usuario">
+
+                <button
+                    class="usuario-botao"
+                    id="usuarioBotao"
+                    type="button"
+                >
+
+                    <div
+                        class="usuario-avatar"
+                        id="usuarioAvatar"
+                    >
+                        U
+                    </div>
+
+                    <div class="usuario-info">
+
+                        <strong id="usuarioNome">
+                            Usuário
+                        </strong>
+
+                        <span>
+                            Minha conta
+                        </span>
+
+                    </div>
+
+                    <span class="usuario-seta">
+                        ›
+                    </span>
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ========================================
+             CONTEÚDO
+        ========================================= -->
+
+        <main class="conteudo">
+
+            <!-- TOPO -->
+
+            <header class="topo">
+
+                <button
+                    type="button"
+                    class="menu-mobile"
+                    id="menuMobile"
+                    aria-label="Abrir menu"
+                >
+                    ☰
+                </button>
+
+                <div class="topo-data">
+
+                    <span>
+                        Trabalhos
+                    </span>
+
+                </div>
+
+            </header>
+
+
+            <!-- ========================================
+                 PÁGINA
+            ========================================= -->
+
+            <div class="dashboard">
+
+                <!-- CABEÇALHO -->
+
+                <section class="boas-vindas">
+
+                    <div>
+
+                        <span class="pagina-etiqueta">
+                            TRABALHOS
+                        </span>
+
+                        <h1>
+                            Trabalhos
+                        </h1>
+
+                        <p>
+                            Organize seus trabalhos e acompanhe os próximos prazos de entrega.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="botao-criar"
+                        id="novaTrabalho"
+                    >
+
+                        <span>+</span>
+
+                        Novo trabalho
+
+                    </button>
+
+                </section>
+
+
+                <!-- ========================================
+                     RESUMO
+                ========================================= -->
+
+                <section class="resumo">
+
+                    <div class="resumo-card">
+
+                        <div class="resumo-topo">
+
+                            <span>
+                                Próximas
+                            </span>
+
+                            <div class="resumo-icone">
+                                ✎
+                            </div>
+
+                        </div>
+
+                        <strong id="totalProximas">
+                            0
+                        </strong>
+
+                        <p>
+                            trabalhos
+                        </p>
+
+                    </div>
+
+
+                    <div class="resumo-card">
+
+                        <div class="resumo-topo">
+
+                            <span>
+                                Hoje
+                            </span>
+
+                            <div class="resumo-icone">
+                                ◉
+                            </div>
+
+                        </div>
+
+                        <strong id="totalHoje">
+                            0
+                        </strong>
+
+                        <p>
+                            trabalhos
+                        </p>
+
+                    </div>
+
+
+                    <div class="resumo-card">
+
+                        <div class="resumo-topo">
+
+                            <span>
+                                Realizadas
+                            </span>
+
+                            <div class="resumo-icone">
+                                ✓
+                            </div>
+
+                        </div>
+
+                        <strong id="totalRealizadas">
+                            0
+                        </strong>
+
+                        <p>
+                            trabalhos
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ========================================
+                     PAINEL
+                ========================================= -->
+
+                <section class="painel">
+
+                    <div class="painel-cabecalho trabalhos-cabecalho">
+
+                        <div>
+
+                            <span class="painel-etiqueta">
+                                TRABALHOS
+                            </span>
+
+                            <h2>
+                                Meus trabalhos
+                            </h2>
+
+                        </div>
+
+
+                        <!-- FILTROS -->
+
+                        <div class="trabalhos-filtros">
+
+                            <button
+                                type="button"
+                                class="filtro-trabalho ativo"
+                                data-filtro="proximas"
+                            >
+                                Próximas
+                            </button>
+
+                            <button
+                                type="button"
+                                class="filtro-trabalho"
+                                data-filtro="hoje"
+                            >
+                                Hoje
+                            </button>
+
+                            <button
+                                type="button"
+                                class="filtro-trabalho"
+                                data-filtro="realizadas"
+                            >
+                                Realizadas
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ========================================
+                         LISTA
+                    ========================================= -->
+
+                    <div
+                        class="trabalhos-lista"
+                        id="listaTrabalhosPagina"
+                    >
+
+                        <div
+                            class="estado-vazio"
+                            id="trabalhosPaginaVazio"
+                        >
+
+                            <div class="vazio-icone">
+                                ✎
+                            </div>
+
+                            <h3>
+                                Nenhuma trabalho
+                            </h3>
+
+                            <p id="textoTrabalhosVazio">
+                                Você ainda não cadastrou nenhuma trabalho.
+                            </p>
+
+                            <button
+                                type="button"
+                                class="botao-vazio"
+                                id="criarPrimeiraTrabalho"
+                            >
+                                + Adicionar trabalho
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- ========================================
+         MODAL
+    ========================================= -->
+
+    <div
+        class="modal-fundo"
+        id="modalTrabalho"
+    >
+
+        <div class="modal">
+
+            <div class="modal-cabecalho">
+
+                <div>
+
+                    <span>
+                        TRABALHO
+                    </span>
+
+                    <h2 id="tituloModalTrabalho">
+                        Novo trabalho
+                    </h2>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="modal-fechar"
+                    id="fecharModalTrabalho"
+                    aria-label="Fechar"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- ========================================
+                 FORMULÁRIO
+            ========================================= -->
+
+            <form
+                class="formulario-nexo"
+                id="formTrabalho"
+            >
+
+                <!-- NOME -->
+
+                <div class="formulario-campo">
+
+                    <label for="nomeTrabalho">
+                        Nome da trabalho
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nomeTrabalho"
+                        placeholder="Ex.: Avaliação bimestral"
+                        maxlength="100"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- MATÉRIA -->
+
+                <div class="formulario-campo">
+
+                    <label for="materiaTrabalho">
+                        Matéria
+                    </label>
+
+                    <select id="materiaTrabalho">
+                    </select>
+
+                </div>
+
+
+                <!-- DATA -->
+
+                <div class="formulario-campo">
+
+                    <label for="dataTrabalho">
+                        Data
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataTrabalho"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- HORÁRIO -->
+
+                <div class="formulario-campo">
+
+                    <label for="horarioTrabalho">
+                        Horário (opcional)
+                    </label>
+
+                    <input
+                        type="time"
+                        id="horarioTrabalho"
+                    >
+
+                </div>
+
+
+                <!-- CONTEÚDO -->
+
+                <div class="formulario-campo">
+
+                    <label for="conteudoTrabalho">
+                        Descrição / orientações (opcional)
+                    </label>
+
+                    <textarea
+                        id="conteudoTrabalho"
+                        rows="4"
+                        maxlength="700"
+                        placeholder="Descrição, orientações, integrantes, observações..."
+                    ></textarea>
+
+                </div>
+
+
+
+
+                <!-- BOTÕES -->
+
+                <div class="formulario-botoes">
+
+                    <button
+                        type="button"
+                        class="botao-cancelar"
+                        id="cancelarTrabalho"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="botao-salvar"
+                    >
+                        Salvar trabalho
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/usuario.js"></script>
+    <script src="js/nk-prazos.js?v=1"></script>
+    <script src="js/trabalhos.js?v=prazos1"></script>
+
+    <script src="js/nexo-lembretes.js?v=3"></script>
+    <script src="js/nk-atrasados-menu.js?v=2"></script>
+    <script src="js/nk-central.js?v=1"></script>
+<script defer src="js/nk-mobile-nav.js?v=3"></script>
+<script defer src="js/nk-mobile-calendar.js?v=2"></script>
+<script defer src="js/nk-app.js?v=2"></script>
+</body>
+
+</html>

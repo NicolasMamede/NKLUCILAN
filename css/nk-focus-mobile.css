@@ -261,3 +261,60 @@
   .estado-vazio,.estado-vazio-menor{min-height:175px!important;padding:18px 14px!important}
   .dashboard-grid .estado-vazio .vazio-icone{display:none!important}
 }
+
+
+/* ============================================================
+   NKLUCILAN Focus 3.1 | Correção de contraste no tema claro
+   O tema escuro define títulos brancos em .nk-evento-colorido.
+   Aqui os textos voltam a ser legíveis sobre a superfície clara.
+   A marca lateral permanece com a cor escolhida para a matéria.
+   Restrições mobile: não altera as cores do layout de computador.
+   ============================================================ */
+@media (max-width:900px) {
+  /* A cor do compromisso fica na borda, nunca no texto pequeno:
+     branco e amarelo também são opções válidas da paleta. */
+  :is(.semana-item,.calendario-item,.nk-mobile-agenda-item).nk-evento-colorido {
+    background:#fff!important;
+    color:#263345!important;
+    border:0!important;
+    border-left:3px solid var(--nk-evento-cor,#4976eb)!important;
+    border-bottom:1px solid #eef1f5!important;
+  }
+  :is(.semana-item,.calendario-item,.nk-mobile-agenda-item).nk-evento-colorido strong,
+  :is(.semana-item,.calendario-item,.nk-mobile-agenda-item).nk-evento-colorido :is(h3,h4,p) {
+    color:#263345!important;
+  }
+  :is(.semana-item,.calendario-item,.nk-mobile-agenda-item).nk-evento-colorido span:not(.semana-item-tipo),
+  .semana-item.nk-evento-colorido .semana-item-materia,
+  .semana-item.nk-evento-colorido .semana-item-horario {
+    color:#526276!important;
+  }
+  .semana-item.nk-evento-colorido .semana-item-tipo {
+    color:#425f89!important;
+  }
+  /* Elementos pequenos que herdavam cores pálidas do tema anterior. */
+  .semana-dia-vazio,.nk-mobile-agenda-empty,.estado-vazio p,.estado-vazio-menor p {
+    color:#5e6d80!important;
+  }
+  .semana-dia-nome,.semana-item-tipo,.semana-item-materia,.semana-item-horario,
+  .nk-mobile-agenda-heading span,.nk-mobile-agenda-item span,
+  .calendario-semana-nomes span,.dia-nome,.dia-quantidade {
+    color:#596b80!important;
+  }
+  /* Cores não substituem rótulos: os nomes continuam legíveis. */
+  .nk-legenda-materia,.nk-legenda-materia span {color:#526276!important}
+  /* Textos secundários de todo o aplicativo: contraste >= 4,5:1
+     sobre branco para os rótulos e detalhes importantes. */
+  :is(.atividade-meta,.prova-meta,.trabalho-meta,.estudo-meta,
+      .agenda-publica-meta,.agenda-publica-autor,.materia-info p,.estudo-data),
+  .resumo-card > p,.resumo-topo > span,.nk-atrasados-metrica span,
+  .mes-legenda,.semana-legenda,.mes-legenda span,.semana-legenda span,
+  .nk-atrasados-item p,.perfil-identidade p,.perfil-sessao p,.perfil-ajuda {
+    color:#596b80!important;
+  }
+  :is(.boas-vindas,.mes-cabecalho,.semana-cabecalho,.atividades-cabecalho,
+      .provas-cabecalho,.trabalhos-cabecalho,.estudos-cabecalho,
+      .materias-cabecalho,.agenda-publica-cabecalho,.perfil-cabecalho,
+      .nk-atrasados-cabecalho) p { color:#596b80!important; }
+  .nk-mobile-tab:not(.nk-current) {color:#596b80!important}
+}
