@@ -1,0 +1,30 @@
+/* Elementos discretos de instalação PWA. Estilo segue a Black Edition. */
+.nk-app-install {
+  position:fixed; z-index:10000; bottom:calc(20px + env(safe-area-inset-bottom));
+  right:calc(18px + env(safe-area-inset-right));
+  display:flex; align-items:center; gap:2px; padding:5px;
+  border-radius:16px; border:1px solid #4d647b;
+  background:#222b36; box-shadow:0 12px 35px rgba(0,0,0,.45);
+  font:600 13px/1.35 system-ui,-apple-system,sans-serif;
+}
+.nk-app-install button { font:inherit; cursor:pointer; border:0; }
+.nk-app-install-action { min-height:38px; padding:9px 13px; border-radius:11px;
+  background:#68b0fb; color:#111d28; }
+.nk-app-install-action:hover { background:#93caff; }
+.nk-app-install-close { width:36px;height:38px;border-radius:10px;
+  color:#d9e9fa; background:transparent; font-size:23px!important; }
+.nk-app-install-close:hover {background:#3b4653;}
+.nk-app-ios-instructions {
+  position:fixed;z-index:10001;left:50%;bottom:calc(85px + env(safe-area-inset-bottom));
+  transform:translateX(-50%);width:min(90vw,360px);padding:20px;
+  border:1px solid #536b84;border-radius:18px;background:#202832;
+  color:#f2f7fc;box-shadow:0 14px 45px #0009;
+  font:14px/1.55 system-ui,-apple-system,sans-serif;
+}
+.nk-app-ios-instructions strong {color:#eaf4ff;display:block;font-size:15px;}
+.nk-app-ios-instructions p {margin:10px 0 15px;color:#c5d5e5;}
+.nk-app-ios-instructions button {border:0;border-radius:10px;padding:10px 16px;
+  color:#0d1c29;background:#85c5ff;font-weight:700;cursor:pointer;}
+@media (max-width:480px){
+  .nk-app-install{right:12px;bottom:calc(15px + env(safe-area-inset-bottom));}
+}
