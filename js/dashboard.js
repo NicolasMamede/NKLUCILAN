@@ -1168,6 +1168,22 @@ function renderizarAtividadesHoje() {
                 conteudo
             );
 
+            card.classList.add('nk-detalhes-acionavel');
+            card.setAttribute('role', 'button');
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('aria-label', `Ver detalhes de ${atividade.titulo}`);
+            const abrirDetalhes = () => NKDetalhes.abrir({
+                item: {...atividade, tipo:'atividade'},
+                materia: obterNomeMateria(atividade.materiaId)
+            });
+            card.addEventListener('click', event => {
+                if (event.target.closest('.atividade-check')) return;
+                abrirDetalhes();
+            });
+            card.addEventListener('keydown', event => {
+                if (event.target !== card || !['Enter',' '].includes(event.key)) return;
+                event.preventDefault();abrirDetalhes();
+            });
 
             listaAtividadesHoje.appendChild(
                 card
@@ -1579,6 +1595,19 @@ function renderizarProvas() {
                 );
 
 
+                card.classList.add('nk-detalhes-acionavel');
+                card.setAttribute('role', 'button');
+                card.setAttribute('tabindex', '0');
+                card.setAttribute('aria-label', `Ver detalhes da prova ${prova.nome}`);
+                const abrirDetalhesProva = () => NKDetalhes.abrir({
+                    item: {...prova, tipo:'prova'},
+                    materia: obterNomeMateria(prova.materiaId)
+                });
+                card.addEventListener('click', abrirDetalhesProva);
+                card.addEventListener('keydown', event => {
+                    if (event.target !== card || !['Enter',' '].includes(event.key)) return;
+                    event.preventDefault();abrirDetalhesProva();
+                });
                 listaProvas.appendChild(
                     card
                 );

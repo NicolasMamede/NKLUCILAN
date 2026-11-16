@@ -846,6 +846,7 @@ function renderizarMes() {
                         materiaId:
                             atividade.materiaId,
                         id: atividade.id, corPersonalizada: atividade.corPersonalizada,
+                        descricao: atividade.descricao || '', data: atividade.data,
 
                         horario:
                             atividade.horario || ""
@@ -881,6 +882,7 @@ function renderizarMes() {
                         materiaId:
                             prova.materiaId,
                         id: prova.id, corPersonalizada: prova.corPersonalizada,
+                        conteudo: prova.conteudo || '', data: prova.data,
 
                         horario:
                             prova.horario || ""
@@ -896,7 +898,7 @@ function renderizarMes() {
                 return trabalho.data === iso && NKPrazos.pendenteNoCalendario(trabalho, hojeISO);
             })
             .forEach(function (trabalho) {
-                itens.push({ tipo: "trabalho", titulo: trabalho.nome, materiaId: trabalho.materiaId, id: trabalho.id, corPersonalizada: trabalho.corPersonalizada, horario: trabalho.horario || "" });
+                itens.push({ tipo: "trabalho", titulo: trabalho.nome, materiaId: trabalho.materiaId, id: trabalho.id, corPersonalizada: trabalho.corPersonalizada, descricao: trabalho.descricao || '', data: trabalho.data, horario: trabalho.horario || "" });
             });
 
 
@@ -1061,21 +1063,25 @@ function criarItemCalendario(item) {
     elemento.classList.add('nk-evento-editavel');
     elemento.setAttribute('role', 'button');
     elemento.setAttribute('tabindex', '0');
-    elemento.setAttribute('aria-label', `Personalizar cor de ${item.titulo}`);
+    elemento.setAttribute('aria-label', `Ver detalhes de ${item.titulo}`);
+    elemento.setAttribute('title', `Ver detalhes de ${item.titulo}`);
     const editarCor = () => NKPaleta.editarCompromisso(item, materiasSupabase, usuarioLogado?.id, async () => {
         await carregarDadosSupabase();
         renderizarMes();
     });
+    const abrirDetalhes = () => NKDetalhes.abrir({
+        item, materia: obterNomeMateria(item.materiaId), personalizarCor: editarCor
+    });
     elemento.addEventListener('click', event => {
         event.stopPropagation();
-        editarCor();
+        abrirDetalhes();
     });
     elemento.addEventListener('dblclick', event => event.stopPropagation());
     elemento.addEventListener('keydown', event => {
         if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
             event.stopPropagation();
-            editarCor();
+            abrirDetalhes();
         }
     });
 

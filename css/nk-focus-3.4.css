@@ -1,0 +1,51 @@
+/* NKLUCILAN Focus 3.4 — detalhes, acessibilidade e contraste.
+   Desktop preservado: o modal de detalhes é neutro; revisão visual do tema claro só no mobile. */
+.nk-detalhes-abertos {overflow:hidden!important}
+.nk-detalhes-overlay {position:fixed;inset:0;z-index:22000;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(12,22,39,.72);backdrop-filter:blur(4px)}
+.nk-detalhes-dialogo {width:min(100%,490px);max-height:min(680px,calc(100dvh - 36px));overflow-y:auto;background:#fff;color:#203047;border:1px solid #e1e8f1;border-radius:20px;box-shadow:0 25px 80px rgba(11,21,40,.3);padding:24px;font-family:Inter,system-ui,sans-serif;box-sizing:border-box}
+.nk-detalhes-topo{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.nk-detalhes-identificacao{min-width:0;overflow-wrap:anywhere}
+.nk-detalhes-tipo{display:inline-block;color:#375fbe;background:#eaf1ff;border-radius:8px;padding:5px 9px;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase}
+.nk-detalhes-topo h2{font-size:21px;font-weight:750;line-height:1.3;letter-spacing:-.025em;color:#1f2937;margin:10px 0 0}
+.nk-detalhes-fechar{flex-shrink:0;width:37px;height:37px;background:#f1f4f8;color:#35465e;border:0;border-radius:10px;cursor:pointer;font-size:25px;line-height:1}
+.nk-detalhes-meta{display:flex;align-items:center;gap:8px 13px;flex-wrap:wrap;padding:16px 0;border-bottom:1px solid #e5ebf2;font-size:12px;color:#465872;font-weight:500}
+.nk-detalhes-descricao{padding:17px 0 5px}
+.nk-detalhes-descricao h3{font-size:12px;text-transform:uppercase;letter-spacing:.045em;color:#425671;font-weight:750;margin:0 0 9px}
+.nk-detalhes-descricao p{font-size:14px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere;color:#27384d;margin:0}
+.nk-detalhes-descricao p.nk-detalhes-sem-descricao{color:#63718a}
+.nk-detalhes-rodape{display:flex;justify-content:flex-end;padding-top:20px}
+.nk-detalhes-cor{min-height:42px;padding:10px 15px;border:1px solid #d8e4fa;background:#edf3ff;color:#305dc0;border-radius:11px;cursor:pointer;font:650 13px Inter,system-ui,sans-serif}
+.nk-detalhes-cor:focus-visible,.nk-detalhes-fechar:focus-visible{outline:3px solid #467bf0;outline-offset:3px}
+.nk-detalhes-acionavel{cursor:pointer}
+.nk-detalhes-acionavel:focus-visible,.nk-evento-editavel:focus-visible{outline:3px solid #467bf0!important;outline-offset:3px}
+@media(max-width:900px){
+  .nk-detalhes-dialogo{padding:19px;border-radius:18px;max-height:calc(100dvh - 24px)}
+  .nk-detalhes-overlay{padding:12px}
+  /* O modo claro não pode herdar letras brancas da antiga paleta escura. */
+  .nk-paleta-dialogo,.nk-paleta-dialogo :is(h2,p,label,strong,span){color:#263345}
+  .nk-paleta-dialogo .nk-paleta-topo h2{color:#1f2937!important}
+  .nk-paleta-dialogo .nk-paleta-topo>div>span{color:#315fba!important}
+  .nk-paleta-dialogo .nk-paleta-explicacao{color:#465872!important;line-height:1.55!important}
+  .nk-paleta-dialogo .nk-paleta-livre label{color:#27384d!important;font-weight:650!important}
+  .nk-paleta-dialogo .nk-paleta-preview-titulo{color:#1d2939!important}
+  .nk-paleta-dialogo .nk-paleta-preview-hex{color:#354a63!important}
+  .nk-paleta-dialogo .nk-paleta-livre .nk-paleta-hex{background:#fff!important;color:#1d2939!important;border:1px solid #aebdd0!important}
+  .nk-paleta-dialogo .nk-paleta-livre input[type=color]{background:#fff!important;border:1px solid #aebdd0!important}
+  .nk-paleta-dialogo .nk-paleta-fechar{background:#f0f3f8!important;color:#25374e!important;border-color:#dce4ef!important}
+  .nk-paleta-dialogo .nk-paleta-automatica{background:#f3f6fa!important;color:#29445f!important;border-color:#cbd6e5!important}
+  .nk-paleta-dialogo .nk-paleta-automatica.selecionada{background:#e7f1ff!important;color:#244f9a!important;border-color:#6195ee!important}
+  .nk-paleta-dialogo .nk-paleta-cancelar{background:#f3f5f9!important;color:#34465c!important;border-color:#d6dfea!important}
+  .nk-paleta-dialogo .nk-paleta-salvar{background:#316fda!important;color:#fff!important;border-color:#316fda!important}
+  .nk-paleta-dialogo .nk-paleta-erro{background:#fff0f0!important;color:#9f1a2a!important}
+  .nk-paleta-dialogo .nk-paleta-amostra.selecionada,.nk-paleta-dialogo .nk-paleta-amostra:focus-visible{outline:2px solid #315fc1!important;outline-offset:2px!important}
+  /* Textos secundários de formulários e cartões ainda herdavam cinza muito claro. */
+  :is(.formulario-campo,.campo) > label,
+  :is(.formulario-campo,.campo) :is(small,.ajuda,.campo-ajuda){color:#465872!important}
+  :is(.modal,.painel) input::placeholder,:is(.modal,.painel) textarea::placeholder{color:#66778f!important;opacity:1!important}
+  :is(.atividade-card,.prova-card).nk-detalhes-acionavel{position:relative}
+  :is(.atividade-card,.prova-card).nk-detalhes-acionavel:hover{background:#f8fbff!important}
+  /* Separação legível das tarefas do Hoje; a ação concluir continua independente. */
+  #listaAtividadesHoje .atividade-card{border-bottom:1px solid #dce4ef!important;padding-top:16px!important;padding-bottom:16px!important}
+  #listaAtividadesHoje .atividade-card:last-child{border-bottom:0!important}
+  #listaAtividadesHoje .atividade-card .atividade-descricao{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;color:#526276!important}
+}
