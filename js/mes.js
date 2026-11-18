@@ -1060,6 +1060,10 @@ function criarItemCalendario(item) {
 
     // Cor individual > cor da matéria > cor padrão do tipo.
     NKPaleta.aplicar(elemento, item, materiasSupabase);
+    NKFocus35.botaoConcluir(elemento,item,()=>usuarioLogado?.id,async()=>{
+        await carregarDadosSupabase();
+        renderizarMes();
+    });
     elemento.classList.add('nk-evento-editavel');
     elemento.setAttribute('role', 'button');
     elemento.setAttribute('tabindex', '0');
@@ -1383,7 +1387,7 @@ if (formAtividadeMes) {
                         .from(
                             "atividades"
                         )
-                        .insert({
+                        .insert(NKRecorrencias.gerarRegistros(formAtividadeMes, {
                             lembretes: NexoLembretes.valores(formAtividadeMes),
 
                             titulo:
@@ -1416,7 +1420,7 @@ if (formAtividadeMes) {
                             no_calendario:
                                 Boolean(atividadeMesNoCalendario && atividadeMesNoCalendario.checked)
 
-                        });
+                        }));
 
 
                 if (error) {

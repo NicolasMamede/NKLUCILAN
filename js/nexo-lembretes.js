@@ -1,7 +1,7 @@
 /* Nexo - escolhas de lembretes por compromisso. Apenas interface e persistencia. */
 (function () {
   'use strict';
-  const opcoes = [[10080,'1 semana antes'],[2880,'2 dias antes'],[1440,'1 dia antes'],[60,'1 hora antes'],[30,'30 minutos antes'],[15,'15 minutos antes'],[0,'Na hora']];
+  const opcoes = [[10080,'1 semana antes'],[2880,'2 dias antes'],[1440,'1 dia antes'],[360,'6 horas antes'],[180,'3 horas antes'],[60,'1 hora antes'],[30,'30 minutos antes'],[15,'15 minutos antes'],[0,'Na hora']];
   const ids = ['formAtividade','formProva','formTrabalho','formAtividadeSemana','formProvaSemana','formAtividadeMes','formProvaMes','formAtividadePublica','formProvaPublica','nexoFormTrabalho','formEstudo'];
   function montar(form) {
     if (!form || form.querySelector('.nexo-lembretes')) return;

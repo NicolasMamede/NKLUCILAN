@@ -61,10 +61,22 @@
         const list = document.createElement('div');
         list.className = 'nk-mobile-agenda-items';
         for (const original of items) {
-          const proxy = document.createElement('button');
-          proxy.type = 'button';
+          const possuiConclusao = Boolean(original.querySelector('.nk35-concluir'));
+          const proxy = document.createElement(possuiConclusao ? 'div' : 'button');
+          if (possuiConclusao) {proxy.setAttribute('role','button');proxy.tabIndex=0;}
+          else proxy.type = 'button';
           proxy.className = original.className.replace('nk-mobile-extra', '') + ' nk-mobile-agenda-item';
           proxy.innerHTML = original.innerHTML;
+          // Nunca duplicar um botão como HTML: o novo botão precisa executar a ação real.
+          proxy.querySelector('.nk35-concluir')?.remove();
+          if (possuiConclusao) {
+            const finish = document.createElement('button');
+            finish.type='button';finish.className='nk35-concluir';finish.textContent='✓';
+            finish.setAttribute('aria-label',original.querySelector('.nk35-concluir').getAttribute('aria-label'));
+            finish.addEventListener('click',event=>{event.stopPropagation();original.querySelector('.nk35-concluir')?.click();});
+            finish.addEventListener('keydown',event=>{event.stopPropagation();});
+            proxy.appendChild(finish);
+          }
 
           // No Mês, o resumo do dia mostra a categoria acima do título,
           // como os cartões da Semana. Não interfere nos outros calendários.
@@ -87,7 +99,10 @@
           if (originalStyle) proxy.setAttribute('style', originalStyle);
           if (original.hasAttribute('role') || original.onclick) {
             proxy.setAttribute('aria-label', original.getAttribute('aria-label') || `Abrir ${original.querySelector('strong')?.textContent || 'compromisso'}`);
-            proxy.addEventListener('click', () => original.click());
+            proxy.addEventListener('click', event => {if(event.target.closest('.nk35-concluir'))return;original.click();});
+            if (possuiConclusao) proxy.addEventListener('keydown', event => {
+              if (event.target === proxy && (event.key === 'Enter' || event.key === ' ')) {event.preventDefault();original.click();}
+            });
           } else {
             proxy.disabled = true; // A agenda pública é somente leitura.
           }

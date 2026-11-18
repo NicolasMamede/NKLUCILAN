@@ -448,6 +448,7 @@ function abrirNovaAtividade() {
         "Nova atividade";
 
     formAtividade.reset();
+    NKRecorrencias.edicao(formAtividade,false);
     NexoLembretes.definir(formAtividade,[1440]);
 
     preencherMaterias();
@@ -669,7 +670,7 @@ formAtividade.addEventListener(
                     error
                 } = await nexoSupabase
                     .from("atividades")
-                    .insert({
+                    .insert(NKRecorrencias.gerarRegistros(formAtividade, {
 
                         titulo:
                             titulo,
@@ -699,7 +700,7 @@ formAtividade.addEventListener(
                             noCalendario,
                             lembretes: NexoLembretes.valores(formAtividade)
 
-                    });
+                    }));
 
 
                 if (error) {
@@ -797,6 +798,7 @@ function editarAtividade(id) {
 
     descricaoAtividade.value =
         atividade.descricao || "";
+    NKRecorrencias.edicao(formAtividade,true);
     NexoLembretes.definir(formAtividade,atividade.lembretes);
 
     if (atividadeNoCalendario) {

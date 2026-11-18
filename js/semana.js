@@ -1145,6 +1145,10 @@ function criarItemSemana(
 
     // Cor individual > cor da matéria > cor padrão do tipo.
     NKPaleta.aplicar(elemento, item, materiasSupabase);
+    NKFocus35.botaoConcluir(elemento,item,()=>usuarioLogado?.id,async()=>{
+        await carregarDadosSupabase();
+        renderizarSemana();
+    });
     elemento.classList.add('nk-evento-editavel');
     elemento.setAttribute('role', 'button');
     elemento.setAttribute('tabindex', '0');
@@ -1450,7 +1454,7 @@ if (formAtividadeSemana) {
                         .from(
                             "atividades"
                         )
-                        .insert({
+                        .insert(NKRecorrencias.gerarRegistros(formAtividadeSemana, {
                             lembretes: NexoLembretes.valores(formAtividadeSemana),
 
                             titulo:
@@ -1483,7 +1487,7 @@ if (formAtividadeSemana) {
                             no_calendario:
                                 Boolean(atividadeSemanaNoCalendario && atividadeSemanaNoCalendario.checked)
 
-                        });
+                        }));
 
 
                 if (error) {
