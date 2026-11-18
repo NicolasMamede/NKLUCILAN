@@ -1441,6 +1441,7 @@ if (formAtividadeMes) {
                 }
 
 
+                window.dispatchEvent(new Event('nk:compromisso-salvo'));
                 await carregarDadosSupabase();
 
 
@@ -1665,6 +1666,7 @@ if (formProvaMes) {
                 }
 
 
+                window.dispatchEvent(new Event('nk:compromisso-salvo'));
                 await carregarDadosSupabase();
 
 

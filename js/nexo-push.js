@@ -27,9 +27,14 @@
     if (!VAPID_PUBLIC_KEY || VAPID_PUBLIC_KEY.startsWith('COLE_AQUI')) {
       throw new Error('Configure a chave VAPID pública no arquivo nexo-push.js.');
     }
+    // Pedir consentimento somente se ainda não existir. Fazer antes dos awaits
+    // para preservar o clique do usuário exigido pelos navegadores.
+    const permission = Notification.permission === 'default'
+      ? await Notification.requestPermission() : Notification.permission;
+    if (permission !== 'granted') throw new Error(
+      permission === 'denied' ? 'Notificações bloqueadas nas configurações do aparelho.' : 'Permissão de notificações não concedida.'
+    );
     const user = await getUser();
-    const permission = await Notification.requestPermission();
-    if (permission !== 'granted') throw new Error('Permissão de notificações não concedida.');
     const reg = await navigator.serviceWorker.register(WORKER_PATH);
     const ready = await navigator.serviceWorker.ready;
     let sub = await ready.pushManager.getSubscription();
@@ -75,41 +80,60 @@
     if (!payload.enviados) throw new Error('Nenhum dispositivo recebeu. Ative as notificações primeiro.');
     info(`Teste enviado para ${payload.enviados} dispositivo(s)!`);
   }
-  // O botão só desaparece se este navegador tiver uma inscrição
-  // efetivamente associada ao usuário autenticado no banco.
+  // A permissão do navegador NÃO é uma assinatura push. Apresente cada estado
+  // separadamente, sem pedir autorização novamente em todo acesso.
   async function atualizarBotaoAtivar() {
     const btn = document.getElementById('nk-botao-ativar-push');
     if (!btn) return;
-
-    btn.hidden = false;
-    btn.style.display = '';
-
-    if (!('Notification' in window) || Notification.permission !== 'granted' ||
-        !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
+    function mostrar(label, message) {
+      btn.hidden = false;
+      btn.style.display = '';
+      btn.textContent = label;
+      info(message);
+    }
+    function ocultar(message) {
+      btn.hidden = true;
+      btn.style.display = 'none';
+      info(message);
+    }
+    if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) {
+      mostrar('Notificações indisponíveis', 'Este dispositivo não suporta notificações push.');
+      btn.disabled = true;
+      return;
+    }
+    if (Notification.permission === 'denied') {
+      mostrar('Permissão bloqueada', 'Autorize notificações nas configurações do aplicativo ou navegador.');
+      btn.disabled = true;
+      return;
+    }
+    btn.disabled = false;
+    if (Notification.permission !== 'granted') {
+      mostrar('Ativar notificações', 'Permissão ainda não concedida neste dispositivo.');
+      return;
+    }
     try {
       const user = await getUser();
       const registration = await navigator.serviceWorker.getRegistration(WORKER_PATH);
-      if (!registration) return;
-      const subscription = await registration.pushManager.getSubscription();
-      if (!subscription) return;
-
-      const { data, error } = await nexoSupabase
-        .from('push_subscriptions')
-        .select('id')
-        .eq('usuario_id', user.id)
-        .eq('endpoint', subscription.endpoint)
-        .limit(1);
-
-      if (error) throw error;
-      if (data && data.length) {
-        btn.hidden = true;
-        btn.style.display = 'none';
-        info('Notificações ativadas neste dispositivo.');
+      const subscription = registration && await registration.pushManager.getSubscription();
+      if (!subscription) {
+        mostrar('Conectar dispositivo', 'Permissão concedida, mas o push ainda não está conectado neste aparelho.');
+        return;
       }
-    } catch (e) {
-      console.warn('[NK Lucilan Push] Não foi possível confirmar a inscrição:', e);
-      // Se houver dúvida, mantemos o botão para permitir reativação.
+      const {data,error}=await nexoSupabase.from('push_subscriptions')
+        .select('id').eq('usuario_id',user.id).eq('endpoint',subscription.endpoint).limit(1);
+      if (error) throw error;
+      if (!data || !data.length) {
+        // Uma assinatura local válida pode não estar registrada no banco (por
+        // exemplo, após troca de sessão). Tentar reparar sem nova permissão.
+        const {error:syncError}=await nexoSupabase.from('push_subscriptions').upsert({
+          usuario_id:user.id, endpoint:subscription.endpoint, subscription:subscription.toJSON()
+        },{onConflict:'endpoint'});
+        if (syncError) throw syncError;
+      }
+      ocultar('Permissão concedida e dispositivo conectado para push.');
+    } catch (error) {
+      console.warn('[NK Lucilan Push] Assinatura não confirmada:',error);
+      mostrar('Verificar conexão', 'Permissão já concedida. Falta confirmar a assinatura push no Supabase; toque para sincronizar.');
     }
   }
 
@@ -162,6 +186,10 @@
     document.body.append(painel);
     setCompact(compact.matches);
     void atualizarBotaoAtivar();
+    window.addEventListener('pageshow', () => void atualizarBotaoAtivar());
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) void atualizarBotaoAtivar();
+    });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', montar);
   else montar();

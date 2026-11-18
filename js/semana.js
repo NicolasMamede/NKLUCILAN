@@ -1506,6 +1506,7 @@ if (formAtividadeSemana) {
                 }
 
 
+                window.dispatchEvent(new Event('nk:compromisso-salvo'));
                 await carregarDadosSupabase();
 
 
@@ -1727,6 +1728,7 @@ if (formProvaSemana) {
                 }
 
 
+                window.dispatchEvent(new Event('nk:compromisso-salvo'));
                 await carregarDadosSupabase();
 
 

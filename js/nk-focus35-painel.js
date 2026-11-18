@@ -88,11 +88,21 @@
     ['nk35-busca','nk35-tipo','nk35-filtro'].forEach(id=>$(id)?.addEventListener(id==='nk35-busca'?'input':'change',buscar));
     $('nk35-ativar-lembretes')?.addEventListener('click',async()=>{
       const btn=$('nk35-ativar-lembretes');btn.disabled=true;
-      try{await NKLembretesAtivos.ativar();$('nk35-lembretes-status').textContent='Notificações permitidas. Os lembretes locais são verificados enquanto o app está aberto.';}
+      try{await NKLembretesAtivos.ativar();$('nk35-lembretes-status').textContent='Permissão confirmada. Lembretes locais ativos com o app aberto; push com app fechado é separado.';}
       catch(e){$('nk35-lembretes-status').textContent=e.message;}
       finally{btn.disabled=false;}
     });
-    if($('nk35-lembretes-status'))$('nk35-lembretes-status').textContent=!('Notification' in window)?'Notificações indisponíveis neste navegador.':Notification.permission==='granted'?'Notificações permitidas neste aparelho.':Notification.permission==='denied'?'Notificações bloqueadas; altere a permissão nas configurações do navegador.':'Toque em Ativar para permitir avisos enquanto o aplicativo estiver aberto.';
+    if($('nk35-lembretes-status')) {
+      const status=$('nk35-lembretes-status'),btn=$('nk35-ativar-lembretes');
+      status.textContent=!('Notification' in window)?'Notificações indisponíveis neste navegador.':
+        Notification.permission==='granted'?'Permissão já concedida neste aparelho. Lembretes locais funcionam com o app aberto. O envio com o app fechado depende do push do Início.':
+        Notification.permission==='denied'?'Notificações bloqueadas; altere a permissão nas configurações do aparelho.':
+        'Toque em Ativar para permitir avisos enquanto o aplicativo estiver aberto.';
+      if(btn && 'Notification' in window){
+        if(Notification.permission==='granted')btn.textContent='↻ Verificar lembretes';
+        if(Notification.permission==='denied'){btn.disabled=true;btn.textContent='Permissão bloqueada';}
+      }
+    }
     void carregar();
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',iniciar,{once:true});else iniciar();

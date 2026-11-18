@@ -53,11 +53,16 @@
   async function ativar() {
     if(!('Notification' in window))throw Error('Este navegador não oferece notificações.');
     if(!window.isSecureContext)throw Error('Use o endereço HTTPS do NKLUCILAN.');
-    const result=await Notification.requestPermission();
+    const result=Notification.permission==='granted'?'granted':
+      Notification.permission==='default'?await Notification.requestPermission():'denied';
     if(result!=='granted')throw Error('Permissão de notificações não concedida. Verifique os ajustes do navegador.');
     lastCheck=0;await verificar();return true;
   }
-  window.NKLembretesAtivos=Object.freeze({ativar,verificar});
+  // Os formulários disparam este evento APÓS uma gravação bem-sucedida.
+  // A próxima verificação consulta a data e os lembretes editados, não os antigos.
+  function reavaliar(){lastCheck=0;void verificar();}
+  window.NKLembretesAtivos=Object.freeze({ativar,verificar,reavaliar});
+  window.addEventListener('nk:compromisso-salvo',reavaliar);
   window.addEventListener('pageshow',()=>{lastCheck=0;void verificar();});
   document.addEventListener('visibilitychange',()=>{if(!document.hidden){lastCheck=0;void verificar();}});
   window.addEventListener('online',()=>{lastCheck=0;void verificar();});

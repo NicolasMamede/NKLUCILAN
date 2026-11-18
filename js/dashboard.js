@@ -2766,6 +2766,7 @@ function criarFormularioModal(config) {
                 }
 
 
+                window.dispatchEvent(new Event('nk:compromisso-salvo'));
                 fecharFormulario();
 
                 atualizarDashboard();

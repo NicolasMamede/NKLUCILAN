@@ -744,6 +744,7 @@ formProva.addEventListener(
             }
 
 
+            window.dispatchEvent(new Event('nk:compromisso-salvo'));
             await carregarProvas();
 
             renderizarProvas();

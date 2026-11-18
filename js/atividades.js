@@ -721,6 +721,7 @@ formAtividade.addEventListener(
             }
 
 
+            window.dispatchEvent(new Event('nk:compromisso-salvo'));
             fecharModal();
 
             await carregarAtividades();

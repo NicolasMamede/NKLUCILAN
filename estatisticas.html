@@ -9,7 +9,8 @@
 <link rel="stylesheet" href="css/nk-app.css?v=2">
 <link rel="stylesheet" href="css/nk-focus-mobile.css?v=3.2">
 <link rel="stylesheet" href="css/nk-focus-3.4.css?v=3.4">
-<link rel="stylesheet" href="css/nk-focus-3.5.css?v=3.5"></head><body><div class="app"><aside class="sidebar" id="sidebar">
+<link rel="stylesheet" href="css/nk-focus-3.5.css?v=3.5">
+<link rel="stylesheet" href="css/nk36-diagnostico.css?v=3.6"></head><body><div class="app"><aside class="sidebar" id="sidebar">
 
             <!-- LOGO -->
             <div class="sidebar-logo">
@@ -161,12 +162,20 @@
 <div id="nk35-resumo" class="nk35-summary" aria-live="polite"><p class="nk35-empty">Carregando…</p></div>
 <section class="nk35-section"><h2 class="nk35-stats-title">Compromissos por matéria</h2><p class="nk35-intro">Número de atividades, trabalhos e provas cadastrados, incluindo os concluídos.</p><div id="nk35-materias"></div></section>
 <section class="nk35-section nk35-reminders"><div><h2 class="nk35-stats-title">Lembretes neste aparelho</h2><p>Escolha os horários de alerta ao cadastrar ou editar um compromisso. Os lembretes locais são verificados enquanto o NKLUCILAN estiver aberto, com conexão e permissão. Avisos com o app fechado dependem da configuração separada de notificações push.</p><p id="nk35-lembretes-status" role="status"></p></div><button id="nk35-ativar-lembretes" type="button" class="nk35-primary">🔔 Ativar notificações</button></section>
+<details class="nk36-diagnostic nk35-section" id="nk36-diagnostic">
+<summary><strong>🔔 Diagnóstico de notificações</strong> <span>Conferir datas e horários salvos</span></summary>
+<p>Confira se a edição do compromisso foi salva. Estes horários são calculados a partir dos dados atuais do Supabase; a lista não confirma o agendamento de push no servidor.</p>
+<button type="button" id="nk36-check" class="nk35-primary">Conferir lembretes cadastrados</button>
+<div id="nk36-check-result" role="status" aria-live="polite"></div>
+</details>
+
 <section class="nk35-section"><h2 class="nk35-stats-title">Acesso rápido</h2><p><a href="buscar.html">Buscar compromissos</a> · <a href="atividades.html">Gerenciar atividades</a></p></section></div></main></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase.js"></script><script src="js/auth.js"></script>
 <script src="js/usuario.js"></script><script src="js/nk-detalhes.js?v=3.4"></script>
 <script src="js/nk-focus35-core.js?v=3.5"></script>
-<script src="js/nk-focus35-lembretes.js?v=3.5"></script>
-<script src="js/nk-focus35-painel.js?v=3.5"></script>
+<script src="js/nk-focus35-lembretes.js?v=3.6"></script>
+<script src="js/nk-focus35-painel.js?v=3.6"></script>
+<script src="js/nk36-diagnostico.js?v=3.6"></script>
 <script defer src="js/nk-mobile-nav.js?v=3"></script>
 <script defer src="js/nk-app.js?v=2"></script></body></html>
