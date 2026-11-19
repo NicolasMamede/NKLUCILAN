@@ -391,3 +391,27 @@
     opacity:1!important;
   }
 }
+
+/* Focus 3.6.1 — contraste dos lembretes no tema claro do app.
+   A paleta dark aplica !important em labels/indicadores; sobrescrever
+   apenas no mobile, inclusive no modal especial de Trabalhos. */
+@media (max-width:900px) {
+  .formulario-campo.nexo-lembretes .nexo-lembretes-opcoes label,
+  #nexoModalTrabalho .formulario-campo.nexo-lembretes .nexo-lembretes-opcoes label {
+    color:#253449!important;
+  }
+  .nexo-lembretes .nexo-lembretes-titulo {
+    color:#244ea0!important;
+  }
+  .nexo-lembretes .nexo-lembretes-resumo {
+    color:#244ea0!important;
+    background:#e5edff!important;
+  }
+  .nexo-lembretes .nexo-lembretes-icone {
+    background:#e5edff!important;
+    color:#244ea0!important;
+  }
+  .nexo-lembretes .nexo-lembretes-seta {
+    border-color:#244ea0!important;
+  }
+}
