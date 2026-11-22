@@ -1,0 +1,87 @@
+/* Edição visual da página inicial. */
+.inicio-editorial {
+  --papel: #191e1c;
+  --superficie: #232a26;
+  --linha: #414b44;
+  --titulo: #f4f0e6;
+  --acento: #f4c685;
+  --jornal: Georgia, "Times New Roman", serif;
+}
+body.inicio-editorial :is(.conteudo, .inicio-agenda) {
+  background: var(--papel) !important;
+}
+.inicio-editorial .boas-vindas {
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+  padding: clamp(22px, 4vw, 46px) !important;
+  border-radius: 18px;
+  color: #fff8e8;
+  background: #193e35 !important;
+}
+.inicio-editorial .boas-vindas::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 0 58%;
+  pointer-events: none;
+  background: repeating-radial-gradient(ellipse at 115% 120%, transparent 0 22px, #e8c78d35 23px 24px, transparent 25px 38px);
+}
+.inicio-editorial .boas-vindas h1,
+.inicio-editorial .inicio-agenda .painel-cabecalho h2 {
+  font-family: var(--jornal) !important;
+  font-weight: 500 !important;
+  letter-spacing: -.035em !important;
+}
+.inicio-editorial .boas-vindas h1 {
+  color: #fffbef !important;
+  font-size: clamp(34px, 5vw, 64px) !important;
+  line-height: 1.1 !important;
+  overflow-wrap: anywhere;
+}
+.inicio-editorial .boas-vindas h1 span,
+.inicio-editorial .boas-vindas .pagina-etiqueta { color: #f4c685 !important; }
+.inicio-editorial .boas-vindas > div > p { color: #e4ede2 !important; }
+.inicio-editorial .boas-vindas #botaoCriar,
+.inicio-editorial .nk-mobile-fab {
+  color: #19362e !important;
+  background: #f4c685 !important;
+  border: 1px solid #d6a86c !important;
+  box-shadow: 0 4px 14px #17291e26 !important;
+}
+.inicio-editorial .inicio-agenda .painel,
+.inicio-editorial .inicio-agenda .resumo-card {
+  background: var(--superficie) !important;
+  border: 1px solid var(--linha) !important;
+}
+.inicio-editorial .inicio-agenda .painel-cabecalho {
+  background: var(--superficie) !important;
+  border-bottom: 1px solid var(--linha) !important;
+}
+.inicio-editorial .inicio-agenda .painel-cabecalho h2 {
+  color: var(--titulo) !important;
+  font-size: clamp(24px, 2.7vw, 36px) !important;
+  line-height: 1.13;
+}
+.inicio-editorial .inicio-agenda .painel-cabecalho a,
+.inicio-editorial .inicio-agenda .painel-etiqueta { color: var(--acento) !important; }
+.inicio-editorial .inicio-agenda .painel-hoje { border-top: 3px solid var(--acento) !important; }
+.inicio-editorial .inicio-agenda .resumo-card::before { display: none; }
+.inicio-editorial .inicio-agenda .resumo-card > strong {
+  font-family: var(--jornal);
+  color: var(--titulo) !important;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+@media (max-width: 900px) {
+  .inicio-editorial {
+    --papel: #f4f1e9;
+    --superficie: #fffcf5;
+    --linha: #dcd7cb;
+    --titulo: #183e35;
+    --acento: #855117;
+  }
+  .inicio-editorial .boas-vindas { padding: 22px 20px !important; }
+  .inicio-editorial .inicio-agenda .resumo-card { border-radius: 10px !important; }
+  .inicio-editorial .nk-mobile-tabs .nk-current,
+  .inicio-editorial .nk-mobile-tabs .nk-current .nk-mobile-tab-icon { color: #195743 !important; }
+}
