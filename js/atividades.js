@@ -1776,6 +1776,7 @@ async function iniciarPaginaAtividades() {
     await carregarMaterias();
 
     await carregarAtividades();
+    NKFocus35.abrirCriacaoSolicitada(abrirNovaAtividade);
 
 }
 

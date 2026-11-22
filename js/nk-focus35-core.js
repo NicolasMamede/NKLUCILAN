@@ -64,6 +64,13 @@
     cartao.classList.add('nk35-card-com-conclusao');
     cartao.appendChild(btn);
   }
+  function abrirCriacaoSolicitada(abrir) {
+    const url = new URL(location.href);
+    if (url.searchParams.get('criar') !== '1') return;
+    abrir();
+    url.searchParams.delete('criar');
+    history.replaceState(history.state, '', url);
+  }
   function inserirMenu() {
     const menu=document.querySelector('.sidebar-menu');if(!menu || document.querySelector('.nk35-link-busca'))return;
     const ativo=location.pathname.split('/').pop();
@@ -77,5 +84,5 @@
     }
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',inserirMenu,{once:true});else inserirMenu();
-  window.NKFocus35=Object.freeze({hoje:HOJE,nome,normalize,isoBR,carregar,concluir,botaoConcluir});
+  window.NKFocus35=Object.freeze({abrirCriacaoSolicitada,hoje:HOJE,nome,normalize,isoBR,carregar,concluir,botaoConcluir});
 })();

@@ -236,7 +236,7 @@
                  DASHBOARD
             ========================================= -->
 
-            <div class="dashboard">
+            <div class="dashboard inicio-agenda">
 
 
                 <!-- BOAS-VINDAS -->
@@ -257,7 +257,7 @@
                         </h1>
 
                         <p>
-                            Veja o que você tem planejado.
+                            <time id="dataInicio"></time>
                         </p>
 
                     </div>
@@ -273,6 +273,155 @@
                     </button>
 
                 </section>
+
+
+
+                <!-- ========================================
+                     CONTEÚDO DO DIA
+                ========================================= -->
+
+                <div class="dashboard-grid">
+
+
+                    <!-- HOJE -->
+
+                    <section class="painel painel-hoje">
+
+                        <div class="painel-cabecalho">
+
+                            <div>
+
+                                <span class="painel-etiqueta">
+                                    AGENDA
+                                </span>
+
+                                <h2>
+                                    Hoje
+                                </h2>
+
+                            </div>
+
+
+                            <a href="semana.html">
+                                Ver semana
+                            </a>
+
+                        </div>
+
+
+                        <!--
+                            Quando houver atividades,
+                            o JavaScript irá adicioná-las
+                            dentro deste elemento.
+                        -->
+
+                        <div
+                            class="lista-atividades"
+                            id="listaAtividadesHoje"
+                        >
+
+
+                            <!-- ESTADO VAZIO -->
+
+                            <div
+                                class="estado-vazio"
+                                id="atividadesVazio"
+                            >
+
+                                <div class="vazio-icone">
+                                    ✓
+                                </div>
+
+                                <h3>
+                                    Tudo em dia
+                                </h3>
+
+                                <p>
+                                    Nenhuma atividade pendente para hoje.
+                                </p>
+
+                                <button
+                                    type="button"
+                                    class="botao-vazio"
+                                    id="criarAtividade"
+                                >
+                                    + Criar atividade
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- ========================================
+                         PROVAS
+                    ========================================= -->
+
+                    <section class="painel painel-provas">
+
+                        <div class="painel-cabecalho">
+
+                            <div>
+
+
+
+                                <h2>
+                                    Próximas provas
+                                </h2>
+
+                            </div>
+
+
+                            <a href="provas.html">
+                                Ver todas
+                            </a>
+
+                        </div>
+
+
+                        <div
+                            class="lista-provas"
+                            id="listaProvas"
+                        >
+
+
+                            <!-- ESTADO VAZIO -->
+
+                            <div
+                                class="estado-vazio estado-vazio-menor"
+                                id="provasVazio"
+                            >
+
+                                <div class="vazio-icone">
+                                    ✎
+                                </div>
+
+                                <h3>
+                                    Nenhuma prova
+                                </h3>
+
+                                <p>
+                                    Nenhuma prova foi cadastrada.
+                                </p>
+
+                                <button
+                                    type="button"
+                                    class="botao-vazio"
+                                    id="criarProva"
+                                >
+                                    + Adicionar prova
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
 
 
 
@@ -357,158 +506,6 @@
                     </div>
 
                 </section>
-
-
-
-                <!-- ========================================
-                     CONTEÚDO DO DIA
-                ========================================= -->
-
-                <div class="dashboard-grid">
-
-
-                    <!-- HOJE -->
-
-                    <section class="painel painel-hoje">
-
-                        <div class="painel-cabecalho">
-
-                            <div>
-
-                                <span class="painel-etiqueta">
-                                    AGENDA
-                                </span>
-
-                                <h2>
-                                    Hoje
-                                </h2>
-
-                            </div>
-
-
-                            <a href="semana.html">
-                                Ver semana
-                            </a>
-
-                        </div>
-
-
-                        <!--
-                            Quando houver atividades,
-                            o JavaScript irá adicioná-las
-                            dentro deste elemento.
-                        -->
-
-                        <div
-                            class="lista-atividades"
-                            id="listaAtividadesHoje"
-                        >
-
-
-                            <!-- ESTADO VAZIO -->
-
-                            <div
-                                class="estado-vazio"
-                                id="atividadesVazio"
-                            >
-
-                                <div class="vazio-icone">
-                                    ✓
-                                </div>
-
-                                <h3>
-                                    Nada por aqui
-                                </h3>
-
-                                <p>
-                                    Você ainda não adicionou
-                                    nenhuma atividade para hoje.
-                                </p>
-
-                                <button
-                                    type="button"
-                                    class="botao-vazio"
-                                    id="criarAtividade"
-                                >
-                                    + Criar atividade
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </section>
-
-
-
-                    <!-- ========================================
-                         PROVAS
-                    ========================================= -->
-
-                    <section class="painel painel-provas">
-
-                        <div class="painel-cabecalho">
-
-                            <div>
-
-                                <span class="painel-etiqueta">
-                                    PROVAS
-                                </span>
-
-                                <h2>
-                                    Próximas
-                                </h2>
-
-                            </div>
-
-
-                            <a href="provas.html">
-                                Ver todas
-                            </a>
-
-                        </div>
-
-
-                        <div
-                            class="lista-provas"
-                            id="listaProvas"
-                        >
-
-
-                            <!-- ESTADO VAZIO -->
-
-                            <div
-                                class="estado-vazio estado-vazio-menor"
-                                id="provasVazio"
-                            >
-
-                                <div class="vazio-icone">
-                                    ✎
-                                </div>
-
-                                <h3>
-                                    Nenhuma prova
-                                </h3>
-
-                                <p>
-                                    Nenhuma prova foi cadastrada.
-                                </p>
-
-                                <button
-                                    type="button"
-                                    class="botao-vazio"
-                                    id="criarProva"
-                                >
-                                    + Adicionar prova
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </section>
-
-                </div>
 
 
 

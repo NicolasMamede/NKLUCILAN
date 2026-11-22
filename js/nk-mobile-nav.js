@@ -82,6 +82,7 @@
       menu: '<path d="M4 6h16M4 12h16M4 18h16"/>',
       task: '<path d="M9 6h11M9 12h11M9 18h11M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/>',
       exam: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/>',
+      study: '<path d="M12 6C8 3 4 4 2 5v14c3-1 6-1 10 1 4-2 7-2 10-1V5c-3-1-6-2-10 1Zm0 0v14"/>',
       work: '<rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/>'
     };
     const svg = key => `<svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">${icons[key]}</svg>`;
@@ -113,6 +114,12 @@
       const title = document.createElement('span');
       title.textContent = label;
       control.append(icon, title);
+      if (href === 'atrasados.html') {
+        const badge = document.createElement('span');
+        badge.className = 'nk-atrasados-badge';
+        badge.hidden = true;
+        control.appendChild(badge);
+      }
       nav.appendChild(control);
     }
     document.body.appendChild(nav);
@@ -122,7 +129,7 @@
     fab.type = 'button';
     fab.className = 'nk-mobile-fab';
     fab.textContent = '+';
-    fab.setAttribute('aria-label', 'Criar atividade, prova ou trabalho');
+    fab.setAttribute('aria-label', 'Criar atividade, prova, trabalho ou estudo');
     fab.setAttribute('aria-controls', 'nkMobileQuickCreate');
     fab.setAttribute('aria-expanded', 'false');
     const shade = document.createElement('div');
@@ -137,7 +144,8 @@
       <div class="nk-mobile-sheet-heading"><strong>Adicionar novo</strong><button type="button" class="nk-mobile-sheet-close" aria-label="Fechar">×</button></div>
       <a href="atividades.html?criar=1">${svg('task')} Nova atividade <span>Tarefa</span></a>
       <a href="provas.html?criar=1">${svg('exam')} Nova prova <span>Avaliação</span></a>
-      <a href="trabalhos.html?criar=1">${svg('work')} Novo trabalho <span>Entrega</span></a>`;
+      <a href="trabalhos.html?criar=1">${svg('work')} Novo trabalho <span>Entrega</span></a>
+      <a href="estudos.html?criar=1">${svg('study')} Novo estudo <span>Revisão</span></a>`;
     document.body.append(fab, shade, sheet);
     function setSheet(open, restore = false) {
       const show = Boolean(open && mobile.matches);
@@ -162,19 +170,6 @@
       }
     });
     if (mobile.addEventListener) mobile.addEventListener('change', () => setSheet(false));
-
-    // Atalho: a opção do menu abre o formulário real da página de destino.
-    if (new URLSearchParams(location.search).get('criar') === '1') {
-      const buttonId = {'atividades.html':'novaAtividade','provas.html':'novaProva','trabalhos.html':'novaTrabalho'}[current];
-      if (buttonId) {
-        window.setTimeout(() => {
-          const button = document.getElementById(buttonId);
-          if (!button) return;
-          history.replaceState(history.state, '', location.pathname + location.hash);
-          button.click();
-        }, 250);
-      }
-    }
 
     // Botão de notificações antes sem ação nas páginas Início e Agenda Pública.
     document.getElementById('notificacoes')?.addEventListener('click', () => {

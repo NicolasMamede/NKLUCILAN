@@ -415,3 +415,40 @@
     border-color:#244ea0!important;
   }
 }
+
+/* Início: a agenda vem antes do resumo nos dois tamanhos de tela. */
+.inicio-agenda .resumo-card {
+  min-height: 0 !important;
+  padding: 12px 14px !important;
+}
+.inicio-agenda .resumo-icone { display: none !important; }
+.inicio-agenda .resumo-topo { margin-bottom: 4px; }
+.inicio-agenda .resumo-card > strong { font-size: 24px !important; }
+.inicio-agenda .resumo { margin-top: 16px !important; }
+.inicio-agenda #listaAtividadesHoje > .atividade-card:first-child {
+  border-inline-start: 3px solid #4976eb !important;
+}
+@media (min-width: 901px) {
+  .inicio-agenda .dashboard-grid {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr) !important;
+  }
+}
+@media (max-width: 900px) {
+  .inicio-agenda .dashboard-grid { grid-template-columns: minmax(0, 1fr) !important; }
+  body:has(.nk-mobile-fab) .inicio-agenda #botaoCriar { display: none !important; }
+  .resumo-topo > span, .resumo-card > p, .mes-legenda, .semana-legenda,
+  .mes-legenda span, .semana-legenda span { font-size: 12px !important; }
+  .nk-mobile-tab { position: relative; }
+  .nk-mobile-tab .nk-atrasados-badge:not([hidden]) {
+    position: absolute;
+    top: 0;
+    left: calc(50% + 5px);
+    height: 17px;
+    min-width: 17px;
+    padding: 0 4px;
+    margin: 0;
+    font-size: 10px;
+    line-height: 1;
+  }
+  .nk-mobile-sheet { max-height: 85dvh; overflow-y: auto; }
+}

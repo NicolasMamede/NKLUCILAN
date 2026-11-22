@@ -18,6 +18,7 @@ async function iniciar(){
   prepararInterface();
   await carregarMaterias();
   await carregarEstudos();
+  NKFocus35.abrirCriacaoSolicitada(abrirNovo);
 }
 
 function prepararInterface(){

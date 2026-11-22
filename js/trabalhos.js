@@ -6,7 +6,11 @@ const hojeISO=()=>NKPrazos.hojeISO();
 const fmt=iso=>iso?new Date(iso+'T12:00:00').toLocaleDateString('pt-BR'):'';
 const inicioSemana=d=>{const x=new Date(d);x.setHours(12,0,0,0);x.setDate(x.getDate()-((x.getDay()+6)%7));return x};
 
-async function iniciar(){usuarioLogado=await protegerPagina();if(!usuarioLogado)return;preparar();await carregarMaterias();await carregarTrabalhos();}
+async function iniciar(){usuarioLogado=await protegerPagina();if(!usuarioLogado)return;preparar();
+ await carregarMaterias();
+ await carregarTrabalhos();
+ NKFocus35.abrirCriacaoSolicitada(abrirNovo);
+}
 function preparar(){
  const filtros=document.querySelector('.trabalhos-filtros');
  if(filtros){

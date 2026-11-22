@@ -190,6 +190,15 @@ const quantidadeSemana =
 const quantidadeProvas =
     document.getElementById("quantidadeProvas");
 
+function atualizarDataInicio() {
+    const agora = new Date();
+    const data = document.getElementById('dataInicio');
+    data.dateTime = dataParaISO(agora);
+    data.textContent = agora.toLocaleDateString('pt-BR', {
+        weekday: 'long', day: 'numeric', month: 'long'
+    });
+}
+
 const listaAtividadesHoje =
     document.getElementById("listaAtividadesHoje");
 
@@ -883,6 +892,7 @@ function atualizarResumo() {
 ===================================================== */
 
 function renderizarAtividadesHoje() {
+    atualizarDataInicio();
 
     if (!listaAtividadesHoje) {
         return;
@@ -940,12 +950,11 @@ function renderizarAtividadesHoje() {
             </div>
 
             <h3>
-                Nada por aqui
+                Tudo em dia
             </h3>
 
             <p>
-                Você ainda não adicionou nenhuma
-                atividade para hoje.
+                Nenhuma atividade pendente para hoje.
             </p>
 
             <button

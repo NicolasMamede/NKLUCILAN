@@ -1860,6 +1860,7 @@ async function iniciarPaginaProvas() {
 
 
     renderizarProvas();
+    NKFocus35.abrirCriacaoSolicitada(abrirNovaProva);
 
 }
 
