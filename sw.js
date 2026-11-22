@@ -2,7 +2,7 @@
    Só salvamos arquivos estáticos do mesmo domínio. Respostas de login,
    chamadas Supabase e informações privadas NÃO são armazenadas neste cache.
    O comportamento de notificações push preexistente é preservado abaixo. */
-const NK_CACHE = 'nklucilan-app-v12-editorial';
+const NK_CACHE = 'nklucilan-app-v13-agenda-semana';
 const NK_OFFLINE_URL = new URL('./offline.html', self.registration.scope).href;
 const NK_SHELL = [
   './offline.html',

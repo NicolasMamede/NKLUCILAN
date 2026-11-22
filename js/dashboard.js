@@ -945,17 +945,7 @@ function renderizarAtividadesHoje() {
 
 
         vazio.innerHTML = `
-            <div class="vazio-icone">
-                ✓
-            </div>
-
-            <h3>
-                Tudo em dia
-            </h3>
-
-            <p>
-                Nenhuma atividade pendente para hoje.
-            </p>
+            <h3>Tudo em dia por aqui</h3>
 
             <button
                 type="button"
@@ -1272,6 +1262,13 @@ async function concluirAtividade(id) {
    PRÓXIMAS PROVAS
 ===================================================== */
 
+function prazoDaProva(dataISO, hojeISO) {
+    const dias = (Date.parse(dataISO) - Date.parse(hojeISO)) / 86400000;
+    if (dias === 0) return "Hoje";
+    if (dias === 1) return "Amanhã";
+    return `Em ${dias} dias`;
+}
+
 function renderizarProvas() {
 
     if (!listaProvas) {
@@ -1322,17 +1319,7 @@ function renderizarProvas() {
 
 
         vazio.innerHTML = `
-            <div class="vazio-icone">
-                ✎
-            </div>
-
-            <h3>
-                Nenhuma prova
-            </h3>
-
-            <p>
-                Nenhuma prova futura foi cadastrada.
-            </p>
+            <h3>Nenhuma prova agendada</h3>
 
             <button
                 type="button"
@@ -1531,12 +1518,7 @@ function renderizarProvas() {
                         "span"
                     );
 
-                data.textContent =
-                    prova.data === hojeISO
-                        ? "Hoje"
-                        : formatarDataISO(
-                            prova.data
-                        );
+                data.textContent = `${prazoDaProva(prova.data, hojeISO)} · ${formatarDataISO(prova.data)}`;
 
 
                 meta.appendChild(
